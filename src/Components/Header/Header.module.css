@@ -1,0 +1,20 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  align-items: center;
+
+}
+
+header img {
+  width: 150px;
+  height: 150px;
+}
+
+header nav {
+  flex-grow: 1;
+  margin: auto;
+  max-width: 1000px;
+  border-bottom: 1px solid silver;
+  border-top: 1px solid silver;
+}

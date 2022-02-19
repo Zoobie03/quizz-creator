@@ -1,0 +1,47 @@
+.wrapperProfil {
+  width: 60vw;
+  height: 60%;
+  margin: auto;
+  border-radius: 10px;
+  background-color: silver;
+}
+
+.wrapperProfil form {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapperProfil label {
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.wrapperProfil input {
+  margin-top: 5px;
+  display: block;
+  width: 50%;
+  font-size: 1rem;
+  padding: 8px 20px;
+  color: rgb(71, 71, 71);
+}
+
+.wrapperProfil button {
+  width: 50%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 5px 5px;
+  background-color: #3867ed;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #3867ed;
+  transition: 0.3s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.wrapperProfil button:hover {
+  background-color: white;
+  color: #3867ed;
+}

@@ -1,0 +1,50 @@
+.form {
+  width: 80%;
+  max-width: 400px;
+  background-color: #d3e0ea;
+  padding: 30px;
+  border-radius: 4px;
+  margin: auto;
+  text-align: left;
+}
+
+.submit {
+  text-align: right;
+}
+
+.button {
+  border: none;
+  padding: 10px 15px;
+  background-color: #fb743e;
+  color: white;
+  margin: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #d3450d;  
+}
+
+.buttons {
+  text-align: right;
+}
+
+.alert {
+  padding: 10px;
+  background-color: rgb(255, 172, 172);
+  border: 1px solid rgb(248, 124, 124);
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.noAccount {
+  margin-top: 10px;
+  text-align: center;
+}

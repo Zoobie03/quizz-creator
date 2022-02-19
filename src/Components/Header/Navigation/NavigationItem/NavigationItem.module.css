@@ -1,0 +1,17 @@
+.NavigationItem {
+  box-sizing: border-box;
+}
+
+.NavigationItem a {
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  background: rgb(56,103,237);
+  background: linear-gradient(81deg, rgba(56,103,237,0.81) 16%, rgba(150,3,254,0.6306897759103641) 86%);
+}
