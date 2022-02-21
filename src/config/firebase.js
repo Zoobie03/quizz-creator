@@ -7,7 +7,8 @@ import {
   doc,
   addDoc,
   setDoc,
-  updateDoc
+  updateDoc,
+  deleteDoc
 } from "firebase/firestore";
 
 const firebaseApp = initializeApp({
@@ -31,5 +32,6 @@ export {
   doc,
   addDoc,
   setDoc,
-  updateDoc
+  updateDoc,
+  deleteDoc
 };
