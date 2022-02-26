@@ -1,58 +1,57 @@
 // Librairies
-import React, { useContext, useState } from 'react';
-import styles from './Authentification.module.css';
-import { checkValidity } from '../../Shared/utility';
-import routes from '../../config/routes';
-import { auth, doc, getDoc, db } from '../../config/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useContext, useState } from "react";
+import styles from "./Authentification.module.css";
+import { checkValidity } from "../../Shared/utility";
+import routes from "../../config/routes";
+import { auth, doc, getDoc, db } from "../../config/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 // Hoc
-import { LoginContext } from '../../hoc/Contexts/LoginContext';
+import { LoginContext } from "../../hoc/Contexts/LoginContext";
 
 // Components
-import Input from '../../Components/Input/Input';
-import { Link } from 'react-router-dom';
+import Input from "../../Components/Input/Input";
+import { Link } from "react-router-dom";
 
 const Authentification = (props) => {
-
   // Context
   const { user } = useContext(LoginContext);
 
   // State
   const [inputs, setInputs] = useState({
     email: {
-      elementType: 'input',
+      elementType: "input",
       elementConfig: {
-        type: 'email',
-        placeholder: 'Email',
-        autoComplete: "username"
+        type: "email",
+        placeholder: "Email",
+        autoComplete: "username",
       },
-      value: '',
-      label: 'Adresse email',
+      value: "",
+      label: "Adresse email",
       valid: false,
       validation: {
         required: true,
         email: true,
-        notValidMessage: `L'adresse e-mail n'est pas valide.`
+        notValidMessage: `L'adresse e-mail n'est pas valide.`,
       },
-      touched: false
+      touched: false,
     },
     password: {
-      elementType: 'input',
+      elementType: "input",
       elementConfig: {
-        type: 'password',
-        placeholder: 'Mot de passe',
-        autoComplete: "current-password"
+        type: "password",
+        placeholder: "Mot de passe",
+        autoComplete: "current-password",
       },
-      value: '',
-      label: 'Mot de passe',
+      value: "",
+      label: "Mot de passe",
       valid: false,
       validation: {
         required: true,
         minLength: 6,
-        notValidMessage: `Le mot de passe doit faire au moins 6 caractères.`
+        notValidMessage: `Le mot de passe doit faire au moins 6 caractères.`,
       },
-      touched: false
+      touched: false,
     },
   });
   const [valid, setValid] = useState(false);
@@ -60,17 +59,19 @@ const Authentification = (props) => {
 
   // Méthodes
   const inputChangeHandler = (event, elementId) => {
-
     // Change la valeur
-    const newInputs = {...inputs};
+    const newInputs = { ...inputs };
     newInputs[elementId].value = event.target.value;
     newInputs[elementId].touched = true;
 
     // Vérification de la valeur
-    newInputs[elementId].valid = checkValidity(event.target.value, newInputs[elementId].validation);
+    newInputs[elementId].valid = checkValidity(
+      event.target.value,
+      newInputs[elementId].validation
+    );
 
     setInputs(newInputs);
-    
+
     // Vérification du formulaire
     let formIsValid = true;
 
@@ -81,26 +82,25 @@ const Authentification = (props) => {
     setValid(formIsValid);
   };
 
-  const formHandler = event => {
+  const formHandler = (event) => {
     event.preventDefault();
-  }
+  };
 
   const logInClickHandler = () => {
-
     const user = {
       email: inputs.email.value,
-      password: inputs.password.value
-    }
+      password: inputs.password.value,
+    };
 
     signInWithEmailAndPassword(auth, user.email, user.password)
-      .then(userCredential => {
+      .then((userCredential) => {
         const user = userCredential.user;
         // console.log(user)
-        
-        props.history.push(routes.HOME);  
+
+        props.history.push(routes.HOME);
       })
-      .catch(error => {
-        switch(error.code) {
+      .catch((error) => {
+        switch (error.code) {
           case "auth/invalid-email":
           case "auth/user-disabled":
           case "auth/user-not-found":
@@ -109,7 +109,7 @@ const Authentification = (props) => {
           default:
         }
       });
-  }
+  };
 
   // Variables
   const formElementsArray = [];
@@ -117,13 +117,13 @@ const Authentification = (props) => {
   for (let key in inputs) {
     formElementsArray.push({
       id: key,
-      config: inputs[key]
+      config: inputs[key],
     });
   }
 
   let form = (
-    <form onSubmit={event => formHandler(event)}>
-      {formElementsArray.map(element => (
+    <form onSubmit={(event) => formHandler(event)}>
+      {formElementsArray.map((element) => (
         <Input
           key={element.id}
           id={element.id}
@@ -139,7 +139,13 @@ const Authentification = (props) => {
         />
       ))}
       <div className={styles.buttons}>
-        <button onClick={logInClickHandler} disabled={!valid} className={styles.button}>Connexion</button>
+        <button
+          onClick={logInClickHandler}
+          disabled={!valid}
+          className={styles.button}
+        >
+          Connexion
+        </button>
       </div>
       <div className={styles.noAccount}>
         <span>
@@ -154,7 +160,9 @@ const Authentification = (props) => {
     <>
       <h1>Se connecter</h1>
       <div className={styles.form}>
-        {loginError ? <div className={styles.alert}>Impossible de vous authentifier.</div> : null}
+        {loginError ? (
+          <div className={styles.alert}>Impossible de vous authentifier.</div>
+        ) : null}
         {form}
       </div>
     </>
