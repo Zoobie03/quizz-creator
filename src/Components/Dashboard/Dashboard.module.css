@@ -41,10 +41,13 @@
   .wrapperQuizzs {
     display: flex;
     flex-direction: column;
+    max-width: none;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .QuizzCard {
-    display: block;
-    margin: auto;
+  .Dashboard h1 {
+    max-width: none;
   }
 }
