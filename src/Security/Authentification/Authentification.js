@@ -1,17 +1,17 @@
 // Librairies
-import React, { useContext, useState } from "react";
-import styles from "./Authentification.module.css";
-import { checkValidity } from "../../Shared/utility";
-import routes from "../../config/routes";
-import { auth, doc, getDoc, db } from "../../config/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useContext, useState } from 'react';
+import styles from './Authentification.module.css';
+import { checkValidity } from '../../Shared/utility';
+import routes from '../../config/routes';
+import { auth } from '../../config/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 // Hoc
-import { LoginContext } from "../../hoc/Contexts/LoginContext";
+import { LoginContext } from '../../hoc/Contexts/LoginContext';
 
 // Components
-import Input from "../../Components/Input/Input";
-import { Link } from "react-router-dom";
+import Input from '../../Components/Input/Input';
+import { Link } from 'react-router-dom';
 
 const Authentification = (props) => {
   // Context
@@ -20,14 +20,14 @@ const Authentification = (props) => {
   // State
   const [inputs, setInputs] = useState({
     email: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "email",
-        placeholder: "Email",
-        autoComplete: "username",
+        type: 'email',
+        placeholder: 'Email',
+        autoComplete: 'username',
       },
-      value: "",
-      label: "Adresse email",
+      value: '',
+      label: 'Adresse email',
       valid: false,
       validation: {
         required: true,
@@ -37,14 +37,14 @@ const Authentification = (props) => {
       touched: false,
     },
     password: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "password",
-        placeholder: "Mot de passe",
-        autoComplete: "current-password",
+        type: 'password',
+        placeholder: 'Mot de passe',
+        autoComplete: 'current-password',
       },
-      value: "",
-      label: "Mot de passe",
+      value: '',
+      label: 'Mot de passe',
       valid: false,
       validation: {
         required: true,
@@ -94,16 +94,13 @@ const Authentification = (props) => {
 
     signInWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        // console.log(user)
-
         props.history.push(routes.HOME);
       })
       .catch((error) => {
         switch (error.code) {
-          case "auth/invalid-email":
-          case "auth/user-disabled":
-          case "auth/user-not-found":
+          case 'auth/invalid-email':
+          case 'auth/user-disabled':
+          case 'auth/user-not-found':
             setLoginError(true);
             break;
           default:

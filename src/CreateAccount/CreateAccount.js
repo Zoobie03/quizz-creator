@@ -14,7 +14,6 @@ import { doc, setDoc } from '../config/firebase';
 import Input from '../Components/Input/Input';
 
 const CreateAccount = (props) => {
-
   // State
   const [inputs, setInputs] = useState({
     email: {
@@ -22,7 +21,7 @@ const CreateAccount = (props) => {
       elementConfig: {
         type: 'email',
         placeholder: 'Email',
-        autoComplete: "username"
+        autoComplete: 'username',
       },
       value: '',
       label: 'Adresse email',
@@ -30,16 +29,16 @@ const CreateAccount = (props) => {
       validation: {
         required: true,
         email: true,
-        notValidMessage: `L'adresse e-mail n'est pas valide.`
+        notValidMessage: `L'adresse e-mail n'est pas valide.`,
       },
-      touched: false
+      touched: false,
     },
     password: {
       elementType: 'input',
       elementConfig: {
         type: 'password',
         placeholder: 'Mot de passe',
-        autoComplete: "current-password"
+        autoComplete: 'current-password',
       },
       value: '',
       label: 'Mot de passe',
@@ -47,16 +46,16 @@ const CreateAccount = (props) => {
       validation: {
         required: true,
         minLength: 6,
-        notValidMessage: `Le mot de passe doit faire au moins 6 caractères.`
+        notValidMessage: `Le mot de passe doit faire au moins 6 caractères.`,
       },
-      touched: false
+      touched: false,
     },
     passwordVerification: {
       elementType: 'input',
       elementConfig: {
         type: 'password',
         placeholder: 'Retapez votre mot de passe',
-        autoComplete: "current-password"
+        autoComplete: 'current-password',
       },
       value: '',
       label: 'Retapez votre mot de passe',
@@ -64,73 +63,68 @@ const CreateAccount = (props) => {
       validation: {
         required: true,
         samePasswords: false,
-        notValidMessage: `Les mots de passes doivent correspondres`
+        notValidMessage: `Les mots de passes doivent correspondres`,
       },
-      touched: false
+      touched: false,
     },
   });
   const [emailError, setEmailError] = useState(false);
   const [valid, setValid] = useState(false);
 
   // Functions
-   const registerClickHandler = () => {
-
+  const registerClickHandler = () => {
     const user = {
       email: inputs.email.value,
-      password: inputs.password.value
-    }
-  
-    
+      password: inputs.password.value,
+    };
+
     createUserWithEmailAndPassword(auth, user.email, user.password)
-        .then(userCredential => {
+      .then((userCredential) => {
+        const user = userCredential.user;
 
-          const user = userCredential.user;
+        const usersCollection = doc(db, 'users', user.uid);
 
-          const usersCollection = doc(db, 'users', user.uid);
-          const { displayName, email, emailVerified, photoURL, phoneNumber, uid } = user;
+        setDoc(usersCollection, { quizzs: [] });
 
-          setDoc(usersCollection, { displayName, email, emailVerified, quizzs: [], photoURL, phoneNumber, uid });
+        props.history.push(routes.DASHBOARD);
+      })
+      .catch((error) => {
+        // Adresse email en doublon
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            setEmailError(true);
+            break;
+          default:
+            break;
+        }
+      });
+  };
 
-          props.history.push(routes.HOME);
-          
-        })
-        .catch(error => {
-          // Adresse email en doublon
-          switch(error.code) {
-            case 'auth/email-already-in-use':
-              setEmailError(true);
-              break;
-            default:
-              break;
-          }
-        });
-  }
-
-  const formHandler = event => {
+  const formHandler = (event) => {
     event.preventDefault();
-  }
+  };
 
   const inputChangeHandler = (event, elementId) => {
     // Change la valeur
-    const newInputs = {...inputs};
+    const newInputs = { ...inputs };
     newInputs[elementId].value = event.target.value;
     newInputs[elementId].touched = true;
-    
+
     // Vérification de la valeur
     newInputs[elementId].valid = checkValidity(event.target.value, newInputs[elementId].validation);
-    
+
     // Les champs mot de passe doivent correspondre
     if (newInputs[elementId] === newInputs['passwordVerification']) {
-
       const currentPassword = newInputs['password'];
       const verificationPassword = newInputs['passwordVerification'];
 
-      currentPassword.value === verificationPassword.value ?
-      verificationPassword.valid = true : verificationPassword.valid = false;
+      currentPassword.value === verificationPassword.value
+        ? (verificationPassword.valid = true)
+        : (verificationPassword.valid = false);
     }
 
     setInputs(newInputs);
-    
+
     // Vérification du formulaire
     let formIsValid = true;
 
@@ -147,13 +141,13 @@ const CreateAccount = (props) => {
   for (let key in inputs) {
     formElementsArray.push({
       id: key,
-      config: inputs[key]
+      config: inputs[key],
     });
   }
 
   let form = (
-    <form onSubmit={event => formHandler(event)}>
-      {formElementsArray.map(element => (
+    <form onSubmit={(event) => formHandler(event)}>
+      {formElementsArray.map((element) => (
         <Input
           key={element.id}
           id={element.id}
@@ -169,12 +163,14 @@ const CreateAccount = (props) => {
         />
       ))}
       <div className={styles.buttons}>
-        <button onClick={registerClickHandler} disabled={!valid} className={styles.button}>Inscription</button>
+        <button onClick={registerClickHandler} disabled={!valid} className={styles.button}>
+          Inscription
+        </button>
       </div>
       <div className={styles.noAccount}>
         <span>
           Vous avez déja un compte ? &nbsp;
-          <Link to={routes.AUTHENTIFICATION}>Créer un compte</Link>
+          <Link to={routes.AUTHENTIFICATION}>Connectez-vous</Link>
         </span>
       </div>
     </form>
@@ -185,7 +181,9 @@ const CreateAccount = (props) => {
       <h1>Créer un compte</h1>
       <div className={styles.form}>
         {form}
-        {emailError ? <div className={styles.alert}>Cette adresse email est déja utilisée.</div> : null}
+        {emailError ? (
+          <div className={styles.alert}>Cette adresse email est déja utilisée.</div>
+        ) : null}
       </div>
     </>
   );

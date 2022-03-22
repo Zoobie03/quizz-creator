@@ -1,7 +1,6 @@
 // Librairies
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { exists } from 'firebase/firestore';
 
 // Own files
 import routes from './config/routes';
@@ -21,46 +20,64 @@ import ProfilManager from './Components/ProfilManager/ProfilManager';
 import CreateAccount from './CreateAccount/CreateAccount';
 
 const App = () => {
-
   // State
   const [user, setUser] = useState('');
 
   // ComponentDidMount
   useEffect(() => {
-
-    authListener()
-
+    authListener();
   }, []);
 
   // Méthodes
   const authListener = () => {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         // Connexion
-        setUser(user)
-      }
-      else {
+        const {
+          displayName,
+          email,
+          emailVerified,
+          phoneNumber,
+          photoURL,
+          uid,
+        } = { ...user };
+        setUser({
+          displayName,
+          email,
+          emailVerified,
+          phoneNumber,
+          photoURL,
+          uid,
+        });
+      } else {
         // Déconnexion
         setUser('');
       }
     });
-  }
+  };
 
   return (
     <div className='App'>
-      <LoginContext.Provider value={ { user } }>
+      <LoginContext.Provider value={{ user }}>
         <Layout>
           <Switch>
             <Route path={routes.HOME} exact component={Home} />
             <Route path={routes.DASHBOARD} exact component={Dashboard} />
-            <Route path={routes.AUTHENTIFICATION} exact component={Authentification} />
+            <Route
+              path={routes.AUTHENTIFICATION}
+              exact
+              component={Authentification}
+            />
             <Route path={routes.CONTACT} exact component={Contact} />
             <Route path={routes.MY_PROFIL} exact component={ProfilManager} />
-            <Route path={routes.CREATE_ACCOUNT} exact component={CreateAccount} />
-          </Switch> 
+            <Route
+              path={routes.CREATE_ACCOUNT}
+              exact
+              component={CreateAccount}
+            />
+          </Switch>
         </Layout>
       </LoginContext.Provider>
-
     </div>
   );
 };

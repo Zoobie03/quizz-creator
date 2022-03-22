@@ -1,48 +1,61 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from 'react';
 import styles from './ProfilManager.module.css';
-import { getDoc, doc, db } from '../../config/firebase';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 
 const ProfilManager = (props) => {
-  
   // Context
   const { user } = useContext(LoginContext);
 
   // State
-  const [username, setUsername] = useState({...user});
-  const { displayName, email, emailVerified, phoneNumber, photoURL, quizzs, uid } = user;
+  const [username, setUsername] = useState({ ...user });
 
-  const settingsProfilClickHandler = () => {
-    
-  }
+  const settingsProfilClickHandler = (event) => {
+    event.preventDefault();
+  };
+
+  const uploadFileHandler = () => {};
 
   return (
     <div>
-      <h1>{user.displayName} ici tu pourra rentré les informations te concernant</h1>
+      <h1>Bienvenue {username.displayName}</h1>
       <div className={styles.wrapperProfil}>
-        <form onSubmit={(e) => e.preventDefault()}>
-
-          <label>displayName: &nbsp;
-            <input type='text' defaultValue={username.displayName} />
+        <form onSubmit={settingsProfilClickHandler}>
+          <label htmlFor='displayName'>
+            displayName: &nbsp;
+            <input type='text' id='displayName' defaultValue={username.displayName} />
           </label>
 
-          <label>email: &nbsp;
-            <input type='email' defaultValue={username.email} />
+          <label htmlFor='email'>
+            email: &nbsp;
+            <input type='email' id='email' defaultValue={username.email} disabled />
           </label>
 
-          <label>Photo de profil: &nbsp;
-            <input type='file' defaultValue={username.photoURL} />
+          <label htmlFor='URLpicture'>
+            Photo de profil: (285 x 285)
+            <input
+              type='file'
+              id='URLpicture'
+              defaultValue={username.photoURL}
+              onChange={uploadFileHandler}
+            />
           </label>
 
-          <label>Téléphone: &nbsp;
-            <input type='text' defaultValue={username.phoneNumber} />
+          <label htmlFor='phoneNumber'>
+            Téléphone: &nbsp;
+            <input type='text' id='phoneNumber' defaultValue={username.phoneNumber} />
           </label>
 
-          <label>UID: &nbsp;
-            <input type='text' defaultValue={username.uid} onChange={(e) => setUsername(e.target.value)} />
+          <label htmlFor='uid'>
+            UID: &nbsp;
+            <input
+              type='text'
+              id='uid'
+              defaultValue={username.uid}
+              disabled
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </label>
-
-          <button type="submit" onClick={settingsProfilClickHandler}>Valider les changements</button>
+          <button type='submit'>Valider les changements</button>
         </form>
       </div>
     </div>

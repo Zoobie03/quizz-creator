@@ -23,13 +23,13 @@
 }
 
 .button:disabled {
-  opacity: .3;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
 .button:hover,
 .button:focus {
-  background-color: #d3450d;  
+  background-color: #d3450d;
 }
 
 .buttons {
