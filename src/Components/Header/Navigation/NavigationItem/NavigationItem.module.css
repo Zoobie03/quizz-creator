@@ -22,6 +22,7 @@
 
 @media screen and (max-width: 880px) {
   .NavigationItem {
+    margin-right: 5px;
   }
   .NavigationItem a {
     text-transform: none;
