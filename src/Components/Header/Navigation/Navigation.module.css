@@ -15,6 +15,27 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 16px;
-  background: rgb(56,103,237);
-  background: linear-gradient(81deg, rgba(56,103,237,0.81) 16%, rgba(150,3,254,0.6306897759103641) 86%);
+  background: rgb(56, 103, 237);
+  background: linear-gradient(
+    81deg,
+    rgba(56, 103, 237, 0.81) 16%,
+    rgba(150, 3, 254, 0.6306897759103641) 86%
+  );
+}
+
+@media screen and (max-width: 880px) {
+  .Navigation {
+    display: flex;
+  }
+
+  .logout {
+    padding: 4px 10px;
+    text-transform: none;
+    background: rgb(56, 103, 237);
+    background: linear-gradient(
+      81deg,
+      rgba(56, 103, 237, 0.81) 16%,
+      rgba(150, 3, 254, 0.6306897759103641) 86%
+    );
+  }
 }

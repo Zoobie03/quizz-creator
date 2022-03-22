@@ -3,7 +3,6 @@ header {
   justify-content: space-between;
   margin: 10px;
   align-items: center;
-
 }
 
 header img {
@@ -17,4 +16,16 @@ header nav {
   max-width: 1000px;
   border-bottom: 1px solid silver;
   border-top: 1px solid silver;
+}
+
+@media screen and (max-width: 880px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  img {
+    display: block;
+    margin-bottom: 20px;
+  }
 }
