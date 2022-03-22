@@ -29,7 +29,7 @@
   }
 
   .logout {
-    padding: 4px 10px;
+    padding: 6px 10px;
     text-transform: none;
     background: rgb(56, 103, 237);
     background: linear-gradient(
@@ -37,5 +37,6 @@
       rgba(56, 103, 237, 0.81) 16%,
       rgba(150, 3, 254, 0.6306897759103641) 86%
     );
+    font-weight: bold;
   }
 }
