@@ -21,15 +21,30 @@
 }
 
 @media screen and (max-width: 880px) {
+  .NavigationItem {
+  }
   .NavigationItem a {
+    text-transform: none;
+    padding: 4px 10px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .NavigationItem {
+    width: 200px;
+    margin-bottom: 10px;
     background: rgb(56, 103, 237);
     background: linear-gradient(
       81deg,
       rgba(56, 103, 237, 0.81) 16%,
       rgba(150, 3, 254, 0.6306897759103641) 86%
     );
-    text-transform: none;
-    padding: 4px 10px;
-    font-weight: bold;
+    border-radius: 5px;
+  }
+  .NavigationItem a {
+    width: 100%;
+    background: none;
+    background-color: none;
   }
 }
