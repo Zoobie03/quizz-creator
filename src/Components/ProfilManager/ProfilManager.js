@@ -13,10 +13,22 @@ const ProfilManager = (props) => {
     event.preventDefault();
   };
 
-  const uploadFileHandler = () => {};
+  const uploadFileHandler = () => {
+    const file = document.getElementById('URLpicture').files[0];
+    const previewTarget = document.getElementById('picturePreview');
+
+    previewTarget.src = window.URL.createObjectURL(file);
+    // const formData = new FormData();
+    // formData.append('file', file);
+    // formData.append('username', username);
+    // fetch('http://localhost:8080/upload', {
+    //   method: 'POST',
+    //   body: formData,
+    // });
+  };
 
   return (
-    <div>
+    <div className={styles.ProfilManager}>
       <h1>Bienvenue {username.displayName}</h1>
       <div className={styles.wrapperProfil}>
         <form onSubmit={settingsProfilClickHandler}>
@@ -57,6 +69,9 @@ const ProfilManager = (props) => {
           </label>
           <button type='submit'>Valider les changements</button>
         </form>
+        <div className={styles.picturePreview}>
+          <img alt='Preview' id='picturePreview' />
+        </div>
       </div>
     </div>
   );
