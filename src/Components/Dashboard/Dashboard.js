@@ -1,16 +1,16 @@
 // Librairies
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import styles from './Dashboard.module.css';
 import { doc, db, setDoc, getDoc } from '../../config/firebase';
 import { updateDoc } from 'firebase/firestore';
-
 // Hoc
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
+// Components
+import QuizzModal from '../QuizzModal/QuizzModal';
 
 const Dashboard = () => {
   // State
   const [quizzs, setQuizzs] = useState([]);
-
   // Context
   const { user } = useContext(LoginContext);
   const { uid } = { ...user };
@@ -85,7 +85,9 @@ const Dashboard = () => {
     );
   };
 
-  return (
+  return true ? ( // PENSER A CHANGER LA CONDITION
+    <QuizzModal />
+  ) : (
     <div className={styles.Dashboard}>
       <h1>Dashboard {user.displayName}</h1>
       <ul className={styles.wrapperQuizzs}>
