@@ -1,14 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styles from './QuizzModal.module.css';
 
 const QuizzModal = (props) => {
-  useEffect(() => {
-    console.log('QuizzModal did mount');
-    return () => {
-      console.log('QuizzModal will unmount');
-    };
-  }, []);
-
   return (
     <div
       className={`${styles.QuizzModal} ${props.modalIsOpen ? styles.animateIn : null}`}
