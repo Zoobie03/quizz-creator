@@ -8,6 +8,7 @@ const ProfilManager = (props) => {
 
   // State
   const [username, setUsername] = useState({ ...user });
+  const [URLpicture, setURLpicture] = useState(null);
 
   const settingsProfilClickHandler = (event) => {
     event.preventDefault();
@@ -17,14 +18,8 @@ const ProfilManager = (props) => {
     const file = document.getElementById('URLpicture').files[0];
     const previewTarget = document.getElementById('picturePreview');
 
-    previewTarget.src = window.URL.createObjectURL(file);
-    // const formData = new FormData();
-    // formData.append('file', file);
-    // formData.append('username', username);
-    // fetch('http://localhost:8080/upload', {
-    //   method: 'POST',
-    //   body: formData,
-    // });
+    const ObjectURLFile = window.URL.createObjectURL(file);
+    setURLpicture(ObjectURLFile);
   };
 
   return (
@@ -70,7 +65,11 @@ const ProfilManager = (props) => {
           <button type='submit'>Valider les changements</button>
         </form>
         <div className={styles.picturePreview}>
-          <img alt='Preview' id='picturePreview' />
+          {URLpicture ? (
+            <img id='picturePreview' src={URLpicture} alt='Preview' />
+          ) : (
+            <p>Aucun fichier choisi</p>
+          )}
         </div>
       </div>
     </div>
