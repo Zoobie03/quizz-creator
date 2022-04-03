@@ -1,5 +1,15 @@
+.Dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fafafa;
+}
+
 .Dashboard h1 {
-  width: 50%;
+  width: 100%;
   padding: 25px 0;
   max-width: 1050px;
   margin: auto;
@@ -14,15 +24,19 @@
   );
 }
 
+.Dashboard h2 {
+  margin: auto;
+}
+
 .wrapperQuizzs {
   margin: 0;
   padding: 0;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
-  margin: auto;
-  max-width: 1000px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1050px;
   background-color: #e6dcdc;
   border: 1px solid #707070;
 }
@@ -42,6 +56,10 @@
 }
 
 @media screen and (max-width: 880px) {
+  .Dashboard h1 {
+    font-size: 40px;
+    width: 90%;
+  }
   .wrapperQuizzs {
     display: flex;
     flex-direction: column;
@@ -49,6 +67,10 @@
     width: 90%;
     justify-content: space-between;
     align-items: center;
+  }
+  .QuizzCard {
+    width: 70%;
+    height: 200px;
   }
 
   .Dashboard h1 {

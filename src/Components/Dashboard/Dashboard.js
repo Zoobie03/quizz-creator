@@ -2,8 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './Dashboard.module.css';
 import { doc, db, setDoc, getDoc } from '../../config/firebase';
-import { addDoc, updateDoc, onSnapshot } from 'firebase/firestore';
-import routes from '../../config/routes';
+import { updateDoc } from 'firebase/firestore';
 
 // Hoc
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
