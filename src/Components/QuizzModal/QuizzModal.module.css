@@ -11,25 +11,6 @@
   align-items: center;
 }
 
-.animateIn {
-  animation: enter 0.5s ease-in-out;
-}
-
-.animateOut {
-  animation: enter 0.5s reverse;
-}
-
-@keyframes enter {
-  0% {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .ModalContent {
   width: 80%;
   height: 80%;
@@ -48,4 +29,19 @@
   position: absolute;
   top: 80px;
   right: 200px;
+}
+
+.animateIn {
+  animation: enter 0.5s ease-in-out;
+}
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
