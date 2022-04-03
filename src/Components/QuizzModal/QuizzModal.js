@@ -1,5 +1,8 @@
+// Library
 import React from 'react';
+// Own files
 import styles from './QuizzModal.module.css';
+import logo from '../../pictures/logo.png';
 
 const QuizzModal = (props) => {
   return (
@@ -8,11 +11,18 @@ const QuizzModal = (props) => {
       id='createQuizzModal'
     >
       <div className={styles.ModalContent}>
-        <h1>Create Quizz</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam doloremque, quidem,
-          quisquam doloremque.
-        </p>
+        <img src={logo} alt='Quizz Creator' width='200px' />
+        <form onSubmit={(e) => e.preventDefault()}>
+          <label>Titre de votre Quizz</label>
+          <input type='text' />
+
+          <label>Thématiques de votre Quizz (optionnel)</label>
+          <input type='text' />
+
+          <label>Tags de votre Quizz (optionnel)</label>
+          <input type='text' />
+        </form>
+        <button type='submit'>Suivant</button>
       </div>
       <svg width='2em' height='2em' viewBox='0 0 24 24' onClick={props.onSvgClick}>
         <path

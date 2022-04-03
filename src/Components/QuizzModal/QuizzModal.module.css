@@ -12,9 +12,9 @@
 }
 
 .ModalContent {
-  width: 80%;
+  width: 60%;
   height: 80%;
-  background-color: #e6dcdc;
+  background-color: #fafafa;
   border: 1px solid #707070;
   border-radius: 10px;
   display: flex;
@@ -22,13 +22,69 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  border: 3px solid #3867ed;
+}
+
+.ModalContent form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  border: 3px solid #b95cf9;
+  border-radius: 20px;
+}
+
+.ModalContent form label {
+  text-align: start;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 25px;
+  font-weight: 350;
+}
+
+.ModalContent form input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #707070;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  padding: 5px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.ModalContent button {
+  width: 100%;
+  max-width: 300px;
+  height: 60px;
+  border: 1px solid #b95cf9;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 25px;
+  padding: 5px;
+  margin-bottom: 20px;
+  background-color: #b95cf9;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ModalContent button:hover {
+  background-color: #3867ed;
+  border: 1px solid #3867ed;
 }
 
 .QuizzModal svg {
   cursor: pointer;
   position: absolute;
   top: 100px;
-  right: 200px;
+  right: 400px;
 }
 
 .animateIn {
