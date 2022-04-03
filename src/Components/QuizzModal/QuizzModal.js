@@ -1,28 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './QuizzModal.module.css';
 
 const QuizzModal = (props) => {
-  // Ref
-  const modalRef = useRef();
-
-  // State
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  // Methods
-  const onSvgClickHandler = () => {
-    setModalIsOpen(false);
-  };
-
   useEffect(() => {
     console.log('QuizzModal did mount');
-    modalRef.current.classList.add(styles.animateIn);
-
     return () => {
       console.log('QuizzModal will unmount');
     };
   }, []);
 
   return (
-    <div className={styles.QuizzModal} isOpen={modalIsOpen} ref={modalRef}>
+    <div
+      className={`${styles.QuizzModal} ${props.modalIsOpen ? styles.animateIn : null}`}
+      id='createQuizzModal'
+    >
       <div className={styles.ModalContent}>
         <h1>Create Quizz</h1>
         <p>
@@ -30,7 +21,7 @@ const QuizzModal = (props) => {
           quisquam doloremque.
         </p>
       </div>
-      <svg width='2em' height='2em' viewBox='0 0 24 24' onClick={onSvgClickHandler}>
+      <svg width='2em' height='2em' viewBox='0 0 24 24' onClick={props.onSvgClick}>
         <path
           fill='none'
           stroke='red'
