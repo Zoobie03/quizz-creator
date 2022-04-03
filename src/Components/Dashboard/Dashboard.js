@@ -11,6 +11,7 @@ import QuizzModal from '../QuizzModal/QuizzModal';
 const Dashboard = () => {
   // State
   const [quizzs, setQuizzs] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   // Context
   const { user } = useContext(LoginContext);
   const { uid } = { ...user };
@@ -65,6 +66,8 @@ const Dashboard = () => {
   });
 
   const addQuizzClickHandler = async () => {
+    setModalIsOpen(true);
+
     const quizzTemplate = {
       id: Math.random(),
       title: null,
@@ -85,8 +88,12 @@ const Dashboard = () => {
     );
   };
 
-  return true ? ( // PENSER A CHANGER LA CONDITION
-    <QuizzModal />
+  const onSvgClickHandler = () => {
+    setModalIsOpen(false);
+  };
+
+  return modalIsOpen ? ( // PENSER A CHANGER LA CONDITION
+    <QuizzModal modalIsOpen={modalIsOpen} onSvgClick={onSvgClickHandler} />
   ) : (
     <div className={styles.Dashboard}>
       <h1>Dashboard {user.displayName}</h1>
