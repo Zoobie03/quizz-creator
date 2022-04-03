@@ -1,5 +1,5 @@
 .Dashboard h1 {
-  width: 100%;
+  width: 50%;
   padding: 25px 0;
   max-width: 1050px;
   margin: auto;
@@ -15,19 +15,23 @@
 }
 
 .wrapperQuizzs {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  max-width: 1000px;
+  width: 50%;
   margin: auto;
+  max-width: 1000px;
   background-color: #e6dcdc;
   border: 1px solid #707070;
 }
 
 .QuizzCard {
   margin: 5px;
+  margin-bottom: 10px;
   border: 1px solid black;
-  width: 250px;
+  width: 32%;
   height: 250px;
   background-color: rgb(157, 218, 218);
 }
