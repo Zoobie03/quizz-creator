@@ -6,11 +6,9 @@ import { auth, db } from '../config/firebase';
 import routes from '../config/routes';
 import styles from './CreateAccount.module.css';
 import { checkValidity } from '../Shared/utility';
-
 // Firebase
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-
 // Components
 import Input from '../Components/Input/Input';
 
