@@ -1,32 +1,73 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styles from './ProfilManager.module.css';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
-import { storageRef } from '../../config/firebase';
+import { auth, storage } from '../../config/firebase';
 import { ref, uploadBytes } from 'firebase/storage';
+import { updateProfile, sendEmailVerification } from 'firebase/auth';
 
 const ProfilManager = (props) => {
   // Context
   const { user } = useContext(LoginContext);
 
+  // Component Did Mount
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user !== null) {
+      // The user object has basic properties such as display name, email, etc.
+      const displayName = user.displayName;
+      const email = user.email;
+      const photoURL = user.photoURL;
+      const emailVerified = user.emailVerified;
+      const uid = user.uid;
+
+      const userData = {
+        displayName,
+        email,
+        photoURL,
+        emailVerified,
+        uid,
+      };
+
+      console.log(userData);
+      // The user's ID, unique to the Firebase project. Do NOT use
+      // this value to authenticate with your backend server, if
+      // you have one. Use User.getToken() instead.
+    }
+  });
+
   // State
-  const [username, setUsername] = useState({ ...user });
+  const [userInformations, setUserInformations] = useState({ ...user });
   const [URLpicture, setURLpicture] = useState(null);
 
   // Methods
   const settingsProfilClickHandler = (event) => {
     event.preventDefault();
 
-    // const inputs = [...document.querySelectorAll('input')].filter(
-    //   (input) => input.id !== 'email' && input.id !== 'uid'
-    // );
+    const inputs = [...document.querySelectorAll('input')].filter(
+      (input) => input.id !== 'email' && input.id !== 'uid' && input.id !== 'URLpicture'
+    );
 
-    // const data = {};
-    // inputs.forEach((input) => {
-    //   data[input.id] = input.value;
-    // });
-    // console.log(data);
-    const currentUserRef = ref(storageRef, `users/${user.uid}/profil.jpg`);
-    console.log(currentUserRef);
+    const data = {};
+
+    inputs.forEach((input) => {
+      data[input.id] = input.value;
+    });
+
+    updateProfile(auth.currentUser, {
+      displayName: data.displayName,
+      phoneNumber: data.phoneNumber,
+    })
+      .then(() => {
+        // Profile updated!
+        console.log('Profile updated!');
+        auth.currentUser.reload();
+        props.history.push('/dashboard');
+        console.log(user);
+      })
+      .catch((error) => {
+        // An error occurred
+        console.log(error);
+      });
   };
 
   const uploadFileHandler = () => {
@@ -37,50 +78,57 @@ const ProfilManager = (props) => {
     setURLpicture(ObjectURLFile);
 
     // Firebase storage (for upload)
-    const currentUserRef = ref(storageRef, `users/${user.uid}/${file.name}`);
-    const filename = file.name;
+    const storageRef = ref(storage, `users/${user.uid}/${file.name}`);
 
-    uploadBytes(currentUserRef, file, filename).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
+    uploadBytes(storageRef, file, file.name).then((snapshot) => {
+      console.log('Uploaded file!');
       console.log(snapshot);
     });
+  };
 
-    console.log(currentUserRef);
+  const handleSendEmailVerif = () => {
+    sendEmailVerification(auth.currentUser).then((r) => {
+      // Email sent.
+      console.log('Email sent!');
+      console.log(r);
+    });
   };
 
   return (
     <div className={styles.ProfilManager}>
-      <h1>Bienvenue {username.displayName}</h1>
+      <h1>Bienvenue {userInformations.displayName}</h1>
       <div className={styles.wrapperProfil}>
         <form onSubmit={settingsProfilClickHandler}>
           <label htmlFor='displayName'>
-            displayName: &nbsp;
-            <input type='text' id='displayName' defaultValue={username.displayName} />
+            Pseudonyme
+            <input type='text' id='displayName' defaultValue={userInformations.displayName} />
           </label>
 
           <label htmlFor='email'>
-            email: &nbsp;
-            <input type='email' id='email' defaultValue={username.email} disabled />
+            Email
+            <input type='email' id='email' defaultValue={userInformations.email} disabled />
           </label>
 
+          <p className={styles.emailVerif}>
+            Email vérifié: {userInformations.emailVerified ? '✅' : '❌'}
+          </p>
+          {userInformations.emailVerified ? null : (
+            <button onClick={handleSendEmailVerif}>M'envoyer un email de vérification</button>
+          )}
+
           <label htmlFor='URLpicture'>
-            Photo de profil: (285 x 285)
+            Photo de profil
             <input type='file' id='URLpicture' onChange={uploadFileHandler} />
           </label>
 
-          <label htmlFor='phoneNumber'>
-            Téléphone: &nbsp;
-            <input type='text' id='phoneNumber' defaultValue={username.phoneNumber} />
-          </label>
-
           <label htmlFor='uid'>
-            UID: &nbsp;
+            ID Utilisateur
             <input
               type='text'
               id='uid'
-              defaultValue={username.uid}
+              defaultValue={userInformations.uid}
               disabled
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setUserInformations(e.target.value)}
             />
           </label>
           <button type='submit'>Valider les changements</button>
