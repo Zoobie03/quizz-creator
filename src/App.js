@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 // Own files
 import routes from './config/routes';
 import './App.css';
-import { auth, doc, getDoc, db } from './config/firebase';
+import { auth } from './config/firebase';
 
 // HOC
 import { LoginContext } from './hoc/Contexts/LoginContext';
@@ -33,14 +33,7 @@ const App = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         // Connexion
-        const {
-          displayName,
-          email,
-          emailVerified,
-          phoneNumber,
-          photoURL,
-          uid,
-        } = { ...user };
+        const { displayName, email, emailVerified, phoneNumber, photoURL, uid } = { ...user };
         setUser({
           displayName,
           email,
@@ -63,18 +56,10 @@ const App = () => {
           <Switch>
             <Route path={routes.HOME} exact component={Home} />
             <Route path={routes.DASHBOARD} exact component={Dashboard} />
-            <Route
-              path={routes.AUTHENTIFICATION}
-              exact
-              component={Authentification}
-            />
+            <Route path={routes.AUTHENTIFICATION} exact component={Authentification} />
             <Route path={routes.CONTACT} exact component={Contact} />
             <Route path={routes.MY_PROFIL} exact component={ProfilManager} />
-            <Route
-              path={routes.CREATE_ACCOUNT}
-              exact
-              component={CreateAccount}
-            />
+            <Route path={routes.CREATE_ACCOUNT} exact component={CreateAccount} />
           </Switch>
         </Layout>
       </LoginContext.Provider>
