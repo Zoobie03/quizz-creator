@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import styles from './ProfilManager.module.css';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
+import { storageRef } from '../../config/firebase';
+import { ref, uploadBytes } from 'firebase/storage';
 
 const ProfilManager = (props) => {
   // Context
@@ -10,16 +12,40 @@ const ProfilManager = (props) => {
   const [username, setUsername] = useState({ ...user });
   const [URLpicture, setURLpicture] = useState(null);
 
+  // Methods
   const settingsProfilClickHandler = (event) => {
     event.preventDefault();
+
+    // const inputs = [...document.querySelectorAll('input')].filter(
+    //   (input) => input.id !== 'email' && input.id !== 'uid'
+    // );
+
+    // const data = {};
+    // inputs.forEach((input) => {
+    //   data[input.id] = input.value;
+    // });
+    // console.log(data);
+    const currentUserRef = ref(storageRef, `users/${user.uid}/profil.jpg`);
+    console.log(currentUserRef);
   };
 
   const uploadFileHandler = () => {
+    // Our application
     const file = document.getElementById('URLpicture').files[0];
-    const previewTarget = document.getElementById('picturePreview');
 
     const ObjectURLFile = window.URL.createObjectURL(file);
     setURLpicture(ObjectURLFile);
+
+    // Firebase storage (for upload)
+    const currentUserRef = ref(storageRef, `users/${user.uid}/${file.name}`);
+    const filename = file.name;
+
+    uploadBytes(currentUserRef, file, filename).then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+      console.log(snapshot);
+    });
+
+    console.log(currentUserRef);
   };
 
   return (
@@ -39,12 +65,7 @@ const ProfilManager = (props) => {
 
           <label htmlFor='URLpicture'>
             Photo de profil: (285 x 285)
-            <input
-              type='file'
-              id='URLpicture'
-              defaultValue={username.photoURL}
-              onChange={uploadFileHandler}
-            />
+            <input type='file' id='URLpicture' onChange={uploadFileHandler} />
           </label>
 
           <label htmlFor='phoneNumber'>

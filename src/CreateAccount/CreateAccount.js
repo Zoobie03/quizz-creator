@@ -1,14 +1,15 @@
 // Librairies
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+// Own files
 import { auth, db } from '../config/firebase';
 import routes from '../config/routes';
-import { Link } from 'react-router-dom';
 import styles from './CreateAccount.module.css';
 import { checkValidity } from '../Shared/utility';
 
 // Firebase
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from '../config/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 // Components
 import Input from '../Components/Input/Input';

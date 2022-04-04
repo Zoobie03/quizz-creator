@@ -1,8 +1,9 @@
 // Librairies
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
+// Own files
+import { db } from '../../config/firebase';
 import styles from './Dashboard.module.css';
-import { doc, db, setDoc, getDoc } from '../../config/firebase';
-import { updateDoc } from 'firebase/firestore';
 // Hoc
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 // Components
