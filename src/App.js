@@ -1,6 +1,7 @@
 // Librairies
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
 
 // Own files
 import routes from './config/routes';
@@ -30,7 +31,7 @@ const App = () => {
 
   // Méthodes
   const authListener = () => {
-    auth.onAuthStateChanged((user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         // Connexion
         const { displayName, email, emailVerified, phoneNumber, photoURL, uid } = { ...user };
