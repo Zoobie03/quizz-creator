@@ -1,11 +1,15 @@
+.wrapperContent {
+  display: flex;
+  justify-content: space-around;
+}
+
 .Dashboard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  min-width: 50%;
   height: 100%;
-  background-color: #fafafa;
 }
 
 .Dashboard h1 {
@@ -55,9 +59,32 @@
   cursor: pointer;
 }
 
+.profilPicture {
+  display: block;
+  margin: auto;
+  object-fit: cover;
+  width: 285px;
+  height: 285px;
+  border-radius: 50%;
+}
+
+.LeftColumnContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.RightColumnContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 880px) {
   .Dashboard h1 {
-    font-size: 40px;
+    font-size: 30px;
     width: 90%;
   }
   .wrapperQuizzs {
@@ -69,11 +96,31 @@
     align-items: center;
   }
   .QuizzCard {
-    width: 70%;
+    width: 150px;
+    height: 150px;
+  }
+
+  .svg svg {
+    width: 100px;
+    height: 100px;
+  }
+
+  .wrapperContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+  }
+
+  .profilPicture {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
     height: 200px;
   }
 
-  .Dashboard h1 {
-    max-width: none;
+  .RightColumnContent {
+    display: none;
   }
 }
