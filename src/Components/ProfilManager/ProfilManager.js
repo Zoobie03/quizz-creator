@@ -1,39 +1,20 @@
+// Library
 import React, { useContext, useState, useEffect } from 'react';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { updateProfile, sendEmailVerification } from 'firebase/auth';
+// Own files
 import styles from './ProfilManager.module.css';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 import { auth, storage } from '../../config/firebase';
-import { ref, uploadBytes } from 'firebase/storage';
-import { updateProfile, sendEmailVerification } from 'firebase/auth';
+import useAuth from '../../customHook/useAuth';
 
 const ProfilManager = (props) => {
   // Context
   const { user } = useContext(LoginContext);
 
-  // Component Did Mount
-  useEffect(() => {
-    const user = auth.currentUser;
-    if (user !== null) {
-      // The user object has basic properties such as display name, email, etc.
-      const displayName = user.displayName;
-      const email = user.email;
-      const photoURL = user.photoURL;
-      const emailVerified = user.emailVerified;
-      const uid = user.uid;
-
-      const userData = {
-        displayName,
-        email,
-        photoURL,
-        emailVerified,
-        uid,
-      };
-
-      console.log(userData);
-      // The user's ID, unique to the Firebase project. Do NOT use
-      // this value to authenticate with your backend server, if
-      // you have one. Use User.getToken() instead.
-    }
-  });
+  // Hooks
+  const currentUser = useAuth();
+  console.log('currentUser ', currentUser);
 
   // State
   const [userInformations, setUserInformations] = useState({ ...user });
@@ -55,14 +36,12 @@ const ProfilManager = (props) => {
 
     updateProfile(auth.currentUser, {
       displayName: data.displayName,
-      phoneNumber: data.phoneNumber,
     })
       .then(() => {
         // Profile updated!
         console.log('Profile updated!');
         auth.currentUser.reload();
         props.history.push('/dashboard');
-        console.log(user);
       })
       .catch((error) => {
         // An error occurred
@@ -70,7 +49,7 @@ const ProfilManager = (props) => {
       });
   };
 
-  const uploadFileHandler = () => {
+  const uploadFileHandler = async () => {
     // Our application
     const file = document.getElementById('URLpicture').files[0];
 
@@ -80,17 +59,19 @@ const ProfilManager = (props) => {
     // Firebase storage (for upload)
     const storageRef = ref(storage, `users/${user.uid}/${file.name}`);
 
-    uploadBytes(storageRef, file, file.name).then((snapshot) => {
+    await uploadBytes(storageRef, file, file.name).then((snapshot) => {
       console.log('Uploaded file!');
-      console.log(snapshot);
     });
+
+    const photoURL = await getDownloadURL(storageRef);
+
+    updateProfile(currentUser, { photoURL });
   };
 
   const handleSendEmailVerif = () => {
     sendEmailVerification(auth.currentUser).then((r) => {
       // Email sent.
       console.log('Email sent!');
-      console.log(r);
     });
   };
 
@@ -134,7 +115,9 @@ const ProfilManager = (props) => {
           <button type='submit'>Valider les changements</button>
         </form>
         <div className={styles.picturePreview}>
-          {URLpicture ? (
+          {currentUser?.photoURL ? (
+            <img id='picturePreview' src={currentUser.photoURL} alt='Preview' />
+          ) : URLpicture ? (
             <img id='picturePreview' src={URLpicture} alt='Preview' />
           ) : (
             <p>Aucun fichier choisi</p>
