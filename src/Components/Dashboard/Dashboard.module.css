@@ -51,6 +51,7 @@
   border: 1px solid black;
   width: 32%;
   height: 250px;
+  border-radius: 10px;
   background-color: rgb(157, 218, 218);
 }
 
