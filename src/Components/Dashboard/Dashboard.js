@@ -108,7 +108,8 @@ const Dashboard = () => {
             className={styles.profilPicture}
           />
         ) : null}
-        <ThematicsAndTags />
+        <ThematicsAndTags title='Thématiques' noneMessage="Vous n'avez aucunes thématiques" />
+        <ThematicsAndTags title='Tags' noneMessage="Vous n'avez aucun tag" />
       </div>
       <div className={styles.Dashboard}>
         <h1>Dashboard {user.displayName}</h1>
