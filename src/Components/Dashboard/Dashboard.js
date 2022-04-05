@@ -9,6 +9,7 @@ import useAuth from '../../customHook/useAuth';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 // Components
 import QuizzModal from '../QuizzModal/QuizzModal';
+import ThematicsAndTags from '../ThematicsAndTags/ThematicsAndTags';
 
 const Dashboard = () => {
   // State
@@ -107,6 +108,7 @@ const Dashboard = () => {
             className={styles.profilPicture}
           />
         ) : null}
+        <ThematicsAndTags />
       </div>
       <div className={styles.Dashboard}>
         <h1>Dashboard {user.displayName}</h1>
