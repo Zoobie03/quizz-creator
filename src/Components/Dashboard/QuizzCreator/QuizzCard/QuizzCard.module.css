@@ -1,0 +1,25 @@
+.QuizzCard {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.QuizzCard li {
+  border: 1px solid black;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  background-color: rgb(157, 218, 218);
+}
+
+.quizzTitle {
+  color: #707070;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 21px;
+  background-color: #faeded;
+}
