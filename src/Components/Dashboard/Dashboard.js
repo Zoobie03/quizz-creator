@@ -10,6 +10,7 @@ import { LoginContext } from '../../hoc/Contexts/LoginContext';
 // Components
 import QuizzModal from '../QuizzModal/QuizzModal';
 import ThematicsAndTags from '../ThematicsAndTags/ThematicsAndTags';
+import NumberOfQuizz from '../NumberOfQuizz/NumberOfQuizz';
 
 const Dashboard = () => {
   // State
@@ -108,6 +109,7 @@ const Dashboard = () => {
             className={styles.profilPicture}
           />
         ) : null}
+        <NumberOfQuizz numberOfQuizz={quizzs.length} />
         <ThematicsAndTags title='Thématiques' noneMessage="Vous n'avez aucunes thématiques" />
         <ThematicsAndTags title='Tags' noneMessage="Vous n'avez aucun tag" />
       </div>
