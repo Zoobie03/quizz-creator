@@ -1,5 +1,9 @@
 .LeftColumnDashboard {
   border: 1px solid black;
   width: 315px;
-  height: 830px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
