@@ -62,7 +62,7 @@ const QuizzCreator = () => {
   const quizzsMapped = quizzs.map((quizz, index) => {
     return (
       <QuizzCard
-        id={quizz.id}
+        key={quizz.id}
         index={index}
         quizzTitle={quizz.title !== null ? quizz.title : 'Titre du quizz'}
         onClick={() => delHandleClick(quizz.id)}
