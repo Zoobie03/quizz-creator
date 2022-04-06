@@ -14,11 +14,11 @@ import Layout from './hoc/Layout/Layout';
 
 // Components
 import Authentification from './Security/Authentification/Authentification';
-import Dashboard from './Components/Dashboard/Dashboard';
 import Contact from './Components/Contact/Contact';
 import Home from './Components/Home/Home';
 import ProfilManager from './Components/ProfilManager/ProfilManager';
 import CreateAccount from './CreateAccount/CreateAccount';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 const App = () => {
   // State
