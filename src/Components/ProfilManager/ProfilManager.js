@@ -14,7 +14,7 @@ const ProfilManager = (props) => {
 
   // Hooks
   const currentUser = useAuth();
-  console.log('currentUser ', currentUser);
+  // console.log('currentUser ', currentUser);
 
   // State
   const [userInformations, setUserInformations] = useState({ ...user });
