@@ -10,7 +10,7 @@ import RightColumnDashboard from './RightColumnDashboard/RightColumnDashboard';
 const Dashboard = () => {
   return (
     <div className={styles.Dashboard}>
-      <LeftColumnDashboard />
+      <LeftColumnDashboard numberOfQuizz={2} />
       <QuizzCreator />
       <RightColumnDashboard />
     </div>

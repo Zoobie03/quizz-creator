@@ -7,11 +7,11 @@ import NumberOfQuizz from './NumberOfQuizz/NumberOfQuizz';
 import ThematicsAndTags from './ThematicsAndTags/ThematicsAndTags';
 import UserPicture from './UserPicture/UserPicture';
 
-const LeftColumnDashboard = () => {
+const LeftColumnDashboard = (props) => {
   return (
     <div className={styles.LeftColumnDashboard}>
       <UserPicture />
-      <NumberOfQuizz />
+      <NumberOfQuizz numberOfQuizz={props.numberOfQuizz} />
       <ThematicsAndTags title='Thématiques' noneMessage="Vous n'avez aucunes thématiques" />
       <ThematicsAndTags title='Tags' noneMessage="Vous n'avez aucun tag" />
     </div>
