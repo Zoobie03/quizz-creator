@@ -4,7 +4,11 @@ import React from 'react';
 import styles from './RightColumnDashboard.module.css';
 
 const RightColumnDashboard = () => {
-  return <div className={styles.RightColumnDashboard}>RightColumnDashboard</div>;
+  return (
+    <div className={styles.RightColumnDashboard}>
+      <h2>Statistiques</h2>
+    </div>
+  );
 };
 
 export default RightColumnDashboard;
