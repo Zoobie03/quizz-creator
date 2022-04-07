@@ -1,5 +1,6 @@
 .NumberOfQuizz {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: auto;
   border-bottom: 1px solid #707070;
   border-right: 1px solid #707070;
@@ -16,6 +17,7 @@
   font-weight: bold;
   text-align: center;
   padding: 10px;
+  text-transform: uppercase;
 }
 
 .NumberOfQuizz p {

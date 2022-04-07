@@ -17,7 +17,6 @@
     rgba(56, 103, 237, 0.81) 16%,
     rgba(150, 3, 254, 0.6306897759103641) 86%
   );
-  border: 1px solid black;
 }
 
 .QuizzCreator h2 {
@@ -35,7 +34,9 @@
   max-width: 1110px;
   justify-content: space-between;
   background-color: #e6dcdc66;
-  border: 1px solid #707070;
+  border-bottom: 1px solid #707070;
+  border-right: 1px solid #707070;
+  border-left: 1px solid #707070;
 }
 
 .svgContainer {
