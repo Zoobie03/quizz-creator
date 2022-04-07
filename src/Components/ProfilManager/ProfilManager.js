@@ -1,5 +1,5 @@
 // Library
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { updateProfile, sendEmailVerification } from 'firebase/auth';
 // Own files
