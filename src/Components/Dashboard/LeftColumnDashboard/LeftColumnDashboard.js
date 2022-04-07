@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './LeftColumnDashboard.module.css';
 // Components
 import NumberOfQuizz from './NumberOfQuizz/NumberOfQuizz';
+import SearchBar from './SearchBar/SearchBar';
 import ThematicsAndTags from './ThematicsAndTags/ThematicsAndTags';
 import UserPicture from './UserPicture/UserPicture';
 
@@ -14,6 +15,7 @@ const LeftColumnDashboard = (props) => {
       <NumberOfQuizz numberOfQuizz={props.numberOfQuizz} />
       <ThematicsAndTags title='Thématiques' noneMessage="Vous n'avez aucunes thématiques" />
       <ThematicsAndTags title='Tags' noneMessage="Vous n'avez aucun tag" />
+      <SearchBar />
     </div>
   );
 };
