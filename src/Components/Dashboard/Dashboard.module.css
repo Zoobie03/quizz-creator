@@ -2,3 +2,7 @@
   display: flex;
   justify-content: space-between;
 }
+.Dashboard {
+  display: flex;
+  justify-content: space-around;
+}
