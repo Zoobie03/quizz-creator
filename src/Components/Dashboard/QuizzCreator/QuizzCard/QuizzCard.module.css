@@ -15,11 +15,16 @@
 }
 
 .quizzTitle {
-  color: #707070;
-  border: 1px solid #707070;
+  color: white;
+  border: none;
   border-radius: 5px;
   margin-top: 10px;
   width: 100%;
   font-size: 21px;
-  background-color: #faeded;
+  background: rgb(56, 103, 237);
+  background: linear-gradient(
+    81deg,
+    rgba(56, 103, 237, 0.81) 16%,
+    rgba(150, 3, 254, 0.6306897759103641) 86%
+  );
 }
