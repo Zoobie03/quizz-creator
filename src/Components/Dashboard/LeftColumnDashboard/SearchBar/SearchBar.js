@@ -8,7 +8,7 @@ const SearchBar = () => {
   return (
     <div className={styles.SearchBar}>
       <img src={loupe} alt='une icone de loupe' />
-      <input type='text' />
+      <input type='text' placeholder='Rechercher...' />
     </div>
   );
 };
