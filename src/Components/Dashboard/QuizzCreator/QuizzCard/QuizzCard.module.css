@@ -8,11 +8,19 @@
 }
 
 .quizzPicture {
+  position: relative;
   border: 1px solid black;
   width: 250px;
   height: 250px;
   border-radius: 10px;
   background-color: rgb(157, 218, 218);
+}
+
+.quizzPicture svg {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
 }
 
 .quizzTitle {
