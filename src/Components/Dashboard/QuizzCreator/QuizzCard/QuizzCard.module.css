@@ -9,6 +9,9 @@
 
 .quizzPicture {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid black;
   width: 250px;
   height: 250px;
@@ -21,6 +24,11 @@
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+}
+
+.quizzPicture span {
+  font-size: 3rem;
+  color: tomato;
 }
 
 .quizzTitle {

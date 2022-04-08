@@ -7,6 +7,7 @@ const QuizzCard = (props) => {
   return (
     <li className={styles.QuizzCard}>
       <div className={styles.quizzPicture}>
+        <span>{props.index}</span>
         <svg width='2em' height='2em' viewBox='0 0 16 16' onClick={props.onClick}>
           <path
             fill='red'
