@@ -13,11 +13,7 @@
   font-weight: bold;
   color: white;
   background: rgb(56, 103, 237);
-  background: linear-gradient(
-    81deg,
-    rgba(56, 103, 237, 0.81) 16%,
-    rgba(150, 3, 254, 0.6306897759103641) 86%
-  );
+  background: linear-gradient(81deg, rgba(56, 103, 237, 0.8) 30%, rgba(150, 3, 254, 0.6) 60%);
 }
 
 .QuizzCreator h2 {
@@ -55,6 +51,7 @@
 
 .svgContainer span {
   font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .profilPicture {
