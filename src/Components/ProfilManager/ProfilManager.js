@@ -50,13 +50,8 @@ const ProfilManager = (props) => {
   };
 
   const uploadFileHandler = async () => {
-    // Our application
-    const file = document.getElementById('URLpicture').files[0];
-
-    const ObjectURLFile = window.URL.createObjectURL(file);
-    setURLpicture(ObjectURLFile);
-
     // Firebase storage (for upload)
+    const file = document.getElementById('URLpicture').files[0];
     const storageRef = ref(storage, `users/${user.uid}/${file.name}`);
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
@@ -66,6 +61,13 @@ const ProfilManager = (props) => {
     const photoURL = await getDownloadURL(storageRef);
 
     updateProfile(currentUser, { photoURL });
+  };
+
+  const uploadForPreview = () => {
+    const file = document.getElementById('URLpicture').files[0];
+
+    const ObjectURLFile = window.URL.createObjectURL(file);
+    setURLpicture(ObjectURLFile);
   };
 
   const handleSendEmailVerif = () => {
@@ -96,11 +98,11 @@ const ProfilManager = (props) => {
           {userInformations.emailVerified ? null : (
             <button onClick={handleSendEmailVerif}>M'envoyer un email de vérification</button>
           )}
-
-          <label htmlFor='URLpicture'>
-            Photo de profil
-            <input type='file' id='URLpicture' onChange={uploadFileHandler} />
-          </label>
+          <label htmlFor='URLpicture'>Photo de profil</label>
+          <div className={styles.fileUploader}>
+            <input type='file' id='URLpicture' onChange={uploadForPreview} />
+            <button onClick={uploadFileHandler}>Envoyer</button>
+          </div>
 
           <label htmlFor='uid'>
             ID Utilisateur
@@ -115,9 +117,7 @@ const ProfilManager = (props) => {
           <button type='submit'>Valider les changements</button>
         </form>
         <div className={styles.picturePreview}>
-          {currentUser?.photoURL ? (
-            <img id='picturePreview' src={currentUser.photoURL} alt='Preview' />
-          ) : URLpicture ? (
+          {URLpicture ? (
             <img id='picturePreview' src={URLpicture} alt='Preview' />
           ) : (
             <p>Aucun fichier choisi</p>

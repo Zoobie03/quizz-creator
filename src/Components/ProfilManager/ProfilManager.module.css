@@ -99,3 +99,27 @@ input:disabled {
   font-size: 20px;
   text-align: start;
 }
+
+.fileUploader {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.fileUploader input {
+  margin: 0;
+  margin-bottom: 30px;
+  flex-shrink: 2;
+}
+
+.fileUploader button {
+  margin: 0;
+  width: 100px;
+  height: 40px;
+  margin-left: 70px;
+  margin-right: 70px;
+  border-radius: none;
+  flex-shrink: 1;
+  padding: 0;
+}
