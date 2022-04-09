@@ -111,6 +111,7 @@ input:disabled {
   margin: 0;
   margin-bottom: 30px;
   flex-shrink: 2;
+  cursor: pointer;
 }
 
 .fileUploader button {
@@ -122,4 +123,16 @@ input:disabled {
   border-radius: none;
   flex-shrink: 1;
   padding: 0;
+}
+
+.fileUploader .successButton {
+  background-color: #2ab34c;
+  border: 1px solid #2ab34c;
+}
+
+.fileUploader .successButton:hover {
+  color: white;
+  background-color: #2ab34c;
+  border: 1px solid #2ab34c;
+  cursor: not-allowed;
 }

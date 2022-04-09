@@ -1,5 +1,5 @@
 // Library
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { updateProfile, sendEmailVerification } from 'firebase/auth';
 // Own files
@@ -7,6 +7,7 @@ import styles from './ProfilManager.module.css';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 import { auth, storage } from '../../config/firebase';
 import useAuth from '../../customHook/useAuth';
+import LoadingSvg from '../../pictures/loading/LoadingSvg.jsx';
 
 const ProfilManager = (props) => {
   // Context
@@ -19,6 +20,17 @@ const ProfilManager = (props) => {
   // State
   const [userInformations, setUserInformations] = useState({ ...user });
   const [URLpicture, setURLpicture] = useState(null);
+  const [fileUploaded, setFileUploaded] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // ComponentWillUnmount
+  // useEffect(() => {
+  //   console.log('ComponentWillUnmount');
+  //   return () => {
+  //     setFileUploaded(false);
+  //     console.log('ComponentWillUnmount entre');
+  //   };
+  // }, []);
 
   // Methods
   const settingsProfilClickHandler = (event) => {
@@ -41,7 +53,7 @@ const ProfilManager = (props) => {
         // Profile updated!
         console.log('Profile updated!');
         auth.currentUser.reload();
-        props.history.push('/dashboard');
+        // props.history.push('/dashboard');
       })
       .catch((error) => {
         // An error occurred
@@ -51,11 +63,15 @@ const ProfilManager = (props) => {
 
   const uploadFileHandler = async () => {
     // Firebase storage (for upload)
+    setLoading(true);
+
     const file = document.getElementById('URLpicture').files[0];
     const storageRef = ref(storage, `users/${user.uid}/${file.name}`);
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
       console.log('Uploaded file!');
+      setFileUploaded(true);
+      setLoading(false);
     });
 
     const photoURL = await getDownloadURL(storageRef);
@@ -64,6 +80,8 @@ const ProfilManager = (props) => {
   };
 
   const uploadForPreview = () => {
+    setFileUploaded(false);
+
     const file = document.getElementById('URLpicture').files[0];
 
     const ObjectURLFile = window.URL.createObjectURL(file);
@@ -101,7 +119,13 @@ const ProfilManager = (props) => {
           <label htmlFor='URLpicture'>Photo de profil</label>
           <div className={styles.fileUploader}>
             <input type='file' id='URLpicture' onChange={uploadForPreview} />
-            <button onClick={uploadFileHandler}>Envoyer</button>
+            {loading ? (
+              <LoadingSvg />
+            ) : fileUploaded ? (
+              <button className={styles.successButton}>Reçu !</button>
+            ) : (
+              <button onClick={uploadFileHandler}>Envoyer</button>
+            )}
           </div>
 
           <label htmlFor='uid'>
