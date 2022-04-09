@@ -15,13 +15,18 @@ const QuizzModal = (props) => {
 
   // Methods
   const handleButtonClick = () => {
-    const quizzTemplate = {
+    const cutThematicValue = thematicValue.replace(/\s+/g, '').split(',');
+    const cutTagValue = tagValue.replace(/\s+/g, '').split(',');
+
+    setThematicsQuizz(cutThematicValue);
+    setTagsQuizz(cutTagValue);
+
+    const quizz = {
       id: Math.random(),
       title: titleQuizz,
-      thematics: [thematicValue],
-      tags: [tagValue],
+      thematics: thematicsQuizz,
+      tags: tagsQuizz,
     };
-    console.log(quizzTemplate);
   };
 
   // Variables
