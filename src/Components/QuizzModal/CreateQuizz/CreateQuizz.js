@@ -1,10 +1,10 @@
 // Library
 import React, { useState } from 'react';
 // Own files
-import styles from './QuizzModal.module.css';
-import logo from '../../../../pictures/logo.png';
+import styles from './CreateQuizz.module.css';
+import logo from '../../../pictures/logo.png';
 
-const QuizzModal = (props) => {
+const CreateQuizz = (props) => {
   // States
   const [titleQuizz, setTitleQuizz] = useState('');
   const [thematicValue, setThematicValue] = useState('');
@@ -90,4 +90,4 @@ const QuizzModal = (props) => {
   );
 };
 
-export default QuizzModal;
+export default CreateQuizz;
