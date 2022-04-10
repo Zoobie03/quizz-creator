@@ -1,9 +1,6 @@
 .ThematicsAndTags {
   display: block;
   height: auto;
-  border-bottom: 1px solid #707070;
-  border-right: 1px solid #707070;
-  border-left: 1px solid #707070;
   width: 285px;
 }
 
@@ -26,4 +23,11 @@
 
 .ThematicsAndTags ul li {
   color: #a1a1a1;
+}
+
+.ThematicsAndTags p {
+  margin: 0;
+  border-bottom: 1px solid #707070;
+  border-right: 1px solid #707070;
+  border-left: 1px solid #707070;
 }
