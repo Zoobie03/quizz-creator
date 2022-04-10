@@ -70,7 +70,7 @@ const Dashboard = () => {
   });
 
   const addQuizzClickHandler = async () => {
-    setModalIsOpen(true);
+    // setModalIsOpen(true);
 
     const quizzTemplate = {
       id: Math.random(),
