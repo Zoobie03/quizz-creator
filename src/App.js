@@ -19,6 +19,7 @@ import Home from './Components/Home/Home';
 import ProfilManager from './Components/ProfilManager/ProfilManager';
 import CreateAccount from './CreateAccount/CreateAccount';
 import Dashboard from './Components/Dashboard/Dashboard';
+import AddQuestion from './Components/QuizzModal/AddQuestion/AddQuestion';
 
 const App = () => {
   // State
@@ -61,6 +62,7 @@ const App = () => {
             <Route path={routes.CONTACT} exact component={Contact} />
             <Route path={routes.MY_PROFIL} exact component={ProfilManager} />
             <Route path={routes.CREATE_ACCOUNT} exact component={CreateAccount} />
+            <Route path={'/test'} exact component={AddQuestion} />
           </Switch>
         </Layout>
       </LoginContext.Provider>
