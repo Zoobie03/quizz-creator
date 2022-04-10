@@ -8,17 +8,7 @@ const AddQuestion = () => {
   // State
   const [question, setQuestion] = React.useState([]);
 
-  return (
-    <div className={styles.AddQuestion}>
-      <div className={styles.Content}>
-        <img src={logo} alt='Quizz Creator' width='125px' />
-        <div className={styles.QuestionsContainer}>
-          <button>Ajouter une question</button>
-        </div>
-        <button type='button'>Suivant</button>
-      </div>
-    </div>
-  );
+  return <div className={styles.AddQuestion}></div>;
 };
 
 export default AddQuestion;
