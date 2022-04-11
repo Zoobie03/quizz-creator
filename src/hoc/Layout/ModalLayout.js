@@ -8,6 +8,7 @@ const ModalLayout = (props) => {
   return (
     <div className={`${styles.ContainerModal} ${props.modalIsOpen ? styles.animateIn : null}`}>
       <div className={styles.ModalContent}>
+        <h2>{props.titleModal}</h2>
         <svg
           className={styles.CloseModal}
           width='2em'
@@ -23,7 +24,7 @@ const ModalLayout = (props) => {
             d='M20 20L4 4m16 0L4 20'
           ></path>
         </svg>
-        <img src={logo} alt='Quizz creator écrit dans un rond de couleur bleu violet' />
+
         {props.children}
       </div>
     </div>
