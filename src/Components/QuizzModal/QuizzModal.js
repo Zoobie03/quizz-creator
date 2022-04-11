@@ -32,6 +32,8 @@ const QuizzModal = (props) => {
         return 'Créer un quizz';
       case 1:
         return 'Liste des questions';
+      case 2:
+        return 'Créer une question';
       default:
         return;
     }
@@ -53,10 +55,16 @@ const QuizzModal = (props) => {
       >
         {modalTabs[modalActiveTab]}
         <div className={styles.buttonContainer}>
-          <button onClick={previousTabClickHandler}>
-            {modalActiveTab === 0 ? 'Annuler' : 'Précédent'}
-          </button>
-          <button onClick={nextTabClickHandler}>Suivant</button>
+          {modalActiveTab === 2 ? (
+            <button>Ajouter</button>
+          ) : (
+            <>
+              <button onClick={previousTabClickHandler}>
+                {modalActiveTab === 0 ? 'Annuler' : 'Précédent'}
+              </button>
+              <button onClick={nextTabClickHandler}>Suivant</button>
+            </>
+          )}
         </div>
       </ModalLayout>
     </div>
