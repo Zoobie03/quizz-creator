@@ -1,7 +1,6 @@
 // Library
 import React from 'react';
 // Own files
-import logo from '../../pictures/logo.png';
 import styles from './ModalLayout.module.css';
 
 const ModalLayout = (props) => {
