@@ -56,7 +56,7 @@ const QuizzModal = (props) => {
         {modalTabs[modalActiveTab]}
         <div className={styles.buttonContainer}>
           {modalActiveTab === 2 ? (
-            <button>Ajouter</button>
+            <button>J'envoi</button>
           ) : (
             <>
               <button onClick={previousTabClickHandler}>
