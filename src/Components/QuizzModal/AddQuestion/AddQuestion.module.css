@@ -10,17 +10,14 @@
   margin-top: 20px;
 }
 
-.AddQuestion input {
-  width: 80%;
-  font-size: 25px;
-}
-
 .AddQuestion ul {
   display: flex;
   flex-direction: column;
   width: 70%;
+  height: 300px;
   border: 1px solid silver;
   padding: 10px;
+  overflow: auto;
 }
 
 .AddQuestion ul li {
@@ -45,7 +42,6 @@
   font-size: 20px;
   border-radius: 15px;
   margin-top: 20px;
-  text-transform: uppercase;
 }
 
 .AddQuestion button svg {
