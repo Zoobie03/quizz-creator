@@ -12,11 +12,6 @@ import QuestionAndAnswers from './AddQuestion/QuestionAndAnswers/QuestionAndAnsw
 const QuizzModal = (props) => {
   // State
   const [modalActiveTab, setModalActiveTab] = useState(0);
-  const [modalTabs, setModalTabs] = useState([
-    <CreateQuizz />,
-    <AddQuestion />,
-    <QuestionAndAnswers />,
-  ]);
 
   // Methods
   const nextTabClickHandler = () => {
@@ -41,6 +36,13 @@ const QuizzModal = (props) => {
         return;
     }
   };
+
+  // Variables
+  const modalTabs = [
+    <CreateQuizz />,
+    <AddQuestion handleAddQuestionClick={nextTabClickHandler} />,
+    <QuestionAndAnswers />,
+  ];
 
   return (
     <div className={styles.QuizzModal}>

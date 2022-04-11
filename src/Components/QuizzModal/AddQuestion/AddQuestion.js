@@ -3,13 +3,11 @@ import React from 'react';
 // Own files
 import styles from './AddQuestion.module.css';
 
-const AddQuestion = () => {
+const AddQuestion = (props) => {
   // States
   const [questions, setQuestions] = React.useState([]);
 
   // Methods
-  const handleAddQuestionClick = () => {};
-
   const handleDeleteClick = (id) => {
     setQuestions(questions.filter((question) => question.id !== id));
   };
@@ -61,7 +59,7 @@ const AddQuestion = () => {
       ) : (
         <h3>Aucune question</h3>
       )}
-      <button onClick={handleAddQuestionClick}>{addQuestionSVG} Ajouter</button>
+      <button onClick={props.handleAddQuestionClick}>{addQuestionSVG} Ajouter</button>
     </div>
   );
 };
