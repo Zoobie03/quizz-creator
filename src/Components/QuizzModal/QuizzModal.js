@@ -7,11 +7,16 @@ import CreateQuizz from './CreateQuizz/CreateQuizz';
 import AddQuestion from './AddQuestion/AddQuestion';
 //Hoc
 import ModalLayout from '../../hoc/Layout/ModalLayout';
+import QuestionAndAnswers from './AddQuestion/QuestionAndAnswers/QuestionAndAnswers';
 
 const QuizzModal = (props) => {
   // State
   const [modalActiveTab, setModalActiveTab] = useState(0);
-  const [modalTabs, setModalTabs] = useState([<CreateQuizz />, <AddQuestion />]);
+  const [modalTabs, setModalTabs] = useState([
+    <CreateQuizz />,
+    <AddQuestion />,
+    <QuestionAndAnswers />,
+  ]);
 
   // Methods
   const nextTabClickHandler = () => {
