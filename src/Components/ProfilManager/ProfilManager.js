@@ -57,7 +57,8 @@ const ProfilManager = (props) => {
     setLoading(true);
 
     const file = document.getElementById('URLpicture').files[0];
-    const storageRef = ref(storage, `users/${user.uid}/${file.name}`);
+
+    const storageRef = ref(storage, `users/${user.uid}/profil-picture.jpg`);
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
       console.log('Uploaded file!');
