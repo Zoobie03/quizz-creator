@@ -10,11 +10,7 @@ const UserPicture = () => {
   return (
     <div className={styles.UserPicture}>
       {currentUser?.photoURL ? (
-        <img
-          src={currentUser?.photoURL}
-          alt='URLpicture of userProfil'
-          className={styles.profilPicture}
-        />
+        <img src={currentUser?.photoURL} alt='Image de profil' className={styles.profilPicture} />
       ) : null}
     </div>
   );

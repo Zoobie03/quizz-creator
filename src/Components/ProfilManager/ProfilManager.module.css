@@ -125,6 +125,11 @@ input:disabled {
   padding: 0;
 }
 
+.fileUploader button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .fileUploader .successButton {
   background-color: #2ab34c;
   border: 1px solid #2ab34c;

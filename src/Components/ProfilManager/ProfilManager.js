@@ -23,15 +23,6 @@ const ProfilManager = (props) => {
   const [fileUploaded, setFileUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // ComponentWillUnmount
-  // useEffect(() => {
-  //   console.log('ComponentWillUnmount');
-  //   return () => {
-  //     setFileUploaded(false);
-  //     console.log('ComponentWillUnmount entre');
-  //   };
-  // }, []);
-
   // Methods
   const settingsProfilClickHandler = (event) => {
     event.preventDefault();
@@ -124,7 +115,12 @@ const ProfilManager = (props) => {
             ) : fileUploaded ? (
               <button className={styles.successButton}>Reçu !</button>
             ) : (
-              <button onClick={uploadFileHandler}>Envoyer</button>
+              <button
+                onClick={uploadFileHandler}
+                disabled={document.getElementById('URLpicture')?.files[0] ? false : true}
+              >
+                Envoyer
+              </button>
             )}
           </div>
 
