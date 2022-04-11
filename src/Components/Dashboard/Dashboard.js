@@ -25,6 +25,17 @@ const Dashboard = () => {
   // Variables
   const userDoc = doc(db, 'users', uid);
 
+  const quizzsMapped = userQuizzs.map((quizz, index) => {
+    return (
+      <QuizzCard
+        key={index}
+        index={index}
+        quizzTitle={quizz.title !== null ? quizz.title : 'Titre du quizz'}
+        onClick={() => delHandleClick(quizz.id)}
+      />
+    );
+  });
+
   // Methods
   const fetchUserQuizzs = async () => {
     console.log('FETCH USER QUIZZ');
@@ -57,17 +68,6 @@ const Dashboard = () => {
       })
       .catch((error) => console.log(error));
   };
-
-  const quizzsMapped = userQuizzs.map((quizz, index) => {
-    return (
-      <QuizzCard
-        key={index}
-        index={index}
-        quizzTitle={quizz.title !== null ? quizz.title : 'Titre du quizz'}
-        onClick={() => delHandleClick(quizz.id)}
-      />
-    );
-  });
 
   const addQuizzClickHandler = async () => {
     // setModalIsOpen(true);
