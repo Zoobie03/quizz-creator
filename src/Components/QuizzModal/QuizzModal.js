@@ -8,6 +8,7 @@ import AddQuestion from './AddQuestion/AddQuestion';
 //Hoc
 import ModalLayout from '../../hoc/Layout/ModalLayout';
 import QuestionAndAnswers from './AddQuestion/QuestionAndAnswers/QuestionAndAnswers';
+import { QuizzContext } from '../../hoc/Contexts/QuizzContext';
 
 const QuizzModal = (props) => {
   // State
@@ -46,27 +47,38 @@ const QuizzModal = (props) => {
     <QuestionAndAnswers />,
   ];
 
+  const quizzTemplate = {
+    id: Math.random(),
+    title: null,
+    questions: [],
+    tags: [],
+    thematic: [],
+    quizzPicture: null,
+  };
+
   return (
     <div className={styles.QuizzModal}>
-      <ModalLayout
-        modalIsOpen={props.modalIsOpen}
-        onSvgClick={props.onSvgClick}
-        titleModal={handleTitleModal(modalActiveTab)}
-      >
-        {modalTabs[modalActiveTab]}
-        <div className={styles.buttonContainer}>
-          {modalActiveTab === 2 ? (
-            <button>J'envoi</button>
-          ) : (
-            <>
-              <button onClick={previousTabClickHandler}>
-                {modalActiveTab === 0 ? 'Annuler' : 'Précédent'}
-              </button>
-              <button onClick={nextTabClickHandler}>Suivant</button>
-            </>
-          )}
-        </div>
-      </ModalLayout>
+      <QuizzContext.Provider value={{ quizzTemplate }}>
+        <ModalLayout
+          modalIsOpen={props.modalIsOpen}
+          onSvgClick={props.onSvgClick}
+          titleModal={handleTitleModal(modalActiveTab)}
+        >
+          {modalTabs[modalActiveTab]}
+          <div className={styles.buttonContainer}>
+            {modalActiveTab === 2 ? (
+              <button>J'envoi</button>
+            ) : (
+              <>
+                <button onClick={previousTabClickHandler}>
+                  {modalActiveTab === 0 ? 'Annuler' : 'Précédent'}
+                </button>
+                <button onClick={nextTabClickHandler}>Suivant</button>
+              </>
+            )}
+          </div>
+        </ModalLayout>
+      </QuizzContext.Provider>
     </div>
   );
 };
