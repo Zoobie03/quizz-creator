@@ -1,10 +1,3 @@
-.buttonContainer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 80%;
-}
-
 .ContainerModal {
   position: fixed;
   top: 0;
@@ -33,20 +26,14 @@
   border: 3px solid #3867ed;
 }
 
-.ModalContent h2 {
-  text-decoration: underline;
-  font-size: 35px;
-  margin: 0;
-  padding: 0;
-  color: black;
-}
-
 .CloseModal {
   cursor: pointer;
   position: absolute;
   top: 50px;
   right: 400px;
 }
+
+/* ANIMATIONS */
 
 .animateIn {
   animation: enter 0.5s ease-in-out;
@@ -75,50 +62,5 @@
   100% {
     opacity: 0;
     transform: translateY(100px);
-  }
-}
-
-.QuizzModal button {
-  width: 100%;
-  max-width: 300px;
-  height: 60px;
-  border: 1px solid #b95cf9;
-  border-radius: 30px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 25px;
-  padding: 5px;
-  margin-bottom: 20px;
-  background-color: #b95cf9;
-  color: white;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.QuizzModal button:hover {
-  background-color: #3867ed;
-  border: 1px solid #3867ed;
-}
-
-/* ANIMATIONS */
-.animateIn {
-  animation: enter 0.5s ease-in-out;
-}
-
-.svgInformations {
-  position: absolute;
-  bottom: 127px;
-  right: 40px;
-}
-
-@keyframes enter {
-  0% {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
