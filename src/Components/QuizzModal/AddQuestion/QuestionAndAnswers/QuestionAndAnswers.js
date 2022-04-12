@@ -1,5 +1,5 @@
 // Library
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 // Own Files
 import styles from './QuestionAndAnswers.module.css';
 
@@ -8,6 +8,9 @@ const QuestionAndAnswers = () => {
   const [questionValue, setQuestionValue] = useState('');
   const [answerValue, setAnswerValue] = useState('');
   const [answers, setAnswers] = useState([]);
+
+  // Ref
+  const answerRef = useRef();
 
   // Variables
   const addQuestionSVG = (
@@ -33,6 +36,11 @@ const QuestionAndAnswers = () => {
   // Methods
   const handleAddAnswerClick = () => {
     setAnswers([...answers, { id: Math.random(), answer: answerValue }]);
+    // Clere the input
+    setAnswerValue('');
+
+    // Focus on the input
+    answerRef.current.focus();
   };
 
   const handleDeleteClick = (id) => {
@@ -51,7 +59,7 @@ const QuestionAndAnswers = () => {
       />
 
       <div className={styles.answersList}>
-        <h3>Liste de vos réponses</h3>
+        <h3>{answers.length > 1 ? 'Vos' : 'Votre'} réponses</h3>
         <ul>
           {answers.map((answer, index) => (
             <li key={index}>
@@ -71,9 +79,10 @@ const QuestionAndAnswers = () => {
           ))}
           <input
             type='text'
-            placeholder='Tapez votre ou vos réponses ici'
+            placeholder='Votre/Vos réponses ici (séparées par des virgules)'
             value={answerValue}
             onChange={(e) => setAnswerValue(e.target.value)}
+            ref={answerRef}
           />
           <button onClick={handleAddAnswerClick}>{addQuestionSVG} Ajouter</button>
         </ul>
