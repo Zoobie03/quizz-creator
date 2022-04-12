@@ -1,9 +1,13 @@
 // Library
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 // Own files
 import styles from './CreateQuizz.module.css';
+import { QuizzContext } from '../../../hoc/Contexts/QuizzContext';
 
 const CreateQuizz = (props) => {
+  // Context
+  const { quizz, setQuizz } = useContext(QuizzContext);
+
   // States
   const [titleQuizz, setTitleQuizz] = useState('');
   const [thematicValue, setThematicValue] = useState('');
@@ -28,6 +32,8 @@ const CreateQuizz = (props) => {
       thematics: thematicsQuizz,
       tags: tagsQuizz,
     };
+
+    setQuizz(quizz);
   };
 
   // Variables
