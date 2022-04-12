@@ -5,10 +5,10 @@ import styles from './QuizzModal.module.css';
 // Components
 import CreateQuizz from './CreateQuizz/CreateQuizz';
 import AddQuestion from './AddQuestion/AddQuestion';
-//Hoc
-import ModalLayout from '../../hoc/Layout/ModalLayout';
 import QuestionAndAnswers from './AddQuestion/QuestionAndAnswers/QuestionAndAnswers';
+//Hoc
 import { QuizzContext } from '../../hoc/Contexts/QuizzContext';
+import ModalLayout from '../../hoc/Layout/ModalLayout';
 
 const QuizzModal = (props) => {
   // State
@@ -67,7 +67,7 @@ const QuizzModal = (props) => {
           {modalTabs[modalActiveTab]}
           <div className={styles.buttonContainer}>
             {modalActiveTab === 2 ? (
-              <button>J'envoi</button>
+              <button>Confirmer</button>
             ) : (
               <>
                 <button onClick={previousTabClickHandler}>
