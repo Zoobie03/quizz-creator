@@ -22,7 +22,7 @@ const QuizzCreator = (props) => {
           <span>Créer un quizz</span>
         </div>
       </ul>
-      {/* Je garde la structure de la page pour ne pas la déformer quand j'ouvre la modal */}
+      {/* Keep the structure to not destroy them */}
       <QuizzModal modalIsOpen={props.modalIsOpen} onSvgClick={props.onSvgClickHandler} />
     </div>
   ) : (
