@@ -8,7 +8,6 @@ import AddQuestion from './AddQuestion/AddQuestion';
 import QuestionAndAnswers from './AddQuestion/QuestionAndAnswers/QuestionAndAnswers';
 //Hoc
 import { QuizzContext } from '../../hoc/Contexts/QuizzContext';
-import ModalLayout from '../../hoc/Layout/ModalLayout';
 
 const QuizzModal = (props) => {
   // State
@@ -57,13 +56,9 @@ const QuizzModal = (props) => {
   };
 
   return (
-    <div className={styles.QuizzModal}>
-      <QuizzContext.Provider value={{ quizzTemplate }}>
-        <ModalLayout
-          modalIsOpen={props.modalIsOpen}
-          onSvgClick={props.onSvgClick}
-          titleModal={handleTitleModal(modalActiveTab)}
-        >
+    <div className={styles.ContainerModal}>
+      <div className={styles.ModalContent}>
+        <QuizzContext.Provider value={{ quizzTemplate }}>
           {modalTabs[modalActiveTab]}
           <div className={styles.buttonContainer}>
             {modalActiveTab === 2 ? (
@@ -77,8 +72,8 @@ const QuizzModal = (props) => {
               </>
             )}
           </div>
-        </ModalLayout>
-      </QuizzContext.Provider>
+        </QuizzContext.Provider>
+      </div>
     </div>
   );
 };
