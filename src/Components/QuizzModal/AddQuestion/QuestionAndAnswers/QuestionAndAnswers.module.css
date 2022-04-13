@@ -1,0 +1,75 @@
+.QuestionAndAnswers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.QuestionAndAnswers label {
+  text-align: start;
+  font-size: 25px;
+  color: #707070;
+}
+
+.QuestionAndAnswers input[type='text'] {
+  width: 700px;
+  height: 70px;
+  font-size: 20px;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.QuestionAndAnswers button {
+  display: flex;
+  text-transform: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #4cef62;
+  border: none;
+  width: 150px;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.QuestionAndAnswers button svg {
+  margin-right: 10px;
+}
+
+.QuestionAndAnswers ul {
+  list-style-type: circle;
+}
+
+.QuestionAndAnswers ul li {
+  display: flex;
+  font-size: large;
+  justify-content: space-between;
+}
+
+.QuestionAndAnswers ul li svg {
+  cursor: pointer;
+}
+
+.answersList {
+  text-align: start;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  border: 3px solid #b95cf9;
+  border-radius: 20px;
+  overflow: auto;
+  margin-top: 20px;
+}
+
+.answersList input[type='text'] {
+  width: 400px;
+  height: 30px;
+  font-size: 18px;
+}

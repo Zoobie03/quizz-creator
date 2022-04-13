@@ -1,4 +1,11 @@
-.QuizzModal {
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+}
+
+.ContainerModal {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,13 +14,14 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .ModalContent {
   width: 60%;
-  height: 80%;
+  height: 90%;
   background-color: #fafafa;
   border: 1px solid #707070;
   border-radius: 10px;
@@ -25,40 +33,52 @@
   border: 3px solid #3867ed;
 }
 
-.ModalContent form {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-  border: 3px solid #b95cf9;
-  border-radius: 20px;
+.ModalContent h2 {
+  text-decoration: underline;
+  font-size: 35px;
+  margin: 0;
+  padding: 0;
+  color: black;
 }
 
-.ModalContent form label {
-  position: relative;
-  text-align: start;
-  width: 100%;
-  height: 30px;
-  margin-bottom: 10px;
-  padding: 5px;
-  font-size: 25px;
-  font-weight: 350;
+.CloseModal {
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  right: 400px;
 }
 
-.ModalContent form input {
-  width: 100%;
-  height: 30px;
-  border: 1px solid #707070;
-  border-radius: 2px;
-  margin-bottom: 10px;
-  padding: 5px;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
+.animateIn {
+  animation: enter 0.5s ease-in-out;
 }
 
-.ModalContent button {
+.animateOut {
+  animation: leave 0.5s ease-in-out;
+}
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leave {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
+
+.QuizzModal button {
   width: 100%;
   max-width: 300px;
   height: 60px;
@@ -76,18 +96,12 @@
   transition: 0.3s;
 }
 
-.ModalContent button:hover {
+.QuizzModal button:hover {
   background-color: #3867ed;
   border: 1px solid #3867ed;
 }
 
-.QuizzModal svg {
-  cursor: pointer;
-  position: absolute;
-  top: 100px;
-  right: 400px;
-}
-
+/* ANIMATIONS */
 .animateIn {
   animation: enter 0.5s ease-in-out;
 }

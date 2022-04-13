@@ -1,10 +1,13 @@
 // Library
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 // Own files
 import styles from './CreateQuizz.module.css';
-import logo from '../../../pictures/logo.png';
+import { QuizzContext } from '../../../hoc/Contexts/QuizzContext';
 
 const CreateQuizz = (props) => {
+  // Context
+  const { quizz, setQuizz } = useContext(QuizzContext);
+
   // States
   const [titleQuizz, setTitleQuizz] = useState('');
   const [thematicValue, setThematicValue] = useState('');
@@ -14,6 +17,8 @@ const CreateQuizz = (props) => {
   const [tagsQuizz, setTagsQuizz] = useState([]);
 
   // Methods
+  // Trim the spaces in the string and split it by comma
+  // Then update the state
   const handleButtonClick = () => {
     const cutThematicValue = thematicValue.replace(/\s+/g, '').split(',');
     const cutTagValue = tagValue.replace(/\s+/g, '').split(',');
@@ -27,6 +32,8 @@ const CreateQuizz = (props) => {
       thematics: thematicsQuizz,
       tags: tagsQuizz,
     };
+
+    setQuizz(quizz);
   };
 
   // Variables
@@ -45,48 +52,24 @@ const CreateQuizz = (props) => {
   );
 
   return (
-    <div
-      className={`${styles.QuizzModal} ${props.modalIsOpen ? styles.animateIn : null}`}
-      id='createQuizzModal'
-    >
-      <div className={styles.ModalContent}>
-        <img src={logo} alt='Quizz Creator' width='200px' />
-        <form onSubmit={(e) => e.preventDefault()}>
-          <label>Titre de votre Quizz</label>
-          <input
-            type='text'
-            value={titleQuizz}
-            onChange={(event) => setTitleQuizz(event.target.value)}
-          />
+    <form onSubmit={(e) => e.preventDefault()} className={styles.ModalForm}>
+      <label>Titre de votre Quizz</label>
+      <input
+        type='text'
+        value={titleQuizz}
+        onChange={(event) => setTitleQuizz(event.target.value)}
+      />
 
-          <label>Thématiques de votre Quizz (optionnel) {svgInformations}</label>
-          <input
-            type='text'
-            value={thematicValue}
-            onChange={(event) => setThematicValue(event.target.value)}
-          />
+      <label>Thématiques de votre Quizz (optionnel) {svgInformations}</label>
+      <input
+        type='text'
+        value={thematicValue}
+        onChange={(event) => setThematicValue(event.target.value)}
+      />
 
-          <label>Tags de votre Quizz (optionnel) {svgInformations}</label>
-          <input
-            type='text'
-            value={tagValue}
-            onChange={(event) => setTagValue(event.target.value)}
-          />
-        </form>
-        <button type='button' onClick={handleButtonClick}>
-          Suivant
-        </button>
-      </div>
-      <svg width='2em' height='2em' viewBox='0 0 24 24' onClick={props.onSvgClick}>
-        <path
-          fill='none'
-          stroke='red'
-          strokeLinecap='round'
-          strokeWidth='2'
-          d='M20 20L4 4m16 0L4 20'
-        ></path>
-      </svg>
-    </div>
+      <label>Tags de votre Quizz (optionnel) {svgInformations}</label>
+      <input type='text' value={tagValue} onChange={(event) => setTagValue(event.target.value)} />
+    </form>
   );
 };
 
