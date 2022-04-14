@@ -7,7 +7,7 @@ const RightColumnDashboard = (props) => {
   return (
     <div
       className={styles.RightColumnDashboard}
-      style={{ display: props.quizzIsClicked ? 'block' : 'none' }}
+      style={{ visibility: props.quizzIsClicked ? 'visible' : 'hidden' }}
     >
       <h2>Détails du quizz</h2>
     </div>
