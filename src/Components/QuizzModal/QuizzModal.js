@@ -122,6 +122,12 @@ const QuizzModal = (props) => {
     });
   };
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    console.log(quizz);
+  };
+
   return (
     <div
       className={`${styles.ContainerModal} ${
@@ -152,7 +158,9 @@ const QuizzModal = (props) => {
                   <button onClick={uploadFileHandler}>Envoyer</button>
                 )}
               </div>
-              <button type='submit'>Créer le quizz</button>
+              <button type='submit' onSubmit={handleFormSubmit}>
+                Créer le quizz
+              </button>
             </form>
             <div className={styles.picturePreview}>
               {URLpicture ? (
