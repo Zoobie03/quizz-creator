@@ -1,13 +1,14 @@
 // Library
 import React, { useState, useContext } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ErrorBoundary } from 'react-error-boundary';
 // Own files
 import styles from './QuizzModal.module.css';
 import { storage } from '../../config/firebase';
 import LoadingSvg from '../../pictures/loading/LoadingSvg';
 import useAuth from '../../customHook/useAuth';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
-import { ErrorBoundary, ErrorDisplay } from '../../Errors/ErrorBoundary';
+import { ErrorDisplay } from '../../Errors/ErrorBoundary';
 //Hoc
 import { QuizzContext } from '../../hoc/Contexts/QuizzContext';
 
@@ -129,48 +130,50 @@ const QuizzModal = (props) => {
   };
 
   return (
-    <div
-      className={`${styles.ContainerModal} ${
-        props.modalIsOpen ? styles.animateIn : styles.animateOut
-      }`}
-    >
-      {closedCross}
-      <div className={styles.ModalContent}>
-        <h1>Créer un quizz</h1>
-        <div className={styles.wrapperModal}>
-          <form>
-            <label htmlFor='title'>Titre du quizz</label>
-            <input type='text' value={quizz.title} onChange={handleChange} id='title' />
-            <label htmlFor='thematics'>Thématiques (optionnel)</label>
-            <input type='text' id='thematics' value={quizz.thematics} onChange={handleChange} />
-            <label htmlFor='tags'>Tags (optionnel)</label>
-            <input type='text' id='tags' value={quizz.tags} onChange={handleChange} />
-            {/* Quizz picture */}
-            <label htmlFor='quizzPicture'>Image du quizz</label>
-            <div className={styles.fileUploader}>
-              <input type='file' id='quizzPicture' onChange={uploadForPreview} />
-              {loading ? (
-                <LoadingSvg />
-              ) : fileUploaded ? (
-                <button className={styles.successButton}>Reçu !</button>
+    <ErrorBoundary FallbackComponent={ErrorDisplay}>
+      <div
+        className={`${styles.ContainerModal} ${
+          props.modalIsOpen ? styles.animateIn : styles.animateOut
+        }`}
+      >
+        {closedCross}
+        <div className={styles.ModalContent}>
+          <h1>Créer un quizz</h1>
+          <div className={styles.wrapperModal}>
+            <form>
+              <label htmlFor='title'>Titre du quizz</label>
+              <input type='text' value={quizz.title} onChange={handleChange} id='title' />
+              <label htmlFor='thematics'>Thématiques (optionnel)</label>
+              <input type='text' id='thematics' value={quizz.thematics} onChange={handleChange} />
+              <label htmlFor='tags'>Tags (optionnel)</label>
+              <input type='text' id='tags' value={quizz.tags} onChange={handleChange} />
+              {/* Quizz picture */}
+              <label htmlFor='quizzPicture'>Image du quizz</label>
+              <div className={styles.fileUploader}>
+                <input type='file' id='quizzPicture' onChange={uploadForPreview} />
+                {loading ? (
+                  <LoadingSvg />
+                ) : fileUploaded ? (
+                  <button className={styles.successButton}>Reçu !</button>
+                ) : (
+                  <button onClick={uploadFileHandler}>Envoyer</button>
+                )}
+              </div>
+              <button type='submit' onSubmit={handleFormSubmit}>
+                Créer le quizz
+              </button>
+            </form>
+            <div className={styles.picturePreview}>
+              {URLpicture ? (
+                <img id='picturePreview' src={URLpicture} alt='Preview' />
               ) : (
-                <button onClick={uploadFileHandler}>Envoyer</button>
+                <p>Aucun fichier choisi</p>
               )}
             </div>
-            <button type='submit' onSubmit={handleFormSubmit}>
-              Créer le quizz
-            </button>
-          </form>
-          <div className={styles.picturePreview}>
-            {URLpicture ? (
-              <img id='picturePreview' src={URLpicture} alt='Preview' />
-            ) : (
-              <p>Aucun fichier choisi</p>
-            )}
           </div>
         </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 };
 
