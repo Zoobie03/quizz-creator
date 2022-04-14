@@ -40,6 +40,7 @@
 
 .ModalContent label {
   display: block;
+  text-decoration: underline;
   width: 650px;
   margin: auto;
   color: #707070;
@@ -52,6 +53,9 @@
   width: 90%;
   height: 30px;
   margin-bottom: 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid #707070;
 }
 
 .picturePreview {
@@ -85,6 +89,8 @@
   margin-bottom: 30px;
   flex-shrink: 2;
   cursor: pointer;
+  font-size: 14px;
+  border: none;
 }
 
 .fileUploader button {
