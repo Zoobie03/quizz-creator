@@ -15,6 +15,7 @@ const Dashboard = () => {
   // State
   const [userQuizzs, setUserQuizzs] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [quizzIsClicked, setQuizzIsClicked] = useState(false);
   // Context
   const { user } = useContext(LoginContext);
   const { uid } = { ...user };
@@ -31,7 +32,10 @@ const Dashboard = () => {
         key={index}
         index={index}
         quizzTitle={quizz.title !== null ? quizz.title : 'Titre du quizz'}
-        onClick={() => delHandleClick(quizz.id)}
+        onSvgClick={() => delHandleClick(quizz.id)}
+        onQuizzClick={() => {
+          setQuizzIsClicked(!quizzIsClicked);
+        }}
       />
     );
   });
@@ -70,7 +74,7 @@ const Dashboard = () => {
   };
 
   const addQuizzClickHandler = async () => {
-    // setModalIsOpen(true);
+    setModalIsOpen(true);
 
     const quizzTemplate = {
       id: Math.random(),
@@ -107,7 +111,7 @@ const Dashboard = () => {
         onSvgClickHandler={onSvgClickHandler}
         user={user}
       />
-      <RightColumnDashboard />
+      <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
   );
 };
