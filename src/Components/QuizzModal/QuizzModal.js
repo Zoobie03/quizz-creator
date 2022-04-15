@@ -123,7 +123,7 @@ const QuizzModal = (props) => {
   };
 
   const handleFormSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
     console.log(quizz);
   };
@@ -153,11 +153,15 @@ const QuizzModal = (props) => {
                 <LoadingSvg />
               ) : fileUploaded ? (
                 <button className={styles.successButton}>Reçu !</button>
-              ) : (
+              ) : document.getElementById('quizzPicture')?.files[0] ? (
                 <button onClick={uploadFileHandler}>Envoyer</button>
+              ) : (
+                <button className={styles.errorButton} disabled>
+                  Aucun fichier sélectionné
+                </button>
               )}
             </div>
-            <button type='submit' onSubmit={handleFormSubmit}>
+            <button type='submit' onSubmit={handleFormSubmit} className={styles.submitButton}>
               Créer le quizz
             </button>
           </form>

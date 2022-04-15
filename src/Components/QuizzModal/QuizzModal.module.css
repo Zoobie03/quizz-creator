@@ -27,7 +27,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
 }
 
 .ModalContent h1 {
@@ -35,7 +34,8 @@
 }
 
 .ModalContent form {
-  width: 50%;
+  width: 60%;
+  border-right: 1px solid silver;
 }
 
 .ModalContent label {
@@ -50,7 +50,7 @@
 }
 
 .ModalContent input {
-  width: 90%;
+  width: 70%;
   height: 30px;
   margin-bottom: 20px;
   font-size: 20px;
@@ -87,7 +87,6 @@
 .fileUploader input {
   margin: 0;
   margin-bottom: 30px;
-  flex-shrink: 2;
   cursor: pointer;
   font-size: 14px;
   border: none;
@@ -102,9 +101,24 @@
   border-radius: none;
   flex-shrink: 1;
   padding: 0;
+  cursor: pointer;
+  background-color: #3867ed;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #3867ed;
+}
+
+.fileUploader .errorButton {
+  background-color: #ff0000;
+  color: #fff;
+  border: 1px solid #ff0000;
+  border-radius: 5px;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .fileUploader .successButton {
+  color: white;
   background-color: #2ab34c;
   border: 1px solid #2ab34c;
 }
@@ -114,6 +128,27 @@
   background-color: #2ab34c;
   border: 1px solid #2ab34c;
   cursor: not-allowed;
+}
+
+.submitButton {
+  margin: 0;
+  width: 100px;
+  height: 40px;
+  margin-left: 70px;
+  margin-right: 70px;
+  border-radius: none;
+  flex-shrink: 1;
+  padding: 0;
+  cursor: pointer;
+  background-color: #3867ed;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #3867ed;
+  transition: 0.3s;
+}
+
+.submitButton:hover {
+  opacity: 0.7;
 }
 
 /* SVG */
