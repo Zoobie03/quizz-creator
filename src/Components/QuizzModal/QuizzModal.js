@@ -60,30 +60,20 @@ const QuizzModal = (props) => {
     const targetId = event.target.id;
     const value = event.target.value;
 
+    let newState = { ...quizz };
+
     switch (targetId) {
       case 'title':
-        setQuizz({
-          ...quizz,
-          title: value,
-        });
+        newState.title = value;
+        setQuizz(newState);
         break;
       case 'tags':
-        setQuizz({
-          ...quizz,
-          tags: value,
-        });
+        newState.tags = value;
+        setQuizz(newState);
         break;
       case 'thematics':
-        setQuizz({
-          ...quizz,
-          thematics: value,
-        });
-        break;
-      case 'quizzPicture':
-        setQuizz({
-          ...quizz,
-          quizzPicture: value,
-        });
+        newState.thematics = value;
+        setQuizz(newState);
         break;
       default:
         break;
@@ -123,7 +113,7 @@ const QuizzModal = (props) => {
   };
 
   const handleFormSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     console.log(quizz);
   };
@@ -153,7 +143,7 @@ const QuizzModal = (props) => {
                 <LoadingSvg />
               ) : fileUploaded ? (
                 <button className={styles.successButton}>Reçu !</button>
-              ) : document.getElementById('quizzPicture')?.files[0] ? (
+              ) : URLpicture ? (
                 <button onClick={uploadFileHandler}>Envoyer</button>
               ) : (
                 <button className={styles.errorButton} disabled>
@@ -165,7 +155,6 @@ const QuizzModal = (props) => {
               Créer le quizz
             </button>
           </form>
-          {ErrorDisplay}
           <div className={styles.picturePreview}>
             {URLpicture ? (
               <img id='picturePreview' src={URLpicture} alt='Preview' />
