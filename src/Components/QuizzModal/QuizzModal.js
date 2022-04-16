@@ -5,11 +5,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import styles from './QuizzModal.module.css';
 import { storage } from '../../config/firebase';
 import LoadingSvg from '../../pictures/loading/LoadingSvg';
-import useAuth from '../../customHook/useAuth';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
-import { ErrorDisplay } from '../../Errors/ErrorBoundary';
-//Hoc
-import { QuizzContext } from '../../hoc/Contexts/QuizzContext';
 
 const QuizzModal = (props) => {
   // Context
@@ -26,9 +22,6 @@ const QuizzModal = (props) => {
     thematics: [],
     quizzPicture: null,
   });
-
-  // Custom Hook
-  const currentUser = useAuth();
 
   // Variables
   const closedCross = (
@@ -56,9 +49,9 @@ const QuizzModal = (props) => {
   );
 
   // Methods
-  const handleChange = async (event) => {
+  const handleChange = (event) => {
     const targetId = event.target.id;
-    const value = event.target.value;
+    let value = event.target.value;
 
     let newState = { ...quizz };
 
@@ -91,7 +84,7 @@ const QuizzModal = (props) => {
   };
 
   // Firebase storage
-  const uploadFileHandler = async () => {
+  const uploadOnFirebaseStorage = async () => {
     setLoading(true);
 
     const file = document.getElementById('quizzPicture').files[0];
@@ -112,9 +105,9 @@ const QuizzModal = (props) => {
     });
   };
 
-  const handleFormSubmit = (event) => {
+  const handleButtonClick = (event) => {
     // event.preventDefault();
-
+    // props.history.push(routes.HOME);
     console.log(quizz);
   };
 
@@ -144,14 +137,14 @@ const QuizzModal = (props) => {
               ) : fileUploaded ? (
                 <button className={styles.successButton}>Reçu !</button>
               ) : URLpicture ? (
-                <button onClick={uploadFileHandler}>Envoyer</button>
+                <button onClick={uploadOnFirebaseStorage}>Envoyer</button>
               ) : (
                 <button className={styles.errorButton} disabled>
                   Aucun fichier sélectionné
                 </button>
               )}
             </div>
-            <button type='submit' onSubmit={handleFormSubmit} className={styles.submitButton}>
+            <button type='button' onClick={handleButtonClick} className={styles.submitButton}>
               Créer le quizz
             </button>
           </form>
