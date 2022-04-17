@@ -14,14 +14,14 @@ const QuizzModal = (props) => {
   const [URLpicture, setURLpicture] = useState(null);
   const [fileUploaded, setFileUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [quizz, setQuizz] = useState({
-    id: Math.random(),
-    title: '',
-    questions: [],
-    tags: [],
-    thematics: [],
-    quizzPicture: null,
-  });
+  // const [quizz, setQuizz] = useState({
+  //   id: Math.random(),
+  //   title: '',
+  //   questions: [],
+  //   tags: [],
+  //   thematics: [],
+  //   quizzPicture: null,
+  // });
 
   // Variables
   const closedCross = (
@@ -53,20 +53,20 @@ const QuizzModal = (props) => {
     const targetId = event.target.id;
     let value = event.target.value;
 
-    let newState = { ...quizz };
+    let newState = { ...props.quizz };
 
     switch (targetId) {
       case 'title':
         newState.title = value;
-        setQuizz(newState);
+        props.setQuizz(newState);
         break;
       case 'tags':
         newState.tags = value;
-        setQuizz(newState);
+        props.setQuizz(newState);
         break;
       case 'thematics':
         newState.thematics = value;
-        setQuizz(newState);
+        props.setQuizz(newState);
         break;
       default:
         break;
@@ -99,16 +99,15 @@ const QuizzModal = (props) => {
     const photoURL = await getDownloadURL(storageRef);
 
     // Associer l'image au quizz
-    setQuizz({
-      ...quizz,
+    props.setQuizz({
+      ...props.quizz,
       quizzPicture: photoURL,
     });
   };
 
-  const handleButtonClick = (event) => {
-    // event.preventDefault();
-    // props.history.push(routes.HOME);
-    console.log(quizz);
+  const handleButtonClick = () => {
+    props.setQuizz({ ...props.quizz, id: Math.random() });
+    console.log(props.quizz);
   };
 
   return (
@@ -123,11 +122,16 @@ const QuizzModal = (props) => {
         <div className={styles.wrapperModal}>
           <form>
             <label htmlFor='title'>Titre du quizz</label>
-            <input type='text' value={quizz.title} onChange={handleChange} id='title' />
+            <input type='text' value={props.quizz.title} onChange={handleChange} id='title' />
             <label htmlFor='thematics'>Thématiques (optionnel)</label>
-            <input type='text' id='thematics' value={quizz.thematics} onChange={handleChange} />
+            <input
+              type='text'
+              id='thematics'
+              value={props.quizz.thematics}
+              onChange={handleChange}
+            />
             <label htmlFor='tags'>Tags (optionnel)</label>
-            <input type='text' id='tags' value={quizz.tags} onChange={handleChange} />
+            <input type='text' id='tags' value={props.quizz.tags} onChange={handleChange} />
             {/* Quizz picture */}
             <label htmlFor='quizzPicture'>Image du quizz</label>
             <div className={styles.fileUploader}>

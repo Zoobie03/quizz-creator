@@ -23,7 +23,12 @@ const QuizzCreator = (props) => {
         </div>
       </ul>
       {/* Keep the structure to not destroy them */}
-      <QuizzModal modalIsOpen={props.modalIsOpen} onSvgClick={props.onSvgClickHandler} />
+      <QuizzModal
+        modalIsOpen={props.modalIsOpen}
+        onSvgClick={props.onSvgClickHandler}
+        quizz={props.quizz}
+        setQuizz={props.setQuizz}
+      />
     </div>
   ) : (
     <div className={styles.QuizzCreator}>

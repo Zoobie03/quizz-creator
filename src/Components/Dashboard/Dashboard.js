@@ -16,6 +16,14 @@ const Dashboard = () => {
   const [userQuizzs, setUserQuizzs] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [quizzIsClicked, setQuizzIsClicked] = useState(false);
+  const [quizz, setQuizz] = useState({
+    title: '',
+    questions: [],
+    tags: [],
+    thematics: [],
+    quizzPicture: null,
+  });
+
   // Context
   const { user } = useContext(LoginContext);
   const { uid } = { ...user };
@@ -31,11 +39,12 @@ const Dashboard = () => {
       <QuizzCard
         key={index}
         index={index}
-        quizzTitle={quizz.title !== null ? quizz.title : 'Titre du quizz'}
+        quizzTitle={quizz.title !== '' ? quizz.title : 'Titre du quizz'}
         onSvgClick={() => delHandleClick(quizz.id)}
         onQuizzClick={() => {
           setQuizzIsClicked(!quizzIsClicked);
         }}
+        quizzPicture={quizz.quizzPicture}
       />
     );
   });
@@ -76,24 +85,15 @@ const Dashboard = () => {
   const addQuizzClickHandler = async () => {
     setModalIsOpen(true);
 
-    const quizzTemplate = {
-      id: Math.random(),
-      title: null,
-      questions: [],
-      tags: [],
-      thematic: [],
-      quizzPicture: null,
-    };
-
-    fetchUserQuizzs();
-
     await setDoc(
       userDoc,
       {
-        quizzs: [...userQuizzs, quizzTemplate],
+        quizzs: [...userQuizzs, quizz],
       },
       { merge: true }
     );
+
+    fetchUserQuizzs();
   };
 
   const onSvgClickHandler = () => {
@@ -110,6 +110,8 @@ const Dashboard = () => {
         setModalIsOpen={() => setModalIsOpen}
         onSvgClickHandler={onSvgClickHandler}
         user={user}
+        quizz={quizz}
+        setQuizz={setQuizz}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
