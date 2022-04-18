@@ -7,7 +7,7 @@ const QuizzCard = (props) => {
   return (
     <li className={styles.QuizzCard} onClick={props.onQuizzClick}>
       <div className={styles.quizzPicture}>
-        {props.quizzPicture ? <img src={props.quizz.quizzPicture} alt={props.quizz.title} /> : null}
+        {props.quizzPicture ? <img src={props.quizzPicture} alt={props.quizzTitle} /> : null}
         <span>{props.index}</span>
         <svg width='2em' height='2em' viewBox='0 0 16 16' onClick={props.onSvgClick}>
           <path

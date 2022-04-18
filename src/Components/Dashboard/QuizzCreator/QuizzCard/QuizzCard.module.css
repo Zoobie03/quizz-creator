@@ -37,6 +37,11 @@
   color: tomato;
 }
 
+.quizzPicture img {
+  width: 250px;
+  height: 250px;
+}
+
 .quizzTitle {
   color: white;
   border: none;
