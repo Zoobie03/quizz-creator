@@ -35,7 +35,6 @@ const QuizzCreator = (props) => {
       <h1>Dashboard {props.user.displayName}</h1>
       <ul className={styles.wrapperQuizzs}>
         {props.quizzsMapped.length > 0 ? props.quizzsMapped : <h2>Vous n'avez aucun Quizz</h2>}
-
         <div onClick={props.addQuizzClickHandler} className={styles.svgContainer}>
           <svg width='150px' height='150px' viewBox='0 0 24 24'>
             <path
