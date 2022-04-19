@@ -105,11 +105,6 @@ const QuizzModal = (props) => {
     });
   };
 
-  const handleButtonClick = () => {
-    props.setQuizz({ ...props.quizz, id: Math.random() });
-    console.log(props.quizz);
-  };
-
   return (
     <div
       className={`${styles.ContainerModal} ${
@@ -148,7 +143,11 @@ const QuizzModal = (props) => {
                 </button>
               )}
             </div>
-            <button type='button' onClick={handleButtonClick} className={styles.submitButton}>
+            <button
+              type='button'
+              onClick={props.handleCreateQuizzClick}
+              className={styles.submitButton}
+            >
               Créer le quizz
             </button>
           </form>
