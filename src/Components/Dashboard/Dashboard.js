@@ -52,6 +52,14 @@ const Dashboard = () => {
     );
   });
 
+  const userThematics = userQuizzs.map((quizz) => {
+    return quizz.thematics;
+  });
+
+  const userTags = userQuizzs.map((quizz) => {
+    return quizz.tags;
+  });
+
   // Methods
   const handleCreateQuizzClick = async () => {
     setModalIsOpen(!modalIsOpen);
@@ -118,7 +126,11 @@ const Dashboard = () => {
 
   return (
     <div className={styles.Dashboard}>
-      <LeftColumnDashboard numberOfQuizz={userQuizzs.length} />
+      <LeftColumnDashboard
+        userThematics={userThematics}
+        userTags={userTags}
+        numberOfQuizz={userQuizzs.length}
+      />
       <QuizzCreator
         quizzsMapped={quizzsMapped}
         addQuizzClickHandler={addQuizzClickHandler}

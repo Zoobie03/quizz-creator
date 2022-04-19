@@ -19,6 +19,9 @@
 .ThematicsAndTags ul {
   margin: 0;
   padding: 0;
+  border-bottom: 1px solid #707070;
+  border-right: 1px solid #707070;
+  border-left: 1px solid #707070;
 }
 
 .ThematicsAndTags ul li {
@@ -27,7 +30,4 @@
 
 .ThematicsAndTags p {
   margin: 0;
-  border-bottom: 1px solid #707070;
-  border-right: 1px solid #707070;
-  border-left: 1px solid #707070;
 }

@@ -4,10 +4,7 @@ import { useState } from 'react';
 // Own Files
 import styles from './ThematicsAndTags.module.css';
 
-const ThematicsAndTags = ({ title, noneMessage }) => {
-  // State
-  const [data, setData] = useState([]);
-
+const ThematicsAndTags = ({ title, noneMessage, data }) => {
   // Methods
   const handleClick = () => {
     console.log(title + ' clicked');

@@ -13,8 +13,12 @@ const LeftColumnDashboard = (props) => {
     <div className={styles.LeftColumnDashboard}>
       <UserPicture />
       <NumberOfQuizz numberOfQuizz={props.numberOfQuizz} />
-      <ThematicsAndTags title='Thématiques' noneMessage="Vous n'avez aucunes thématiques" />
-      <ThematicsAndTags title='Tags' noneMessage="Vous n'avez aucun tag" />
+      <ThematicsAndTags
+        data={props.userThematics}
+        title='Thématiques'
+        noneMessage="Vous n'avez aucunes thématiques"
+      />
+      <ThematicsAndTags data={props.userTags} title='Tags' noneMessage="Vous n'avez aucun tag" />
       <SearchBar />
     </div>
   );
