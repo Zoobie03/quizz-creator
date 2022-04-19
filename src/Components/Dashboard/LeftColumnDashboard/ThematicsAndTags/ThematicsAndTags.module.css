@@ -26,6 +26,7 @@
 
 .ThematicsAndTags ul li {
   color: #a1a1a1;
+  cursor: pointer;
 }
 
 .ThematicsAndTags p {
