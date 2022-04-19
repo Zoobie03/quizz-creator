@@ -11,6 +11,12 @@ const Home = () => {
           <h1>Bienvenue sur Quizz-creator</h1>
 
           <h2>
+            <u>Pour entrer un pseudonyme</u>
+          </h2>
+          <p>Aller dans l'onglet "Mon Profil", puis saissisez votre pseudonyme.</p>
+          <p>Sachez que vous pouvez aussi vous attribuer une photo de profil</p>
+
+          <h2>
             <u>Pour créer votre premier quizz</u>
           </h2>
 
