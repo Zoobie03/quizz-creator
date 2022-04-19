@@ -8,7 +8,7 @@ const QuizzCard = (props) => {
     <li className={styles.QuizzCard} onClick={props.onQuizzClick}>
       <div className={styles.quizzPicture}>
         {props.quizzPicture ? <img src={props.quizzPicture} alt={props.quizzTitle} /> : null}
-        <span>{props.index}</span>
+        <span>{props.index + 1}</span>
         <svg width='1.3em' height='1.3em' viewBox='0 0 16 16' onClick={props.onSvgClick}>
           <path
             fill='red'
