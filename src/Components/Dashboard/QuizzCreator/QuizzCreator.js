@@ -28,6 +28,7 @@ const QuizzCreator = (props) => {
         onSvgClick={props.onSvgClickHandler}
         quizz={props.quizz}
         setQuizz={props.setQuizz}
+        handleCreateQuizzClick={props.handleCreateQuizzClick}
       />
     </div>
   ) : (
