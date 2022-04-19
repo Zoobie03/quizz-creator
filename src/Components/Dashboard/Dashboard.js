@@ -29,7 +29,10 @@ const Dashboard = () => {
   const { uid } = { ...user };
   // componentDidMount
   useEffect(() => {
-    fetchUserQuizzs();
+    fetchUserQuizzs().then((response) => {
+      const newState = [...response.quizzs];
+      setUserQuizzs(newState);
+    });
   }, []);
   // Variables
   const userDoc = doc(db, 'users', uid);
@@ -50,14 +53,28 @@ const Dashboard = () => {
   });
 
   // Methods
+  const handleCreateQuizzClick = async () => {
+    setModalIsOpen(!modalIsOpen);
+
+    await setDoc(
+      userDoc,
+      {
+        quizzs: [...userQuizzs, quizz],
+      },
+      { merge: true }
+    );
+
+    fetchUserQuizzs().then((response) => {
+      const newState = [...response.quizzs];
+      setUserQuizzs(newState);
+    });
+  };
+
   const fetchUserQuizzs = async () => {
     console.log('FETCH USER QUIZZ');
     const docSnap = await getDoc(userDoc);
     if (docSnap.exists()) {
       // console.log('Fetching ... Document ==> ', docSnap.data());
-
-      const newState = [...docSnap.data().quizzs];
-      setUserQuizzs(newState);
 
       return docSnap.data();
     } else {
@@ -82,18 +99,17 @@ const Dashboard = () => {
       .catch((error) => console.log(error));
   };
 
-  const addQuizzClickHandler = async () => {
+  const addQuizzClickHandler = () => {
     setModalIsOpen(true);
 
-    await setDoc(
-      userDoc,
-      {
-        quizzs: [...userQuizzs, quizz],
-      },
-      { merge: true }
-    );
-
-    fetchUserQuizzs();
+    setQuizz({
+      id: Math.random(),
+      title: '',
+      questions: [],
+      tags: [],
+      thematics: [],
+      quizzPicture: null,
+    });
   };
 
   const onSvgClickHandler = () => {
@@ -112,6 +128,7 @@ const Dashboard = () => {
         user={user}
         quizz={quizz}
         setQuizz={setQuizz}
+        handleCreateQuizzClick={handleCreateQuizzClick}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
