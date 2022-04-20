@@ -56,7 +56,7 @@ const Dashboard = () => {
 
   const userThematics = userQuizzs.map((quizz) => {
     // Trim space and replace comma
-    //const cutThematicValue = quizz.thematics.replace(/\s+/g, '').split(',');
+    // const cutThematicValue = quizz.thematics.replace(/\s+/g, '').split(',');
     return quizz.thematics;
   });
 
