@@ -10,7 +10,6 @@ import LeftColumnDashboard from './LeftColumnDashboard/LeftColumnDashboard';
 import QuizzCreator from './QuizzCreator/QuizzCreator';
 import RightColumnDashboard from './RightColumnDashboard/RightColumnDashboard';
 import QuizzCard from './QuizzCreator/QuizzCard/QuizzCard';
-import { Children } from 'react/cjs/react.production.min';
 
 const Dashboard = () => {
   // State
