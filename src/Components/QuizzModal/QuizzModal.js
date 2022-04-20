@@ -106,11 +106,7 @@ const QuizzModal = (props) => {
   };
 
   return (
-    <div
-      className={`${styles.ContainerModal} ${
-        props.modalIsOpen ? styles.animateIn : styles.animateOut
-      }`}
-    >
+    <div className={`${styles.ContainerModal} ${props.modalIsOpen ? styles.animateIn : null}`}>
       {closedCross}
       <div className={styles.ModalContent}>
         <h1>Créer un quizz</h1>
