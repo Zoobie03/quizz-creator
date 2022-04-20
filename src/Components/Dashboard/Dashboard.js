@@ -10,6 +10,7 @@ import LeftColumnDashboard from './LeftColumnDashboard/LeftColumnDashboard';
 import QuizzCreator from './QuizzCreator/QuizzCreator';
 import RightColumnDashboard from './RightColumnDashboard/RightColumnDashboard';
 import QuizzCard from './QuizzCreator/QuizzCard/QuizzCard';
+import { Children } from 'react/cjs/react.production.min';
 
 const Dashboard = () => {
   // State
@@ -47,6 +48,7 @@ const Dashboard = () => {
         onQuizzClick={() => {
           setQuizzIsClicked(!quizzIsClicked);
         }}
+        onEditSvgClick={() => onEditSvgClickHandler(quizz.id)}
         quizzPicture={quizz.quizzPicture}
       />
     );
@@ -126,6 +128,11 @@ const Dashboard = () => {
     setModalIsOpen(false);
   };
 
+  const onEditSvgClickHandler = (quizzId) => {
+    // Open edit modal & grab the data
+    console.log('EDIT SVG CLICKED', quizzId);
+  };
+
   return (
     <div className={styles.Dashboard}>
       <LeftColumnDashboard
@@ -139,6 +146,7 @@ const Dashboard = () => {
         modalIsOpen={modalIsOpen}
         setModalIsOpen={() => setModalIsOpen}
         onSvgClickHandler={onSvgClickHandler}
+        onEditSvgClickHandler={onEditSvgClickHandler}
         user={user}
         quizz={quizz}
         setQuizz={setQuizz}
