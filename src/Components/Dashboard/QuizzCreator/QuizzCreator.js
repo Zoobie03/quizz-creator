@@ -8,7 +8,7 @@ import QuizzModal from '../../QuizzModal/QuizzModal';
 const QuizzCreator = (props) => {
   return props.modalIsOpen ? (
     <div className={styles.QuizzCreator}>
-      <h1>Dashboard {props.user.displayName}</h1>
+      <h1>{props.user.displayName ? 'Dashboard de ' + props.user.displayName : 'Dashboard'}</h1>
       <ul className={styles.wrapperQuizzs}>
         {props.quizzsMapped.length > 0 ? props.quizzsMapped : <h2>Vous n'avez aucun Quizz</h2>}
 
@@ -33,7 +33,7 @@ const QuizzCreator = (props) => {
     </div>
   ) : (
     <div className={styles.QuizzCreator}>
-      <h1>Dashboard {props.user.displayName}</h1>
+      <h1>{props.user.displayName ? 'Dashboard de ' + props.user.displayName : 'Dashboard'}</h1>
       <ul className={styles.wrapperQuizzs}>
         {props.quizzsMapped.length > 0 ? props.quizzsMapped : <h2>Vous n'avez aucun Quizz</h2>}
         <div onClick={props.addQuizzClickHandler} className={styles.svgContainer}>
