@@ -9,7 +9,7 @@ import './App.css';
 import { auth } from './config/firebase';
 
 // HOC
-import { LoginContext } from './hoc/Contexts/LoginContext';
+import { LoginProvider } from './hoc/Contexts/LoginContext';
 import Layout from './hoc/Layout/Layout';
 
 // Components
@@ -53,7 +53,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <LoginContext.Provider value={{ user }}>
+      <LoginProvider value={{ user }}>
         <Layout>
           <Switch>
             <Route path={routes.HOME} exact component={Home} />
@@ -65,7 +65,7 @@ const App = () => {
             <Route path={'/test'} exact component={QuizzModal} />
           </Switch>
         </Layout>
-      </LoginContext.Provider>
+      </LoginProvider>
     </div>
   );
 };
