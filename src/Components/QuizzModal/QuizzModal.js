@@ -1,5 +1,5 @@
 // Library
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useReducer } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 // Own files
 import styles from './QuizzModal.module.css';
@@ -11,17 +11,30 @@ const QuizzModal = (props) => {
   // Context
   const { user } = useContext(LoginContext);
   // State
-  const [URLpicture, setURLpicture] = useState(null);
-  const [fileUploaded, setFileUploaded] = useState(false);
-  const [loading, setLoading] = useState(false);
-  // const [quizz, setQuizz] = useState({
-  //   id: Math.random(),
-  //   title: '',
-  //   questions: [],
-  //   tags: [],
-  //   thematics: [],
-  //   quizzPicture: null,
-  // });
+  const initialState = {
+    URLpicture: null,
+    fileUploaded: false,
+    loading: false,
+  };
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'SET_LOADING':
+        return { ...state, loading: action.payload };
+      case 'SET_URL_PICTURE':
+        return { ...state, URLpicture: action.payload };
+      case 'SET_FILE_UPLOADED':
+        return { ...state, fileUploaded: action.payload };
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // const [URLpicture, setURLpicture] = useState(null);
+  // const [fileUploaded, setFileUploaded] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // Variables
   const closedCross = (
@@ -75,25 +88,30 @@ const QuizzModal = (props) => {
 
   // Upload picture
   const uploadForPreview = () => {
-    setFileUploaded(false);
+    // setFileUploaded(false);
+    dispatch({ type: 'SET_FILE_UPLOADED', payload: false });
 
     const file = document.getElementById('quizzPicture').files[0];
 
     const ObjectURLFile = window.URL.createObjectURL(file);
-    setURLpicture(ObjectURLFile);
+    // setURLpicture(ObjectURLFile);
+    dispatch({ type: 'SET_URL_PICTURE', payload: ObjectURLFile });
   };
 
   // Firebase storage
   const uploadOnFirebaseStorage = async () => {
-    setLoading(true);
+    // setLoading(true);
+    dispatch({ type: 'SET_LOADING', payload: true });
 
     const file = document.getElementById('quizzPicture').files[0];
     const storageRef = ref(storage, `users/${user.uid}/quizz-pictures/${file.name}`);
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
       console.log('Uploaded file!');
-      setFileUploaded(true);
-      setLoading(false);
+      // setFileUploaded(true);
+      dispatch({ type: 'SET_FILE_UPLOADED', payload: true });
+      // setLoading(false);
+      dispatch({ type: 'SET_LOADING', payload: false });
     });
 
     const photoURL = await getDownloadURL(storageRef);
@@ -127,11 +145,11 @@ const QuizzModal = (props) => {
             <label htmlFor='quizzPicture'>Image du quizz</label>
             <div className={styles.fileUploader}>
               <input type='file' id='quizzPicture' onChange={uploadForPreview} />
-              {loading ? (
+              {state.loading ? (
                 <LoadingSvg />
-              ) : fileUploaded ? (
+              ) : state.fileUploaded ? (
                 <button className={styles.successButton}>Reçu !</button>
-              ) : URLpicture ? (
+              ) : state.URLpicture ? (
                 <button onClick={uploadOnFirebaseStorage}>Envoyer</button>
               ) : (
                 <button className={styles.errorButton} disabled>
@@ -148,8 +166,8 @@ const QuizzModal = (props) => {
             </button>
           </form>
           <div className={styles.picturePreview}>
-            {URLpicture ? (
-              <img id='picturePreview' src={URLpicture} alt='Preview' />
+            {state.URLpicture ? (
+              <img id='picturePreview' src={state.URLpicture} alt='Preview' />
             ) : (
               <p>Aucun fichier choisi</p>
             )}
