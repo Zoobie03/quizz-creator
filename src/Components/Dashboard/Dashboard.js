@@ -10,11 +10,13 @@ import LeftColumnDashboard from './LeftColumnDashboard/LeftColumnDashboard';
 import QuizzCreator from './QuizzCreator/QuizzCreator';
 import RightColumnDashboard from './RightColumnDashboard/RightColumnDashboard';
 import QuizzCard from './QuizzCreator/QuizzCard/QuizzCard';
+import QuestionsModal from './QuestionsModal/QuestionsModal';
 
 const Dashboard = () => {
   // State
   const [userQuizzs, setUserQuizzs] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false);
   const [quizzIsClicked, setQuizzIsClicked] = useState(false);
   const [quizz, setQuizz] = useState({
     title: '',
@@ -130,6 +132,11 @@ const Dashboard = () => {
   const onEditSvgClickHandler = (quizzId) => {
     // Open edit modal & grab the data
     console.log('EDIT SVG CLICKED', quizzId);
+    setQuestionModalIsOpen(true);
+  };
+
+  const onSvgClickOnQuestionModal = () => {
+    setQuestionModalIsOpen(false);
   };
 
   return (
@@ -150,6 +157,10 @@ const Dashboard = () => {
         quizz={quizz}
         setQuizz={setQuizz}
         handleCreateQuizzClick={handleCreateQuizzClick}
+      />
+      <QuestionsModal
+        questionModalIsOpen={questionModalIsOpen}
+        onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
