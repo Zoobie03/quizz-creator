@@ -139,7 +139,7 @@ const Dashboard = () => {
     setQuestionModalIsOpen(false);
   };
 
-  return (
+  return questionModalIsOpen ? (
     <div className={styles.Dashboard}>
       <LeftColumnDashboard
         userThematics={userThematics}
@@ -161,6 +161,27 @@ const Dashboard = () => {
       <QuestionsModal
         questionModalIsOpen={questionModalIsOpen}
         onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
+      />
+      <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
+    </div>
+  ) : (
+    <div className={styles.Dashboard}>
+      <LeftColumnDashboard
+        userThematics={userThematics}
+        userTags={userTags}
+        numberOfQuizz={userQuizzs.length}
+      />
+      <QuizzCreator
+        quizzsMapped={quizzsMapped}
+        addQuizzClickHandler={addQuizzClickHandler}
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={() => setModalIsOpen}
+        onSvgClickHandler={onSvgClickHandler}
+        onEditSvgClickHandler={onEditSvgClickHandler}
+        user={user}
+        quizz={quizz}
+        setQuizz={setQuizz}
+        handleCreateQuizzClick={handleCreateQuizzClick}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
