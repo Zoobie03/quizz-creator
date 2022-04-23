@@ -4,6 +4,9 @@ import React from 'react';
 import styles from './QuestionsModal.module.css';
 
 const QuestionsModal = (props) => {
+  // States
+  const [question, setQuestion] = React.useState('');
+  const [answer, setAnswer] = React.useState('');
   // Variables
   const closedCross = (
     <svg
@@ -29,13 +32,49 @@ const QuestionsModal = (props) => {
     </svg>
   );
 
+  // Methods
+  const onQuestionChange = (event) => {
+    setQuestion(event.target.value);
+  };
+
+  const onAnswerChange = (event) => {
+    setAnswer(event.target.value);
+  };
+
   return (
     <div
       className={`${styles.ContainerModal} ${props.questionModalIsOpen ? styles.animateIn : null}`}
     >
       {closedCross}
       <div className={styles.ModalContent}>
-        <h2>Editer un quizz</h2>
+        <h1>Editer un quizz</h1>
+        <form>
+          <label htmlFor='question'>Votre question</label>
+          <input
+            type='text'
+            id='question'
+            value={question}
+            onChange={onQuestionChange}
+            placeholder='Votre question...'
+          />
+          <label htmlFor='answer'>
+            Votre/vos réponse(s) (Si plusieurs, séparez les avec des virgules)
+          </label>
+          <input
+            type='text'
+            id='answer'
+            value={answer}
+            onChange={onAnswerChange}
+            placeholder='Votre/vos réponse(s)'
+          />
+        </form>
+        <button
+          type='button'
+          className={styles.submitButton}
+          onClick={props.onClickButtonCreateQuestion}
+        >
+          Créer ma question
+        </button>
       </div>
     </div>
   );

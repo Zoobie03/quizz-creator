@@ -139,6 +139,8 @@ const Dashboard = () => {
     setQuestionModalIsOpen(false);
   };
 
+  const onClickButtonCreateQuestion = () => {};
+
   return questionModalIsOpen ? (
     <div className={styles.Dashboard}>
       <LeftColumnDashboard
@@ -161,6 +163,7 @@ const Dashboard = () => {
       <QuestionsModal
         questionModalIsOpen={questionModalIsOpen}
         onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
+        onClickButtonCreateQuestion={onClickButtonCreateQuestion}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
