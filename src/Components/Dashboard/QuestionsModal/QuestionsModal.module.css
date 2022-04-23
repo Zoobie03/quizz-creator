@@ -12,6 +12,27 @@
   align-items: center;
 }
 
+.ModalContent {
+  width: 60%;
+  height: 90%;
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 10px;
+  border: 3px solid #3867ed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: start;
+}
+
+/* SVG */
+.CloseModal {
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  right: 400px;
+}
+
 /* ANIMATIONS */
 .animateIn {
   animation: enter 0.5s ease-in-out;
