@@ -164,6 +164,17 @@ const Dashboard = () => {
         questionModalIsOpen={questionModalIsOpen}
         onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
         onClickButtonCreateQuestion={onClickButtonCreateQuestion}
+        questions={[
+          {
+            id: Math.random(),
+            question: "Combien de Dieus trône à l'Olympe ?",
+            answers: [
+              'Je suis une réponse',
+              'Je suis une autre réponse',
+              'Je suis une dernière réponse',
+            ],
+          },
+        ]}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
