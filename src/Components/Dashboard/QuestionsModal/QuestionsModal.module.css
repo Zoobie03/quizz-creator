@@ -23,6 +23,7 @@
   flex-direction: column;
   justify-content: space-around;
   text-align: start;
+  overflow: scroll;
 }
 
 .ModalContent h1 {
