@@ -143,6 +143,8 @@ const Dashboard = () => {
 
   const onClickButtonDeleteQuestion = (quizzId) => {};
 
+  const onQuestionClick = () => {};
+
   return questionModalIsOpen ? (
     <div className={styles.Dashboard}>
       <LeftColumnDashboard
@@ -178,6 +180,7 @@ const Dashboard = () => {
           },
         ]}
         onClickButtonDeleteQuestion={onClickButtonDeleteQuestion}
+        onQuestionClick={onQuestionClick}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>

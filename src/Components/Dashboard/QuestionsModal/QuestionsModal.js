@@ -7,6 +7,7 @@ const QuestionsModal = (props) => {
   // States
   const [question, setQuestion] = React.useState('');
   const [answer, setAnswer] = React.useState('');
+
   // Variables
   const closedCross = (
     <svg
@@ -91,19 +92,19 @@ const QuestionsModal = (props) => {
         <ul className={styles.questionsList}>
           {props.questions.map((question, index) => {
             return (
-              <li key={index} className={styles.question}>
+              <li key={index} className={styles.question} onClick={props.onQuestionClick}>
                 <div className={styles.questionText}>
                   <button
                     type='button'
                     className={styles.deleteQuestion}
                     onClick={() => props.onClickButtonDeleteQuestion(question.id)}
                   >
-                    Supprimer question
+                    Supprimer
                   </button>
                   <p>{question.question}</p>
                   {downArrow}
                 </div>
-                <ul>
+                <ul className={styles.answersList}>
                   {question.answers.map((answer, index) => {
                     return (
                       <li key={index} className={styles.answer}>
