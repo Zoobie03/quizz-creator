@@ -139,11 +139,17 @@ const Dashboard = () => {
     setQuestionModalIsOpen(false);
   };
 
-  const onClickButtonCreateQuestion = () => {};
+  const onClickButtonCreateQuestion = () => {
+    console.log('CLICKED CREATE QUESTION');
+  };
 
-  const onClickButtonDeleteQuestion = (quizzId) => {};
+  const onClickButtonDeleteQuestion = (quizzId) => {
+    console.log('DELETE QUESTION CLICKED', quizzId);
+  };
 
-  const onQuestionClick = () => {};
+  const onQuestionClick = () => {
+    console.log('QUESTION CLICKED');
+  };
 
   return questionModalIsOpen ? (
     <div className={styles.Dashboard}>
