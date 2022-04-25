@@ -98,7 +98,7 @@ const QuestionsModal = (props) => {
                     className={styles.deleteQuestion}
                     onClick={() => props.onClickButtonDeleteQuestion(question.id)}
                   >
-                    Supprimer
+                    Supprimer question
                   </button>
                   <p>{question.question}</p>
                   {downArrow}
