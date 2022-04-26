@@ -70,6 +70,7 @@
   height: 30%;
   margin: auto;
   padding: 0;
+  overflow: scroll;
 }
 
 .ModalContent svg {
@@ -82,9 +83,14 @@
 
 .questionText {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid silver;
+  padding: 0 15px;
+}
+
+.questionText p {
+  margin: 5px 0;
 }
 
 .answersList {

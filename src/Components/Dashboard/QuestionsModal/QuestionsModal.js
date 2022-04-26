@@ -1,5 +1,5 @@
 // Library
-import React from 'react';
+import React, { useRef } from 'react';
 // Own files
 import styles from './QuestionsModal.module.css';
 
@@ -34,7 +34,7 @@ const QuestionsModal = (props) => {
   );
 
   const downArrow = (
-    <svg width='1em' height='1em' viewBox='0 0 24 24'>
+    <svg width='1em' height='1em' viewBox='0 0 24 24' style={{ transform: 'rotate(0deg)' }}>
       <path fill='#888888' d='M8 5v14l11-7L8 5z'></path>
     </svg>
   );
@@ -52,6 +52,14 @@ const QuestionsModal = (props) => {
 
   const onAnswerChange = (event) => {
     setAnswer(event.target.value);
+  };
+
+  const onQuestionClick = () => {
+    // if (answersList.current.style.display === 'block') {
+    //   answersList.current.style.display = 'none';
+    // } else {
+    //   answersList.current.style.display = 'block';
+    // }
   };
 
   return (
@@ -92,7 +100,7 @@ const QuestionsModal = (props) => {
         <ul className={styles.questionsList}>
           {props.questions.map((question, index) => {
             return (
-              <li key={index} className={styles.question} onClick={props.onQuestionClick}>
+              <li key={index} className={styles.question} onClick={onQuestionClick}>
                 <div className={styles.questionText}>
                   <button
                     type='button'
@@ -104,7 +112,7 @@ const QuestionsModal = (props) => {
                   <p>{question.question}</p>
                   {downArrow}
                 </div>
-                <ul className={styles.answersList}>
+                <ul key={index} className={styles.answersList}>
                   {question.answers.map((answer, index) => {
                     return (
                       <li key={index} className={styles.answer}>

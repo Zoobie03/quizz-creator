@@ -147,9 +147,9 @@ const Dashboard = () => {
     console.log('DELETE QUESTION CLICKED', quizzId);
   };
 
-  const onQuestionClick = () => {
-    console.log('QUESTION CLICKED');
-  };
+  // const onQuestionClick = () => {
+  //   console.log('QUESTION CLICKED');
+  // };
 
   return questionModalIsOpen ? (
     <div className={styles.Dashboard}>
@@ -184,9 +184,24 @@ const Dashboard = () => {
               'Je suis une dernière réponse',
             ],
           },
+          {
+            id: Math.random(),
+            question: 'Sur quelles feuilles est assis le chien ?',
+            answers: ['Platane', 'Vigne', 'Lierre'],
+          },
+          {
+            id: Math.random(),
+            question: 'Quel est le nom de ces jolies fleurs blanches ?',
+            answers: ['Des anémones', 'Des narcisses', 'Des pervenches'],
+          },
+          {
+            id: Math.random(),
+            question: 'Que sont ces oiseaux ?',
+            answers: ['Des fauvettes', 'Des geais bleus', 'Des mésanges'],
+          },
         ]}
         onClickButtonDeleteQuestion={onClickButtonDeleteQuestion}
-        onQuestionClick={onQuestionClick}
+        // onQuestionClick={onQuestionClick}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
