@@ -25,6 +25,14 @@ const Dashboard = () => {
     thematics: [],
     quizzPicture: null,
   });
+  const [questions, setQuestions] = useState([]);
+  /*
+    {
+      id: Math.random(),
+      question: 'Sur quelles feuilles est assis le chien ?',
+      answers: ['Platane', 'Vigne', 'Lierre'],
+    },
+   */
 
   // Context
   const { user } = useContext(LoginContext);
@@ -139,17 +147,24 @@ const Dashboard = () => {
     setQuestionModalIsOpen(false);
   };
 
-  const onClickButtonCreateQuestion = () => {
-    console.log('CLICKED CREATE QUESTION');
+  const onClickButtonCreateQuestion = (question, answer) => {
+    answer = answer.replace(/\s+/g, '').split(',');
+
+    const newState = [
+      ...questions,
+      {
+        id: Math.random(),
+        question: question,
+        answers: answer,
+      },
+    ];
+
+    setQuestions(newState);
   };
 
   const onClickButtonDeleteQuestion = (quizzId) => {
     console.log('DELETE QUESTION CLICKED', quizzId);
   };
-
-  // const onQuestionClick = () => {
-  //   console.log('QUESTION CLICKED');
-  // };
 
   return questionModalIsOpen ? (
     <div className={styles.Dashboard}>
@@ -174,32 +189,7 @@ const Dashboard = () => {
         questionModalIsOpen={questionModalIsOpen}
         onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
         onClickButtonCreateQuestion={onClickButtonCreateQuestion}
-        questions={[
-          {
-            id: Math.random(),
-            question: "Combien de Dieus trône à l'Olympe ?",
-            answers: [
-              'Je suis une réponse',
-              'Je suis une autre réponse',
-              'Je suis une dernière réponse',
-            ],
-          },
-          {
-            id: Math.random(),
-            question: 'Sur quelles feuilles est assis le chien ?',
-            answers: ['Platane', 'Vigne', 'Lierre'],
-          },
-          {
-            id: Math.random(),
-            question: 'Quel est le nom de ces jolies fleurs blanches ?',
-            answers: ['Des anémones', 'Des narcisses', 'Des pervenches'],
-          },
-          {
-            id: Math.random(),
-            question: 'Que sont ces oiseaux ?',
-            answers: ['Des fauvettes', 'Des geais bleus', 'Des mésanges'],
-          },
-        ]}
+        questions={questions}
         onClickButtonDeleteQuestion={onClickButtonDeleteQuestion}
         // onQuestionClick={onQuestionClick}
       />

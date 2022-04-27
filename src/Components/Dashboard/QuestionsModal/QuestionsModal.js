@@ -93,7 +93,7 @@ const QuestionsModal = (props) => {
           <button
             type='button'
             className={styles.submitButton}
-            onClick={props.onClickButtonCreateQuestion}
+            onClick={() => props.onClickButtonCreateQuestion(question, answer)}
           >
             Créer ma question
           </button>
