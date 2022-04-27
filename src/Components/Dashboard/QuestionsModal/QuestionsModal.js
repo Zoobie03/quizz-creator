@@ -54,12 +54,14 @@ const QuestionsModal = (props) => {
     setAnswer(event.target.value);
   };
 
-  const onQuestionClick = () => {
-    // if (answersList.current.style.display === 'block') {
-    //   answersList.current.style.display = 'none';
-    // } else {
-    //   answersList.current.style.display = 'block';
-    // }
+  const onQuestionClick = (index) => {
+    let questionClicked = document.getElementById(`question${index}`);
+
+    if (questionClicked.childNodes.item(1).style.display === 'block') {
+      questionClicked.childNodes.item(1).style.display = 'none';
+    } else {
+      questionClicked.childNodes.item(1).style.display = 'block';
+    }
   };
 
   return (
@@ -100,7 +102,12 @@ const QuestionsModal = (props) => {
         <ul className={styles.questionsList}>
           {props.questions.map((question, index) => {
             return (
-              <li key={index} className={styles.question} onClick={onQuestionClick}>
+              <li
+                key={index}
+                className={styles.question}
+                id={`question${index}`}
+                onClick={() => onQuestionClick(index)}
+              >
                 <div className={styles.questionText}>
                   <button
                     type='button'
