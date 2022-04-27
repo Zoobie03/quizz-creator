@@ -161,6 +161,10 @@ button:hover {
   animation: listAppear 0.5s ease-in-out;
 }
 
+.listDisappear {
+  animation: listDisappear 0.5s ease-in-out;
+}
+
 @keyframes enter {
   0% {
     opacity: 0;
@@ -182,5 +186,18 @@ button:hover {
     display: block;
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes listDisappear {
+  0% {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    transform: translateY(100px);
   }
 }

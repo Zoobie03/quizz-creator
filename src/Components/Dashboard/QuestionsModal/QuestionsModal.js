@@ -34,7 +34,7 @@ const QuestionsModal = (props) => {
   );
 
   const downArrow = (
-    <svg width='1em' height='1em' viewBox='0 0 24 24' style={{ transform: 'rotate(0deg)' }}>
+    <svg width='1em' height='1em' viewBox='0 0 24 24'>
       <path fill='#888888' d='M8 5v14l11-7L8 5z'></path>
     </svg>
   );
