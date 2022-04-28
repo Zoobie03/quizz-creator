@@ -163,7 +163,10 @@ const Dashboard = () => {
   };
 
   const onClickButtonDeleteQuestion = (quizzId) => {
-    console.log('DELETE QUESTION CLICKED', quizzId);
+    const newState = questions.filter((question) => {
+      return question.id !== quizzId;
+    });
+    setQuestions(newState);
   };
 
   return questionModalIsOpen ? (
