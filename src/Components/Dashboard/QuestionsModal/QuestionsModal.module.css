@@ -32,6 +32,10 @@
 }
 
 .ModalContent form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: auto;
 }
 
@@ -130,7 +134,6 @@
 .submitButton {
   width: 50%;
   height: 40px;
-  margin: auto;
   padding: 0;
   cursor: pointer;
   background-color: #3867ed;
@@ -138,6 +141,7 @@
   border-radius: 5px;
   border: 1px solid #3867ed;
   transition: 0.3s;
+  align-self: center;
 }
 
 button:hover {
