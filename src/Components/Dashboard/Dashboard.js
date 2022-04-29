@@ -150,6 +150,7 @@ const Dashboard = () => {
   };
 
   const onClickButtonCreateQuestion = (question, answer) => {
+    // Trim space and replace comma
     answer = answer.replace(/\s+/g, '').split(',');
 
     const newState = [
@@ -169,6 +170,10 @@ const Dashboard = () => {
       return question.id !== quizzId;
     });
     setQuestions(newState);
+  };
+
+  const onDeleteAnswerClick = () => {
+    console.log('DELETE ANSWER CLICKED');
   };
 
   return questionModalIsOpen ? (
@@ -197,6 +202,7 @@ const Dashboard = () => {
         onClickButtonCreateQuestion={onClickButtonCreateQuestion}
         questions={questions}
         onClickButtonDeleteQuestion={onClickButtonDeleteQuestion}
+        onDeleteAnswerClick={onDeleteAnswerClick}
         // onQuestionClick={onQuestionClick}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
