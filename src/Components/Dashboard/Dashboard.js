@@ -165,15 +165,30 @@ const Dashboard = () => {
     setQuestions(newState);
   };
 
-  const onClickButtonDeleteQuestion = (quizzId) => {
+  const onClickButtonDeleteQuestion = (questionClicked) => {
     const newState = questions.filter((question) => {
-      return question.id !== quizzId;
+      return question.id !== questionClicked;
     });
     setQuestions(newState);
   };
 
-  const onDeleteAnswerClick = () => {
+  const onDeleteAnswerClick = (answerClickedIndex, answersArray, questionId) => {
     console.log('DELETE ANSWER CLICKED');
+    const newState = [...questions];
+    const questionClicked = [...questions].find((question) => question.id === questionId);
+    const questionClickedIndex = newState.indexOf(questionClicked);
+
+    console.log(questionClickedIndex);
+    if (questionClicked?.answers === answersArray) {
+      newState[questionClickedIndex].answers.splice(answerClickedIndex, 1);
+
+      setQuestions(newState);
+    } else {
+      throw new Error(
+        "Une erreur est survenue, contactez le développeur pour qu'il puisse résoudre le problème"
+      );
+    }
+    // setQuestions(newState);
   };
 
   return questionModalIsOpen ? (
