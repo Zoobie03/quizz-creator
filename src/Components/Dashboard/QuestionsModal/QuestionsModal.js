@@ -114,12 +114,7 @@ const QuestionsModal = (props) => {
         <ul className={styles.questionsList}>
           {props.questions.map((question, index) => {
             return (
-              <li
-                key={index}
-                className={styles.question}
-                id={`question${index}`}
-                onClick={() => onQuestionClick(index)}
-              >
+              <li key={index} className={styles.question} id={`question${index}`}>
                 <div className={styles.questionText}>
                   <button
                     type='button'
@@ -128,7 +123,7 @@ const QuestionsModal = (props) => {
                   >
                     Supprimer
                   </button>
-                  <p>{question.question}</p>
+                  <p onClick={() => onQuestionClick(index)}>{question.question}</p>
                   {downArrow}
                 </div>
                 <ul key={index} className={styles.answersList}>
