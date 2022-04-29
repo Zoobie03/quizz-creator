@@ -1,5 +1,5 @@
 // Library
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 // Own files
 import styles from './QuestionsModal.module.css';
 
@@ -7,6 +7,11 @@ const QuestionsModal = (props) => {
   // States
   const [question, setQuestion] = React.useState('');
   const [answer, setAnswer] = React.useState('');
+
+  // ComponentDidMount
+  useEffect(() => {
+    // props.quizzCardId
+  }, []);
 
   // Variables
   const closedCross = (

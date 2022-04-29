@@ -18,6 +18,7 @@ const Dashboard = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false);
   const [quizzIsClicked, setQuizzIsClicked] = useState(false);
+  const [quizzToEdit, setQuizzToEdit] = useState(null);
   const [quizz, setQuizz] = useState({
     title: '',
     questions: [],
@@ -138,8 +139,9 @@ const Dashboard = () => {
   };
 
   const onEditSvgClickHandler = (quizzId) => {
-    // Open edit modal & grab the data
+    // Open edit modal & get the data
     console.log('EDIT SVG CLICKED', quizzId);
+    setQuizzToEdit(quizzId);
     setQuestionModalIsOpen(true);
   };
 
@@ -189,6 +191,7 @@ const Dashboard = () => {
         handleCreateQuizzClick={handleCreateQuizzClick}
       />
       <QuestionsModal
+        quizzCardId={quizzToEdit}
         questionModalIsOpen={questionModalIsOpen}
         onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
         onClickButtonCreateQuestion={onClickButtonCreateQuestion}
