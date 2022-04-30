@@ -147,6 +147,9 @@ const QuestionsModal = (props) => {
             );
           })}
         </ul>
+        <button type='button' className={styles.confirmEdit}>
+          Confirmer l'édition
+        </button>
       </div>
     </div>
   );
