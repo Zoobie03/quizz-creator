@@ -151,31 +151,6 @@ const Dashboard = () => {
   const onClickButtonCreateQuestion = (question, answer) => {
     // Trim space and replace comma
     answer = answer.replace(/\s+/g, '').split(',');
-
-    const quizzIndex = userQuizzs.indexOf(quizzToEdit);
-    console.log(quizzIndex);
-    if (question && answer !== '') {
-      const newState = [...userQuizzs];
-
-      const newQuizz = {
-        ...quizzToEdit,
-        questions: [
-          ...quizzToEdit.questions,
-          {
-            id: Math.random(),
-            question: question,
-            answers: answer,
-          },
-        ],
-      };
-
-      newState[quizzIndex] = newQuizz;
-
-      console.log(newState[quizzIndex]);
-      setUserQuizzs(newState);
-    } else {
-      console.log('ERROR');
-    }
   };
 
   const onClickButtonDeleteQuestion = (questionClicked) => {
@@ -183,10 +158,6 @@ const Dashboard = () => {
       return question.id !== questionClicked;
     });
     setQuestions(newState);
-  };
-
-  const getQuestions = (quizzToEdit) => {
-    return quizzToEdit.questions;
   };
 
   const onDeleteAnswerClick = (answerClickedIndex, answersArray, questionId) => {
@@ -228,7 +199,7 @@ const Dashboard = () => {
         handleCreateQuizzClick={handleCreateQuizzClick}
       />
       <QuestionsModal
-        questions={getQuestions(quizzToEdit)}
+        questions={quizzToEdit.questions}
         questionModalIsOpen={questionModalIsOpen}
         onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
         onClickButtonCreateQuestion={onClickButtonCreateQuestion}
