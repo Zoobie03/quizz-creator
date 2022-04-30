@@ -62,7 +62,7 @@ const QuestionsModal = (props) => {
   };
 
   const onQuestionClick = (index) => {
-    let questionClicked = document.getElementById(`question${index}`);
+    const questionClicked = document.getElementById(`question${index}`);
 
     if (questionClicked.childNodes.item(1).style.display === 'block') {
       questionClicked.childNodes.item(1).style.display = 'none';
