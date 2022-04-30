@@ -58,7 +58,7 @@ const Dashboard = () => {
         onQuizzClick={() => {
           setQuizzIsClicked(!quizzIsClicked);
         }}
-        onEditSvgClick={() => onEditSvgClickHandler(quizz.id)}
+        onEditSvgClick={() => onEditSvgClickHandler(quizz)}
         quizzPicture={quizz.quizzPicture}
       />
     );
@@ -138,10 +138,9 @@ const Dashboard = () => {
     setModalIsOpen(false);
   };
 
-  const onEditSvgClickHandler = (quizzId) => {
+  const onEditSvgClickHandler = (quizz) => {
     // Open edit modal & get the data
-    console.log('EDIT SVG CLICKED', quizzId);
-    setQuizzToEdit(quizzId);
+    setQuizzToEdit(quizz);
     setQuestionModalIsOpen(true);
   };
 
@@ -153,16 +152,30 @@ const Dashboard = () => {
     // Trim space and replace comma
     answer = answer.replace(/\s+/g, '').split(',');
 
-    const newState = [
-      ...questions,
-      {
-        id: Math.random(),
-        question: question,
-        answers: answer,
-      },
-    ];
+    const quizzIndex = userQuizzs.indexOf(quizzToEdit);
+    console.log(quizzIndex);
+    if (question && answer !== '') {
+      const newState = [...userQuizzs];
 
-    setQuestions(newState);
+      const newQuizz = {
+        ...quizzToEdit,
+        questions: [
+          ...quizzToEdit.questions,
+          {
+            id: Math.random(),
+            question: question,
+            answers: answer,
+          },
+        ],
+      };
+
+      newState[quizzIndex] = newQuizz;
+
+      console.log(newState[quizzIndex]);
+      setUserQuizzs(newState);
+    } else {
+      console.log('ERROR');
+    }
   };
 
   const onClickButtonDeleteQuestion = (questionClicked) => {
@@ -172,13 +185,17 @@ const Dashboard = () => {
     setQuestions(newState);
   };
 
+  const getQuestions = (quizzToEdit) => {
+    return quizzToEdit.questions;
+  };
+
   const onDeleteAnswerClick = (answerClickedIndex, answersArray, questionId) => {
-    console.log('DELETE ANSWER CLICKED');
+    // console.log('DELETE ANSWER CLICKED');
     const newState = [...questions];
     const questionClicked = [...questions].find((question) => question.id === questionId);
     const questionClickedIndex = newState.indexOf(questionClicked);
 
-    console.log(questionClickedIndex);
+    // console.log(questionClickedIndex);
     if (questionClicked?.answers === answersArray) {
       newState[questionClickedIndex].answers.splice(answerClickedIndex, 1);
 
@@ -211,14 +228,12 @@ const Dashboard = () => {
         handleCreateQuizzClick={handleCreateQuizzClick}
       />
       <QuestionsModal
-        quizzCardId={quizzToEdit}
+        questions={getQuestions(quizzToEdit)}
         questionModalIsOpen={questionModalIsOpen}
         onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
         onClickButtonCreateQuestion={onClickButtonCreateQuestion}
-        questions={questions}
         onClickButtonDeleteQuestion={onClickButtonDeleteQuestion}
         onDeleteAnswerClick={onDeleteAnswerClick}
-        // onQuestionClick={onQuestionClick}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>

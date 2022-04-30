@@ -1,17 +1,19 @@
 // Library
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // Own files
 import styles from './QuestionsModal.module.css';
 
 const QuestionsModal = (props) => {
   // States
-  const [question, setQuestion] = React.useState('');
-  const [answer, setAnswer] = React.useState('');
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
+
+  // const [data, setData] = useState([]);
 
   // ComponentDidMount
   useEffect(() => {
-    // props.quizzCardId
-  }, []);
+    console.log('QUESTIONS', props.questions);
+  }, [props.questions]);
 
   // Variables
   const closedCross = (
@@ -105,7 +107,7 @@ const QuestionsModal = (props) => {
         </form>
         <h2>Liste de vos questions</h2>
         <ul className={styles.questionsList}>
-          {props.questions.map((question, index) => {
+          {props.questions?.map((question, index) => {
             return (
               <li key={index} className={styles.question} id={`question${index}`}>
                 <div className={styles.questionText}>
@@ -120,7 +122,7 @@ const QuestionsModal = (props) => {
                   {downArrow}
                 </div>
                 <ul key={index} className={styles.answersList}>
-                  {question.answers.length > 0 ? (
+                  {question?.answers.length > 0 ? (
                     question.answers.map((answer, index) => {
                       return (
                         <li key={index} className={styles.answer}>
