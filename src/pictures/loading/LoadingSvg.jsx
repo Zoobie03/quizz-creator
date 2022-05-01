@@ -1,8 +1,8 @@
 import CircleForSvg from './CircleForSvg';
 
-function LoadingSvg() {
+function LoadingSvg(props) {
   return (
-    <button>
+    <button className={props.className}>
       <svg width='3em' height='3em' viewBox='0 0 24 24'>
         <CircleForSvg cx='18' fill='#888888' begin='.67' />
         <CircleForSvg cx='12' fill='currentColor' begin='.33' />
