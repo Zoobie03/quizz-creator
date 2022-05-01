@@ -153,9 +153,11 @@ const QuestionsModal = (props) => {
             <li className={styles.noQuestion}>Vous n'avez aucune question ... 🤔</li>
           )}
         </ul>
-        <button type='button' className={styles.confirmEdit} onClick={props.onClickConfirmEdit}>
-          Confirmer l'édition
-        </button>
+        {!props.loading ? (
+          <button type='button' className={styles.confirmEdit} onClick={props.onClickConfirmEdit}>
+            Confirmer l'édition
+          </button>
+        ) : null}
       </div>
     </div>
   );
