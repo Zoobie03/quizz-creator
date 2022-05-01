@@ -19,7 +19,7 @@ import Home from './Components/Home/Home';
 import ProfilManager from './Components/ProfilManager/ProfilManager';
 import CreateAccount from './CreateAccount/CreateAccount';
 import Dashboard from './Components/Dashboard/Dashboard';
-import QuizzModal from './Components/QuizzModal/QuizzModal';
+import QuizzModal from './Components/Dashboard/QuizzModal/QuizzModal';
 
 const App = () => {
   // State
