@@ -1,5 +1,6 @@
 // Library
 import React, { useState, useEffect } from 'react';
+import LoadingSvg from '../../../pictures/loading/LoadingSvg';
 // Own files
 import styles from './QuestionsModal.module.css';
 
@@ -153,11 +154,13 @@ const QuestionsModal = (props) => {
             <li className={styles.noQuestion}>Vous n'avez aucune question ... 🤔</li>
           )}
         </ul>
-        {!props.loading ? (
+        {props.loading === false ? (
           <button type='button' className={styles.confirmEdit} onClick={props.onClickConfirmEdit}>
             Confirmer l'édition
           </button>
-        ) : null}
+        ) : (
+          <LoadingSvg className={styles.confirmEdit} />
+        )}
       </div>
     </div>
   );
