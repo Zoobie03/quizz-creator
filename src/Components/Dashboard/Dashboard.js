@@ -15,6 +15,7 @@ import QuestionsModal from './QuestionsModal/QuestionsModal';
 const Dashboard = () => {
   // State
   const [userQuizzs, setUserQuizzs] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false);
   const [quizzIsClicked, setQuizzIsClicked] = useState(false);
@@ -26,14 +27,6 @@ const Dashboard = () => {
     thematics: [],
     quizzPicture: null,
   });
-  const [questions, setQuestions] = useState([]);
-  /*
-    {
-      id: Math.random(),
-      question: 'Sur quelles feuilles est assis le chien ?',
-      answers: ['Platane', 'Vigne', 'Lierre'],
-    },
-   */
 
   // Context
   const { user } = useContext(LoginContext);
@@ -56,7 +49,7 @@ const Dashboard = () => {
         quizzTitle={quizz.title !== '' ? quizz.title : 'Titre du quizz'}
         onSvgClick={() => delHandleClick(quizz.id)}
         onQuizzClick={() => {
-          setQuizzIsClicked(!quizzIsClicked);
+          setQuizzIsClicked(!quizzIsClicked); // need to be modified
         }}
         onEditSvgClick={() => onEditSvgClickHandler(quizz)}
         quizzPicture={quizz.quizzPicture}
@@ -93,14 +86,12 @@ const Dashboard = () => {
   };
 
   const fetchUserQuizzs = async () => {
-    console.log('FETCH USER QUIZZ');
     const docSnap = await getDoc(userDoc);
     if (docSnap.exists()) {
-      // console.log('Fetching ... Document ==> ', docSnap.data());
-
+      console.log('FETCH USER QUIZZ');
       return docSnap.data();
     } else {
-      // console.log('NO Documents ==X>');
+      console.error('Aucun documents utilisateur trouvé');
     }
   };
 
@@ -135,6 +126,7 @@ const Dashboard = () => {
   };
 
   const onSvgClickHandler = () => {
+    setQuizzToEdit(null);
     setModalIsOpen(false);
   };
 
@@ -151,35 +143,46 @@ const Dashboard = () => {
   const onClickButtonCreateQuestion = (question, answer) => {
     // Trim space and replace comma
     answer = answer.replace(/\s+/g, '').split(',');
+
+    const newQuestion = {
+      id: Math.random(),
+      question: question,
+      answers: answer,
+    };
+
+    setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
   };
 
-  const onClickButtonDeleteQuestion = (questionClicked) => {
-    const newState = questions.filter((question) => {
-      return question.id !== questionClicked;
-    });
-    setQuestions(newState);
+  const onClickButtonDeleteQuestion = (questionClicked) => {};
+
+  const onDeleteAnswerClick = (answerClickedIndex, answersArray, questionId) => {};
+
+  const onClickConfirmEdit = () => {
+    setLoading(true);
+    console.log('CONFIRM EDIT');
+    fetchUserQuizzs() // Promise
+      .then((response) => {
+        const quizzIndex = response.quizzs.findIndex((quizz) => {
+          return quizz.id === quizzToEdit.id;
+        });
+        const userQuizzs = response.quizzs;
+
+        console.log(userQuizzs[quizzIndex]);
+        console.log(quizzToEdit);
+
+        const newUserQuizzs = [...userQuizzs];
+        newUserQuizzs[quizzIndex] = quizzToEdit;
+
+        updateDoc(userDoc, {
+          quizzs: newUserQuizzs,
+        });
+
+        setLoading(false);
+      })
+      .catch((error) => console.log(error));
   };
 
-  const onDeleteAnswerClick = (answerClickedIndex, answersArray, questionId) => {
-    // console.log('DELETE ANSWER CLICKED');
-    const newState = [...questions];
-    const questionClicked = [...questions].find((question) => question.id === questionId);
-    const questionClickedIndex = newState.indexOf(questionClicked);
-
-    // console.log(questionClickedIndex);
-    if (questionClicked?.answers === answersArray) {
-      newState[questionClickedIndex].answers.splice(answerClickedIndex, 1);
-
-      setQuestions(newState);
-    } else {
-      throw new Error(
-        "Une erreur est survenue, contactez le développeur pour qu'il puisse résoudre le problème"
-      );
-    }
-    // setQuestions(newState);
-  };
-
-  return questionModalIsOpen ? (
+  return questionModalIsOpen && quizzToEdit !== null ? (
     <div className={styles.Dashboard}>
       <LeftColumnDashboard
         userThematics={userThematics}
@@ -200,11 +203,13 @@ const Dashboard = () => {
       />
       <QuestionsModal
         questions={quizzToEdit.questions}
+        loading={loading}
         questionModalIsOpen={questionModalIsOpen}
         onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
         onClickButtonCreateQuestion={onClickButtonCreateQuestion}
         onClickButtonDeleteQuestion={onClickButtonDeleteQuestion}
         onDeleteAnswerClick={onDeleteAnswerClick}
+        onClickConfirmEdit={onClickConfirmEdit}
       />
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
