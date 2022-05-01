@@ -27,10 +27,9 @@
   cursor: pointer;
 }
 
-.trashSvg {
+/* SVG */
+.svg {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
   cursor: pointer;
   background-color: white;
   border-radius: 50%;
@@ -38,15 +37,24 @@
   transition: 0.3s;
 }
 
+.trashSvg {
+  bottom: 10px;
+  right: 10px;
+}
+
 .editSvg {
-  position: absolute;
   bottom: 10px;
   left: 10px;
-  cursor: pointer;
-  background-color: white;
-  border-radius: 50%;
-  padding: 5px;
-  transition: 0.3s;
+}
+
+.shareSvg {
+  bottom: 10px;
+  left: 50px;
+}
+
+.previewSvg {
+  bottom: 10px;
+  left: 90px;
 }
 
 .quizzPicture svg:hover {
@@ -86,9 +94,5 @@
   width: 100%;
   font-size: 21px;
   background: rgb(56, 103, 237);
-  background: linear-gradient(
-    81deg,
-    rgba(56, 103, 237, 0.81) 16%,
-    rgba(150, 3, 254, 0.6306897759103641) 86%
-  );
+  background: linear-gradient(81deg, rgba(56, 103, 237, 0.81) 16%, rgba(150, 3, 254, 0.631) 86%);
 }
