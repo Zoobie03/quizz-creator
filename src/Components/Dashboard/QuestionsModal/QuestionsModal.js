@@ -8,8 +8,6 @@ const QuestionsModal = (props) => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
 
-  // const [data, setData] = useState([]);
-
   // ComponentDidMount
   useEffect(() => {
     console.log('QUESTIONS', props.questions);
@@ -97,13 +95,16 @@ const QuestionsModal = (props) => {
             onChange={onAnswerChange}
             placeholder='Votre/vos réponse(s)'
           />
-          <button
-            type='button'
-            className={styles.submitButton}
-            onClick={() => props.onClickButtonCreateQuestion(question, answer)}
-          >
-            Créer ma question
-          </button>
+          <div className={styles.warningAndCreateQuestionButton}>
+            <span>🚨 N'oubliez pas de confirmer l'édition avant de fermer la fenêtre 🚨</span>
+            <button
+              type='button'
+              className={styles.createQuestion}
+              onClick={() => props.onClickButtonCreateQuestion(question, answer)}
+            >
+              Créer ma question
+            </button>
+          </div>
         </form>
         <h2>Liste de vos questions</h2>
         <ul className={styles.questionsList}>
@@ -118,7 +119,7 @@ const QuestionsModal = (props) => {
                   >
                     Supprimer
                   </button>
-                  <p onClick={() => onQuestionClick(index)}>{question.question}</p>
+                  <p onClick={() => onQuestionClick(index)}>{question.question.toUpperCase()}</p>
                   {downArrow}
                 </div>
                 <ul key={index} className={styles.answersList}>
@@ -126,6 +127,7 @@ const QuestionsModal = (props) => {
                     question.answers.map((answer, index) => {
                       return (
                         <li key={index} className={styles.answer}>
+                          {/* answer.toCapitalizeCase */}
                           <p>{answer}</p>
                           <button
                             onClick={() =>
@@ -147,7 +149,7 @@ const QuestionsModal = (props) => {
             );
           })}
         </ul>
-        <button type='button' className={styles.confirmEdit}>
+        <button type='button' className={styles.confirmEdit} onClick={props.onClickConfirmEdit}>
           Confirmer l'édition
         </button>
       </div>

@@ -121,6 +121,7 @@
 .answer p {
   margin: 0;
   margin-left: 10px;
+  text-transform: capitalize;
 }
 
 .trashSvg {
@@ -131,20 +132,37 @@
   transition: 0.3s;
 }
 
-.submitButton {
-  width: 50%;
+.warningAndCreateQuestionButton {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.warningAndCreateQuestionButton span {
+  cursor: help;
+  color: red;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.createQuestion {
+  width: 20%;
   height: 40px;
   padding: 0;
   cursor: pointer;
-  background-color: #3867ed;
+  background-color: #a42bfacc;
   color: white;
   border-radius: 5px;
-  border: 1px solid #3867ed;
+  border: 1px solid #a42bfacc;
   transition: 0.3s;
-  align-self: center;
+  align-self: flex-end;
 }
 
 .confirmEdit {
+  text-transform: uppercase;
+  font-weight: bold;
   width: 30%;
   height: 40px;
   padding: 0;
