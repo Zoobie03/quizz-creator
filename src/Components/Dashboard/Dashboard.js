@@ -1,10 +1,12 @@
 // Library
 import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 // Own Files
 import styles from './Dashboard.module.css';
 import { db } from '../../config/firebase';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
+import routes from '../../config/routes';
 // Components
 import LeftColumnDashboard from './LeftColumnDashboard/LeftColumnDashboard';
 import QuizzCreator from './QuizzCreator/QuizzCreator';
@@ -31,6 +33,7 @@ const Dashboard = () => {
   // Context
   const { user } = useContext(LoginContext);
   const { uid } = { ...user };
+
   // componentDidMount
   useEffect(() => {
     fetchUserQuizzs().then((response) => {
@@ -38,8 +41,10 @@ const Dashboard = () => {
       setUserQuizzs(newState);
     });
   }, []);
+
   // Variables
   const userDoc = doc(db, 'users', uid);
+  const history = useHistory();
 
   const quizzsMapped = userQuizzs.map((quizz, index) => {
     return (
@@ -126,7 +131,6 @@ const Dashboard = () => {
   };
 
   const onSvgClickHandler = () => {
-    setQuizzToEdit(null);
     setModalIsOpen(false);
   };
 
@@ -141,25 +145,46 @@ const Dashboard = () => {
   };
 
   const onClickButtonCreateQuestion = (question, answer) => {
-    // Trim space and replace comma
-    answer = answer.replace(/\s+/g, '').split(',');
+    if (question !== '' && answer !== '') {
+      // Trim space and replace comma
+      answer = answer.replace(/\s+/g, '').split(',');
 
-    const newQuestion = {
-      id: Math.random(),
-      question: question,
-      answers: answer,
-    };
+      const newQuestion = {
+        id: Math.random(),
+        question: question,
+        answers: answer,
+      };
 
-    setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
+      setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
+    } else {
+      alert('Veuillez remplir tous les champs');
+    }
   };
 
-  const onClickButtonDeleteQuestion = (questionClicked) => {};
+  const onClickButtonDeleteQuestion = (questionClickedId) => {
+    const newQuestions = quizzToEdit.questions.filter((question) => {
+      return question.id !== questionClickedId;
+    });
+    setQuizzToEdit({ ...quizzToEdit, questions: newQuestions });
+  };
 
-  const onDeleteAnswerClick = (answerClickedIndex, answersArray, questionId) => {};
+  const onDeleteAnswerClick = (answerClickedIndex, answersArray, questionId) => {
+    const newAnswers = answersArray.filter((answer, index) => {
+      return index !== answerClickedIndex;
+    });
+
+    const newQuestions = quizzToEdit.questions.map((question) => {
+      if (question.id === questionId) {
+        return { ...question, answers: newAnswers };
+      } else {
+        return question;
+      }
+    });
+    setQuizzToEdit({ ...quizzToEdit, questions: newQuestions });
+  };
 
   const onClickConfirmEdit = () => {
     setLoading(true);
-    console.log('CONFIRM EDIT');
     fetchUserQuizzs() // Promise
       .then((response) => {
         const quizzIndex = response.quizzs.findIndex((quizz) => {
@@ -178,6 +203,13 @@ const Dashboard = () => {
         });
 
         setLoading(false);
+        setQuestionModalIsOpen(false);
+        setQuizzToEdit(null);
+        // Refresh component
+        setTimeout(() => {
+          history.push(routes.HOME);
+          history.push(routes.DASHBOARD);
+        }, 100);
       })
       .catch((error) => console.log(error));
   };
