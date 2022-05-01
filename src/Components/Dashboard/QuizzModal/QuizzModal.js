@@ -1,11 +1,11 @@
 // Library
-import React, { useState, useContext, useReducer } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 // Own files
 import styles from './QuizzModal.module.css';
-import { storage } from '../../config/firebase';
-import LoadingSvg from '../../pictures/loading/LoadingSvg';
-import { LoginContext } from '../../hoc/Contexts/LoginContext';
+import { storage } from '../../../config/firebase';
+import LoadingSvg from '../../../pictures/loading/LoadingSvg';
+import { LoginContext } from '../../../hoc/Contexts/LoginContext';
 
 const QuizzModal = (props) => {
   // Context
