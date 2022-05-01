@@ -68,6 +68,8 @@
 }
 
 .ModalContent .questionsList {
+  display: flex;
+  flex-direction: column;
   border: 2px solid #bd60ffcc;
   border-radius: 5px;
   width: 80%;
@@ -145,6 +147,12 @@
   font-size: 14px;
   padding: 8px;
   border-radius: 5px;
+}
+
+.noQuestion {
+  margin: auto;
+  color: #707070;
+  font-size: 1.3rem;
 }
 
 .createQuestion {
