@@ -3,7 +3,7 @@ import React from 'react';
 // Own files
 import styles from './QuizzCreator.module.css';
 // Components
-import QuizzModal from '../../QuizzModal/QuizzModal';
+import QuizzModal from '../QuizzModal/QuizzModal';
 
 const QuizzCreator = (props) => {
   return props.modalIsOpen ? (
