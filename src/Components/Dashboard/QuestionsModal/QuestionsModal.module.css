@@ -23,7 +23,6 @@
   flex-direction: column;
   justify-content: space-around;
   text-align: start;
-  overflow: scroll;
 }
 
 .ModalContent h1 {
@@ -34,9 +33,8 @@
 .ModalContent form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: auto;
+  width: 40%;
 }
 
 .ModalContent label {
@@ -72,8 +70,7 @@
   flex-direction: column;
   border: 2px solid #bd60ffcc;
   border-radius: 5px;
-  width: 80%;
-  height: 30%;
+  height: 100%;
   margin: auto;
   padding: 0;
   overflow: scroll;
@@ -81,6 +78,16 @@
 
 .ModalContent svg {
   cursor: pointer;
+}
+
+.wrapperContent {
+  display: flex;
+  height: 500px;
+}
+
+.wrapperQuestionsList {
+  width: 45%;
+  height: 100%;
 }
 
 .question {
@@ -137,7 +144,8 @@
 .warningAndCreateQuestionButton {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -147,6 +155,7 @@
   font-size: 14px;
   padding: 8px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .noQuestion {
@@ -156,7 +165,7 @@
 }
 
 .createQuestion {
-  width: 20%;
+  width: 40%;
   height: 40px;
   padding: 0;
   cursor: pointer;
@@ -165,7 +174,7 @@
   border-radius: 5px;
   border: 1px solid #a42bfacc;
   transition: 0.3s;
-  align-self: flex-end;
+  align-self: center;
 }
 
 .confirmEdit {
