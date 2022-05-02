@@ -13,7 +13,7 @@
 }
 
 .ModalContent {
-  width: 60%;
+  width: 70%;
   height: 90%;
   background-color: #fafafa;
   border-radius: 10px;
@@ -26,15 +26,19 @@
 }
 
 .ModalContent h1 {
-  border-radius: 30px;
+  align-self: center;
+  width: 70%;
   text-align: center;
+  margin: 0;
 }
 
 .ModalContent form {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   margin: auto;
-  width: 40%;
+  width: 45%;
+  height: 100%;
 }
 
 .ModalContent label {
@@ -44,7 +48,6 @@
   width: 100%;
   color: #707070;
   font-size: 25px;
-  margin-bottom: 10px;
 }
 
 .ModalContent input {
@@ -61,8 +64,9 @@
 .ModalContent h2 {
   text-align: center;
   color: #707070;
-  font-size: 25px;
+  font-size: 22px;
   margin: 0;
+  margin-bottom: 20px;
 }
 
 .ModalContent .questionsList {
@@ -201,7 +205,7 @@ button:hover {
   cursor: pointer;
   position: absolute;
   top: 50px;
-  right: 400px;
+  right: 300px;
 }
 
 /* ANIMATIONS */
