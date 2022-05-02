@@ -93,6 +93,7 @@ const Dashboard = () => {
     fetchUserQuizzs().then((response) => {
       const newState = [...response.quizzs];
       setUserQuizzs(newState);
+      toast.success('Votre quizz a bien été créé !', { theme: 'colored' });
     });
   };
 
@@ -149,12 +150,9 @@ const Dashboard = () => {
 
   const onShareSvgClickHandler = (quizz) => {
     // generate a link to share
-    // if displayName is undefined, use email
     const link = `${routes.QUIZZ}/${
       displayName ? displayName.toLowerCase() : email.substring(0, email.indexOf('@'))
     }/${generateSlug(quizz.title)}`;
-    // and open the link in a new tab
-    window.open(link, '_blank');
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
