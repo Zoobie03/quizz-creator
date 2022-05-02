@@ -42,6 +42,7 @@ const QuizzCard = (props) => {
             height='1.3em'
             viewBox='0 0 24 24'
             className={`${styles.svg} ${styles.shareSvg}`}
+            onClick={props.onShareSvgClick}
           >
             <path
               fill='skyblue'
@@ -56,8 +57,9 @@ const QuizzCard = (props) => {
             height='1.3em'
             viewBox='0 0 48 48'
             className={`${styles.svg} ${styles.previewSvg}`}
+            onClick={props.onPreviewSvgClick}
           >
-            <g fill='none' stroke='#9603fea1' strokeLinejoin='round' strokeWidth='3'>
+            <g fill='#ffffff00' stroke='#9603fea1' strokeLinejoin='round' strokeWidth='3'>
               <path d='M24 36c11.046 0 20-12 20-12s-8.954-12-20-12S4 24 4 24s8.954 12 20 12Z'></path>
               <path d='M24 29a5 5 0 1 0 0-10a5 5 0 0 0 0 10Z'></path>
             </g>
