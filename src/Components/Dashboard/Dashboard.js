@@ -34,6 +34,8 @@ const Dashboard = () => {
   // Context
   const { user } = useContext(LoginContext);
   const { uid } = { ...user };
+  const { displayName } = { ...user };
+  const { email } = { ...user };
 
   // componentDidMount
   useEffect(() => {
@@ -54,13 +56,13 @@ const Dashboard = () => {
         index={index}
         quizzTitle={quizz.title !== '' ? quizz.title : 'Titre du quizz'}
         onSvgClick={() => delHandleClick(quizz.id)}
-        onQuizzClick={() => {
-          setQuizzIsClicked(!quizzIsClicked); // need to be modified
-        }}
         onEditSvgClick={() => onEditSvgClickHandler(quizz)}
         onShareSvgClick={() => onShareSvgClickHandler(quizz)}
         onPreviewSvgClick={() => onPreviewSvgClickHandler(quizz)}
         quizzPicture={quizz.quizzPicture}
+        onQuizzClick={() => {
+          setQuizzIsClicked(!quizzIsClicked); // need to be modified
+        }}
       />
     );
   });
@@ -137,7 +139,7 @@ const Dashboard = () => {
     setModalIsOpen(false);
   };
 
-  // Quizz Card SVG methods
+  /* Quizz Card SVG methods */
   const onEditSvgClickHandler = (quizz) => {
     // Open edit modal & get the data
     setQuizzToEdit(quizz);
@@ -146,7 +148,10 @@ const Dashboard = () => {
 
   const onShareSvgClickHandler = (quizz) => {
     // generate a link to share
-    const link = `${routes.QUIZZ}/${generateSlug(quizz.title) + '-' + quizz.id.toFixed(3)}`;
+    // if displayName is undefined, use email
+    const link = `${routes.QUIZZ}/${
+      displayName ? displayName.toLowerCase() : email.substring(0, email.indexOf('@'))
+    }/${generateSlug(quizz.title)}`;
     // and open the link in a new tab
     window.open(link, '_blank');
   };
