@@ -77,83 +77,89 @@ const QuestionsModal = (props) => {
       {closedCross}
       <div className={styles.ModalContent}>
         <h1>Editer un quizz</h1>
-        <form>
-          <label htmlFor='question'>Votre question</label>
-          <input
-            type='text'
-            id='question'
-            value={question}
-            onChange={onQuestionChange}
-            placeholder='Votre question...'
-          />
-          <label htmlFor='answer'>
-            Votre/vos réponse(s) (Si plusieurs, séparez les avec des virgules)
-          </label>
-          <input
-            type='text'
-            id='answer'
-            value={answer}
-            onChange={onAnswerChange}
-            placeholder='Votre/vos réponse(s)'
-          />
-          <div className={styles.warningAndCreateQuestionButton}>
-            <span>🚨 N'oubliez pas de confirmer l'édition avant de fermer la fenêtre 🚨</span>
-            <button
-              type='button'
-              className={styles.createQuestion}
-              onClick={() => props.onClickButtonCreateQuestion(question, answer)}
-            >
-              Créer ma question
-            </button>
-          </div>
-        </form>
-        <h2>Liste de vos questions</h2>
-        <ul className={styles.questionsList}>
-          {props.questions.length > 0 ? (
-            props.questions?.map((question, index) => {
-              return (
-                <li key={index} className={styles.question} id={`question${index}`}>
-                  <div className={styles.questionText}>
-                    <button
-                      type='button'
-                      className={styles.deleteQuestion}
-                      onClick={() => props.onClickButtonDeleteQuestion(question.id)}
-                    >
-                      Supprimer
-                    </button>
-                    <p onClick={() => onQuestionClick(index)}>{question.question.toUpperCase()}</p>
-                    {downArrow}
-                  </div>
-                  <ul key={index} className={styles.answersList}>
-                    {question?.answers.length > 0 ? (
-                      question.answers.map((answer, index) => {
-                        return (
-                          <li key={index} className={styles.answer}>
-                            {/* answer.toCapitalizeCase */}
-                            <p>{answer}</p>
-                            <button
-                              onClick={() =>
-                                props.onDeleteAnswerClick(index, question.answers, question.id)
-                              }
-                            >
-                              {trashSvg}
-                            </button>
+        <div className={styles.wrapperContent}>
+          <form>
+            <label htmlFor='question'>Votre question</label>
+            <input
+              type='text'
+              id='question'
+              value={question}
+              onChange={onQuestionChange}
+              placeholder='Votre question...'
+            />
+            <label htmlFor='answer'>
+              Votre/vos réponse(s) (Si plusieurs, séparez les avec des virgules)
+            </label>
+            <input
+              type='text'
+              id='answer'
+              value={answer}
+              onChange={onAnswerChange}
+              placeholder='Votre/vos réponse(s)'
+            />
+            <div className={styles.warningAndCreateQuestionButton}>
+              <span>🚨 N'oubliez pas de confirmer l'édition avant de fermer la fenêtre 🚨</span>
+              <button
+                type='button'
+                className={styles.createQuestion}
+                onClick={() => props.onClickButtonCreateQuestion(question, answer)}
+              >
+                Créer ma question
+              </button>
+            </div>
+          </form>
+          <div className={styles.wrapperQuestionsList}>
+            <h2>Liste de vos questions</h2>
+            <ul className={styles.questionsList}>
+              {props.questions.length > 0 ? (
+                props.questions?.map((question, index) => {
+                  return (
+                    <li key={index} className={styles.question} id={`question${index}`}>
+                      <div className={styles.questionText}>
+                        <button
+                          type='button'
+                          className={styles.deleteQuestion}
+                          onClick={() => props.onClickButtonDeleteQuestion(question.id)}
+                        >
+                          Supprimer
+                        </button>
+                        <p onClick={() => onQuestionClick(index)}>
+                          {question.question.toUpperCase()}
+                        </p>
+                        {downArrow}
+                      </div>
+                      <ul key={index} className={styles.answersList}>
+                        {question?.answers.length > 0 ? (
+                          question.answers.map((answer, index) => {
+                            return (
+                              <li key={index} className={styles.answer}>
+                                {/* answer.toCapitalizeCase */}
+                                <p>{answer}</p>
+                                <button
+                                  onClick={() =>
+                                    props.onDeleteAnswerClick(index, question.answers, question.id)
+                                  }
+                                >
+                                  {trashSvg}
+                                </button>
+                              </li>
+                            );
+                          })
+                        ) : (
+                          <li className={styles.answer}>
+                            <p>Aucune réponse</p>
                           </li>
-                        );
-                      })
-                    ) : (
-                      <li className={styles.answer}>
-                        <p>Aucune réponse</p>
-                      </li>
-                    )}
-                  </ul>
-                </li>
-              );
-            })
-          ) : (
-            <li className={styles.noQuestion}>Vous n'avez aucune question ... 🤔</li>
-          )}
-        </ul>
+                        )}
+                      </ul>
+                    </li>
+                  );
+                })
+              ) : (
+                <li className={styles.noQuestion}>Vous n'avez aucune question ... 🤔</li>
+              )}
+            </ul>
+          </div>
+        </div>
         {props.loading === false ? (
           <button type='button' className={styles.confirmEdit} onClick={props.onClickConfirmEdit}>
             Confirmer l'édition
