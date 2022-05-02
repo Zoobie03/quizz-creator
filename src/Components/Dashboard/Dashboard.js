@@ -7,6 +7,7 @@ import styles from './Dashboard.module.css';
 import { db } from '../../config/firebase';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 import routes from '../../config/routes';
+import { generateSlug } from '../../Shared/functions/generateSlug';
 // Components
 import LeftColumnDashboard from './LeftColumnDashboard/LeftColumnDashboard';
 import QuizzCreator from './QuizzCreator/QuizzCreator';
@@ -57,6 +58,8 @@ const Dashboard = () => {
           setQuizzIsClicked(!quizzIsClicked); // need to be modified
         }}
         onEditSvgClick={() => onEditSvgClickHandler(quizz)}
+        onShareSvgClick={() => onShareSvgClickHandler(quizz)}
+        onPreviewSvgClick={() => onPreviewSvgClickHandler(quizz)}
         quizzPicture={quizz.quizzPicture}
       />
     );
@@ -134,10 +137,22 @@ const Dashboard = () => {
     setModalIsOpen(false);
   };
 
+  // Quizz Card SVG methods
   const onEditSvgClickHandler = (quizz) => {
     // Open edit modal & get the data
     setQuizzToEdit(quizz);
     setQuestionModalIsOpen(true);
+  };
+
+  const onShareSvgClickHandler = (quizz) => {
+    // generate a link to share
+    const link = `${routes.QUIZZ}/${generateSlug(quizz.title) + '-' + quizz.id.toFixed(3)}`;
+    // and open the link in a new tab
+    window.open(link, '_blank');
+  };
+
+  const onPreviewSvgClickHandler = (quizz) => {
+    console.log('PREVIEW');
   };
 
   const onSvgClickOnQuestionModal = () => {
