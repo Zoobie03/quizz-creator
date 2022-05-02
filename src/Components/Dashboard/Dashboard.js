@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 // Own Files
 import styles from './Dashboard.module.css';
 import { db } from '../../config/firebase';
