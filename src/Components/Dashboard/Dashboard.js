@@ -104,20 +104,24 @@ const Dashboard = () => {
   };
 
   const delHandleClick = (quizzId) => {
-    fetchUserQuizzs() // Promise
-      .then((response) => {
-        const userQuizzs = response.quizzs;
-        const userQuizzsFiltered = userQuizzs.filter((quizz) => {
-          return quizz.id !== quizzId;
-        });
+    // confirm
+    const confirm = window.confirm('Voulez-vous vraiment supprimer ce quizz ?');
+    if (confirm) {
+      fetchUserQuizzs() // Promise
+        .then((response) => {
+          const userQuizzs = response.quizzs;
+          const userQuizzsFiltered = userQuizzs.filter((quizz) => {
+            return quizz.id !== quizzId;
+          });
 
-        setUserQuizzs(userQuizzsFiltered);
+          setUserQuizzs(userQuizzsFiltered);
 
-        updateDoc(userDoc, {
-          quizzs: userQuizzsFiltered,
-        });
-      })
-      .catch((error) => console.log(error));
+          updateDoc(userDoc, {
+            quizzs: userQuizzsFiltered,
+          });
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   const addQuizzClickHandler = () => {
