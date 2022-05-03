@@ -197,6 +197,7 @@ const Dashboard = () => {
       return question.id !== questionClickedId;
     });
     setQuizzToEdit({ ...quizzToEdit, questions: newQuestions });
+    toast.info('La question a bien été supprimée', { theme: 'colored' });
   };
 
   const onDeleteAnswerClick = (answerClickedIndex, answersArray, questionId) => {
@@ -212,6 +213,8 @@ const Dashboard = () => {
       }
     });
     setQuizzToEdit({ ...quizzToEdit, questions: newQuestions });
+
+    toast.info('La réponse a bien été supprimée', { theme: 'colored' });
   };
 
   const onClickConfirmEdit = () => {
@@ -238,8 +241,12 @@ const Dashboard = () => {
           history.push(routes.HOME);
           history.push(routes.DASHBOARD);
         }, 100);
+        toast.success('Votre quizz a bien été modifié !', { theme: 'colored' });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        toast.warning('Une erreur est survenue !', { theme: 'colored' });
+      });
   };
 
   return (
