@@ -34,9 +34,7 @@ const Dashboard = () => {
 
   // Context
   const { user } = useContext(LoginContext);
-  const { uid } = { ...user };
-  const { displayName } = { ...user };
-  const { email } = { ...user };
+  const { uid, displayName, email } = { ...user };
 
   // componentDidMount
   useEffect(() => {
@@ -61,9 +59,7 @@ const Dashboard = () => {
         onShareSvgClick={() => onShareSvgClickHandler(quizz)}
         onPreviewSvgClick={() => onPreviewSvgClickHandler(quizz)}
         quizzPicture={quizz.quizzPicture}
-        onQuizzClick={() => {
-          setQuizzIsClicked(!quizzIsClicked); // need to be modified
-        }}
+        onQuizzClick={() => {}}
       />
     );
   });
@@ -153,6 +149,12 @@ const Dashboard = () => {
     const link = `${routes.QUIZZ}/${
       displayName ? displayName.toLowerCase() : email.substring(0, email.indexOf('@'))
     }/${generateSlug(quizz.title)}`;
+
+    // Copy the link to clipboard
+    navigator.clipboard.writeText('https://quizz-creator.netlify.app' + link);
+
+    // Show a toast
+    toast.info('Le lien a bien été copié dans votre press papier !', { theme: 'colored' });
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
