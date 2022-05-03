@@ -87,7 +87,7 @@ input:disabled {
   height: 285px;
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
-  border: 1px solid #707070;
+  color: black;
 }
 .picturePreview img {
   width: 285px;
