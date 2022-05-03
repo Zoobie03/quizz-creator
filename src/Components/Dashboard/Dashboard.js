@@ -242,7 +242,7 @@ const Dashboard = () => {
       .catch((error) => console.log(error));
   };
 
-  return questionModalIsOpen && quizzToEdit !== null ? (
+  return (
     <div className={styles.Dashboard}>
       <LeftColumnDashboard
         userThematics={userThematics}
@@ -261,37 +261,18 @@ const Dashboard = () => {
         setQuizz={setQuizz}
         handleCreateQuizzClick={handleCreateQuizzClick}
       />
-      <QuestionsModal
-        questions={quizzToEdit.questions}
-        loading={loading}
-        questionModalIsOpen={questionModalIsOpen}
-        onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
-        onClickButtonCreateQuestion={onClickButtonCreateQuestion}
-        onClickButtonDeleteQuestion={onClickButtonDeleteQuestion}
-        onDeleteAnswerClick={onDeleteAnswerClick}
-        onClickConfirmEdit={onClickConfirmEdit}
-      />
-      <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
-    </div>
-  ) : (
-    <div className={styles.Dashboard}>
-      <LeftColumnDashboard
-        userThematics={userThematics}
-        userTags={userTags}
-        numberOfQuizz={userQuizzs.length}
-      />
-      <QuizzCreator
-        quizzsMapped={quizzsMapped}
-        addQuizzClickHandler={addQuizzClickHandler}
-        modalIsOpen={modalIsOpen}
-        setModalIsOpen={() => setModalIsOpen}
-        onSvgClickHandler={onSvgClickHandler}
-        onEditSvgClickHandler={onEditSvgClickHandler}
-        user={user}
-        quizz={quizz}
-        setQuizz={setQuizz}
-        handleCreateQuizzClick={handleCreateQuizzClick}
-      />
+      {questionModalIsOpen && quizzToEdit !== null ? (
+        <QuestionsModal
+          questions={quizzToEdit.questions}
+          loading={loading}
+          questionModalIsOpen={questionModalIsOpen}
+          onSvgClickOnQuestionModal={onSvgClickOnQuestionModal}
+          onClickButtonCreateQuestion={onClickButtonCreateQuestion}
+          onClickButtonDeleteQuestion={onClickButtonDeleteQuestion}
+          onDeleteAnswerClick={onDeleteAnswerClick}
+          onClickConfirmEdit={onClickConfirmEdit}
+        />
+      ) : null}
       <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
     </div>
   );
