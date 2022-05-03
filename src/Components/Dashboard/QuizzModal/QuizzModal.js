@@ -6,6 +6,7 @@ import styles from './QuizzModal.module.css';
 import { storage } from '../../../config/firebase';
 import LoadingSvg from '../../../pictures/loading/LoadingSvg';
 import { LoginContext } from '../../../hoc/Contexts/LoginContext';
+import { toast } from 'react-toastify';
 
 const QuizzModal = (props) => {
   // Context
@@ -110,6 +111,7 @@ const QuizzModal = (props) => {
       console.log('Uploaded file!');
       // setFileUploaded(true);
       dispatch({ type: 'SET_FILE_UPLOADED', payload: true });
+      toast.success("L'image de votre quizz a bien été uploadée !");
       // setLoading(false);
       dispatch({ type: 'SET_LOADING', payload: false });
     });
