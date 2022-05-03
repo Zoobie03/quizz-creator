@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
+import { Route } from 'react-router-dom';
 // Own Files
 import styles from './Dashboard.module.css';
 import { db } from '../../config/firebase';
@@ -15,6 +16,7 @@ import QuizzCreator from './QuizzCreator/QuizzCreator';
 import RightColumnDashboard from './RightColumnDashboard/RightColumnDashboard';
 import QuizzCard from './QuizzCreator/QuizzCard/QuizzCard';
 import QuestionsModal from './QuestionsModal/QuestionsModal';
+import GeneratedQuizz from './GeneratedQuizz/GeneratedQuizz';
 
 const Dashboard = () => {
   // State
@@ -160,7 +162,13 @@ const Dashboard = () => {
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
-    console.log('PREVIEW');
+    const link = `${routes.QUIZZ}/${
+      displayName ? displayName.toLowerCase() : email.substring(0, email.indexOf('@'))
+    }/${generateSlug(quizz.title)}`;
+    // // create new react-router-dom route
+    // const newRoute = <Route path={link} element={<GeneratedQuizz quizz={quizz} />} />;
+    // // // open in a new tab
+    // window.open(newRoute, '_blank');
   };
 
   const onSvgClickOnQuestionModal = () => {
@@ -214,9 +222,6 @@ const Dashboard = () => {
           return quizz.id === quizzToEdit.id;
         });
         const userQuizzs = response.quizzs;
-
-        console.log(userQuizzs[quizzIndex]);
-        console.log(quizzToEdit);
 
         const newUserQuizzs = [...userQuizzs];
         newUserQuizzs[quizzIndex] = quizzToEdit;
