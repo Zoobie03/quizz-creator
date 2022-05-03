@@ -30,7 +30,7 @@ const Home = () => {
             <u>Commencez par créer votre compte</u>
           </h2>
 
-          <p>Allez dans l'onglet se connecter, et cliquez sur créer un compte</p>
+          <p>Allez dans l'onglet se connecter, puis cliquez sur créer un compte</p>
         </div>
       )}
     </>
