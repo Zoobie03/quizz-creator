@@ -5,10 +5,9 @@ import { checkValidity } from '../../Shared/utility';
 import routes from '../../config/routes';
 import { auth } from '../../config/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-
+import { toast } from 'react-toastify';
 // Hoc
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
-
 // Components
 import Input from '../../Components/Input/Input';
 import { Link } from 'react-router-dom';
@@ -65,10 +64,7 @@ const Authentification = (props) => {
     newInputs[elementId].touched = true;
 
     // Vérification de la valeur
-    newInputs[elementId].valid = checkValidity(
-      event.target.value,
-      newInputs[elementId].validation
-    );
+    newInputs[elementId].valid = checkValidity(event.target.value, newInputs[elementId].validation);
 
     setInputs(newInputs);
 
@@ -95,6 +91,7 @@ const Authentification = (props) => {
     signInWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
         props.history.push(routes.HOME);
+        toast.info('Vous êtes connecté.');
       })
       .catch((error) => {
         switch (error.code) {
@@ -136,11 +133,7 @@ const Authentification = (props) => {
         />
       ))}
       <div className={styles.buttons}>
-        <button
-          onClick={logInClickHandler}
-          disabled={!valid}
-          className={styles.button}
-        >
+        <button onClick={logInClickHandler} disabled={!valid} className={styles.button}>
           Connexion
         </button>
       </div>
@@ -157,9 +150,7 @@ const Authentification = (props) => {
     <>
       <h1>Se connecter</h1>
       <div className={styles.form}>
-        {loginError ? (
-          <div className={styles.alert}>Impossible de vous authentifier.</div>
-        ) : null}
+        {loginError ? <div className={styles.alert}>Impossible de vous authentifier.</div> : null}
         {form}
       </div>
     </>

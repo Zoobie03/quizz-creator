@@ -1,6 +1,7 @@
 // Librairies
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 // Own files
 import { auth, db } from '../config/firebase';
 import routes from '../config/routes';
@@ -86,6 +87,8 @@ const CreateAccount = (props) => {
         setDoc(usersCollection, { quizzs: [] });
 
         props.history.push(routes.DASHBOARD);
+
+        toast.success('Votre compte a bien été créé.');
       })
       .catch((error) => {
         // Adresse email en doublon
