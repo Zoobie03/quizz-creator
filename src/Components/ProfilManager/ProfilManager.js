@@ -8,6 +8,7 @@ import { LoginContext } from '../../hoc/Contexts/LoginContext';
 import { auth, storage } from '../../config/firebase';
 import useAuth from '../../customHook/useAuth';
 import LoadingSvg from '../../pictures/loading/LoadingSvg.jsx';
+import { toast } from 'react-toastify';
 
 const ProfilManager = (props) => {
   // Context
@@ -15,8 +16,6 @@ const ProfilManager = (props) => {
 
   // Hooks
   const currentUser = useAuth();
-  // console.log('currentUser ', currentUser);
-
   // State
   const [userInformations, setUserInformations] = useState({ ...user });
   const [URLpicture, setURLpicture] = useState(null);
@@ -43,11 +42,13 @@ const ProfilManager = (props) => {
       .then(() => {
         // Profile updated!
         console.log('Profile updated!');
+        toast.info('Profil mis à jour.');
         auth.currentUser.reload();
         // props.history.push('/dashboard');
       })
       .catch((error) => {
         // An error occurred
+        toast.warning('Une erreur est survenue. Réessayer plus tard.');
         console.log(error);
       });
   };
@@ -61,6 +62,7 @@ const ProfilManager = (props) => {
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
       console.log('Uploaded file!');
+      toast.success('Votre image a bien été uploadée.');
       setFileUploaded(true);
       setLoading(false);
     });
@@ -82,7 +84,7 @@ const ProfilManager = (props) => {
   const handleSendEmailVerif = () => {
     sendEmailVerification(auth.currentUser).then((r) => {
       // Email sent.
-      console.log('Email sent!');
+      toast.info('Un email de vérification vous a été envoyé.');
     });
   };
 
