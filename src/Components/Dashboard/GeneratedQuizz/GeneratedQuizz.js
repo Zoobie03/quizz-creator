@@ -6,12 +6,12 @@ import styles from './GeneratedQuizz.module.css';
 import Question from './Question/Question';
 
 const GeneratedQuizz = (props) => {
-  // quizzTitle, quizzQuestions
+  // quizz.title quizz.questions
   return (
     <div className={styles.GeneratedQuizz}>
-      <h1>{props.quizzTitle}</h1>
+      <h1>{props.quizz.title}</h1>
       <ul>
-        {props.quizzQuestions.map((question, index) => {
+        {props.quizz.questions.map((question, index) => {
           return <Question index={index} question={question} />;
         })}
       </ul>
