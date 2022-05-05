@@ -24,8 +24,10 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false);
+  const [previewQuizzOpen, setPreviewQuizzOpen] = useState(false);
   const [quizzIsClicked, setQuizzIsClicked] = useState(false);
   const [quizzToEdit, setQuizzToEdit] = useState(null);
+  const [quizzToPreview, setQuizzToPreview] = useState(null);
   const [quizz, setQuizz] = useState({
     title: '',
     questions: [],
@@ -162,13 +164,12 @@ const Dashboard = () => {
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
-    const link = `${routes.QUIZZ}/${
-      displayName ? displayName.toLowerCase() : email.substring(0, email.indexOf('@'))
-    }/${generateSlug(quizz.title)}`;
     // // create new react-router-dom route
     // const newRoute = <Route path={link} element={<GeneratedQuizz quizz={quizz} />} />;
     // // // open in a new tab
     // window.open(newRoute, '_blank');
+    setPreviewQuizzOpen(true);
+    setQuizzToPreview(quizz);
   };
 
   const onSvgClickOnQuestionModal = () => {
@@ -268,6 +269,16 @@ const Dashboard = () => {
         setQuizz={setQuizz}
         handleCreateQuizzClick={handleCreateQuizzClick}
       />
+      {previewQuizzOpen ? (
+        <GeneratedQuizz
+          quizz={quizzToPreview}
+          previewQuizzOpen={previewQuizzOpen}
+          onSvgClick={() => {
+            setPreviewQuizzOpen(false);
+            setQuizzToPreview(null);
+          }}
+        />
+      ) : null}
       {questionModalIsOpen && quizzToEdit !== null ? (
         <QuestionsModal
           questions={quizzToEdit.questions}
