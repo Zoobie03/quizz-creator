@@ -120,6 +120,11 @@ const ProfilManager = (props) => {
               <button
                 onClick={uploadFileHandler}
                 disabled={document.getElementById('URLpicture')?.files[0] ? false : true}
+                title={
+                  document.getElementById('URLpicture')?.files[0]
+                    ? null
+                    : 'Veuillez sélectionner une image.'
+                }
               >
                 Envoyer
               </button>
