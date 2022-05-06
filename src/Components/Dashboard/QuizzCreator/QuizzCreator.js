@@ -24,6 +24,7 @@ const QuizzCreator = (props) => {
       </ul>
       {props.modalIsOpen ? (
         <QuizzModal
+          userQuizzs={props.userQuizzs}
           modalIsOpen={props.modalIsOpen}
           onSvgClick={props.onSvgClickHandler}
           quizz={props.quizz}

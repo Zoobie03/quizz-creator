@@ -257,6 +257,7 @@ const Dashboard = () => {
         numberOfQuizz={userQuizzs.length}
       />
       <QuizzCreator
+        userQuizzs={userQuizzs}
         quizzsMapped={quizzsMapped}
         addQuizzClickHandler={addQuizzClickHandler}
         modalIsOpen={modalIsOpen}
