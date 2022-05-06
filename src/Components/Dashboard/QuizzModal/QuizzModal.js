@@ -105,7 +105,10 @@ const QuizzModal = (props) => {
     dispatch({ type: 'SET_LOADING', payload: true });
 
     const file = document.getElementById('quizzPicture').files[0];
-    const storageRef = ref(storage, `users/${user.uid}/quizz-pictures/${file.name}`);
+    const storageRef = ref(
+      storage,
+      `users/${user.uid}/quizz-pictures/quizz-${props.userQuizzs.length}.jpg`
+    );
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
       console.log('Uploaded file!');
@@ -144,7 +147,7 @@ const QuizzModal = (props) => {
             <label htmlFor='tags'>Tags (optionnel)</label>
             <input type='text' id='tags' value={props.quizz.tags} onChange={handleChange} />
             {/* Quizz picture */}
-            <label htmlFor='quizzPicture'>Image du quizz</label>
+            <label htmlFor='quizzPicture'>Image du quizz {props.userQuizzs.length}</label>
             <div className={styles.fileUploader}>
               <input type='file' id='quizzPicture' onChange={uploadForPreview} />
               {state.loading ? (
