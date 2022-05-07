@@ -8,10 +8,10 @@ const Question = (props) => {
   return (
     <li
       key={props.index}
-      className={styles.QuestionCard}
       style={{
-        border: `1px solid ${props.questionBorderColor}`,
+        border: `2px solid ${props.questionBorderColor}`,
       }}
+      className={styles.QuestionCard}
     >
       <span className={styles.questionTitle}>Question {props.index + 1}</span>
       {/* <label htmlFor={`question${props.index + 1}`}> </label> */}
