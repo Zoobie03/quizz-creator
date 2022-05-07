@@ -43,6 +43,7 @@ const GeneratedQuizz = (props) => {
             })}
           </ul>
         </div>
+        <button type='button'>Confirmer mes réponses</button>
       </div>
     </div>
   );
