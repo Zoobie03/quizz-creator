@@ -76,7 +76,7 @@ const QuestionsModal = (props) => {
     >
       {closedCross}
       <div className={styles.ModalContent}>
-        <h1>Editer un quizz</h1>
+        <h1>{props.quizzTitle}</h1>
         <div className={styles.wrapperContent}>
           <form>
             <label htmlFor='question'>Votre question</label>

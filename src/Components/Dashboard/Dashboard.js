@@ -271,6 +271,7 @@ const Dashboard = () => {
       />
       {questionModalIsOpen && quizzToEdit !== null ? (
         <QuestionsModal
+          quizzTitle={quizzToEdit.title}
           questions={quizzToEdit.questions}
           loading={loading}
           questionModalIsOpen={questionModalIsOpen}
