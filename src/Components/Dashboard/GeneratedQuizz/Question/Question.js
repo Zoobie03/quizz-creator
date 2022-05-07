@@ -10,7 +10,7 @@ const Question = (props) => {
       key={props.index}
       className={styles.QuestionCard}
       style={{
-        border: `1px solid ${props.question.color}`,
+        border: `1px solid ${props.questionBorderColor}`,
       }}
     >
       <span className={styles.questionTitle}>Question {props.index + 1}</span>
