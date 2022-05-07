@@ -3,7 +3,7 @@
   margin-bottom: 20px;
   margin-top: 20px;
   padding: 10px;
-  background-color: #e2e2e2;
+  background-color: #727272;
   border-radius: 4px;
   transition: 0.3s;
 }
@@ -17,6 +17,7 @@
 
 .question {
   text-align: center;
+  color: white;
 }
 
 .answerInput {
