@@ -7,6 +7,15 @@ import Question from './Question/Question';
 
 const GeneratedQuizz = (props) => {
   // quizz.title quizz.questions
+  // function to know if question is even
+  const isEven = (index) => {
+    if (index % 2 === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   // Variables
   const closedCross = (
     <svg
@@ -39,7 +48,14 @@ const GeneratedQuizz = (props) => {
         <div className={styles.QuestionsContainer}>
           <ul>
             {props.quizz.questions.map((question, index) => {
-              return <Question key={index} index={index} question={question} />;
+              return (
+                <Question
+                  key={index}
+                  index={index}
+                  question={question}
+                  questionBorderColor={isEven(index) ? '#3867edcc' : '#9603fe99'}
+                />
+              );
             })}
           </ul>
         </div>
