@@ -1,2 +1,14 @@
-.Question {
+.QuestionCard {
+  width: 25%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.questionTitle {
+  display: block;
+  text-align: center;
+}
+
+.question {
 }
