@@ -36,11 +36,13 @@ const GeneratedQuizz = (props) => {
       {closedCross}
       <div className={styles.ModalContent}>
         <h1>{props.quizz.title}</h1>
-        <ul>
-          {props.quizz.questions.map((question, index) => {
-            return <Question key={index} index={index} question={question} />;
-          })}
-        </ul>
+        <div className={styles.QuestionsContainer}>
+          <ul>
+            {props.quizz.questions.map((question, index) => {
+              return <Question key={index} index={index} question={question} />;
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );
