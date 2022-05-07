@@ -79,24 +79,26 @@ const QuestionsModal = (props) => {
         <h1>{props.quizzTitle}</h1>
         <div className={styles.wrapperContent}>
           <form>
-            <label htmlFor='question'>Votre question</label>
-            <input
-              type='text'
-              id='question'
-              value={question}
-              onChange={onQuestionChange}
-              placeholder='Votre question...'
-            />
+            <label htmlFor='question'>
+              Votre question
+              <input
+                type='text'
+                id='question'
+                value={question}
+                onChange={onQuestionChange}
+                placeholder='Votre question...'
+              />
+            </label>
             <label htmlFor='answer'>
               Votre/vos réponse(s) (Si plusieurs, séparez les avec des virgules)
+              <input
+                type='text'
+                id='answer'
+                value={answer}
+                onChange={onAnswerChange}
+                placeholder='Votre/vos réponse(s)'
+              />
             </label>
-            <input
-              type='text'
-              id='answer'
-              value={answer}
-              onChange={onAnswerChange}
-              placeholder='Votre/vos réponse(s)'
-            />
             <div className={styles.warningAndCreateQuestionButton}>
               <span>🚨 N'oubliez pas de confirmer l'édition avant de fermer la fenêtre 🚨</span>
               <button
