@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
+import styles from './Home.module.css';
 
 const Home = () => {
   const { user } = useContext(LoginContext);
