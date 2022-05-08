@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 // Own Files
 import styles from './Dashboard.module.css';
 import { db } from '../../config/firebase';
@@ -24,8 +24,10 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false);
+  const [previewQuizzOpen, setPreviewQuizzOpen] = useState(false);
   const [quizzIsClicked, setQuizzIsClicked] = useState(false);
   const [quizzToEdit, setQuizzToEdit] = useState(null);
+  const [quizzToPreview, setQuizzToPreview] = useState(null);
   const [quizz, setQuizz] = useState({
     title: '',
     questions: [],
@@ -61,7 +63,9 @@ const Dashboard = () => {
         onShareSvgClick={() => onShareSvgClickHandler(quizz)}
         onPreviewSvgClick={() => onPreviewSvgClickHandler(quizz)}
         quizzPicture={quizz.quizzPicture}
-        onQuizzClick={() => {}}
+        onQuizzClick={() => {
+          handleOnQuizzClick(quizz);
+        }}
       />
     );
   });
@@ -75,6 +79,10 @@ const Dashboard = () => {
   });
 
   // Methods
+  const handleOnQuizzClick = (quizz) => {
+    console.log('quizzClicked', quizz);
+  };
+
   const handleCreateQuizzClick = async () => {
     setModalIsOpen(!modalIsOpen);
 
@@ -155,20 +163,19 @@ const Dashboard = () => {
     }/${generateSlug(quizz.title)}`;
 
     // Copy the link to clipboard
-    navigator.clipboard.writeText('https://quizz-creator.netlify.app' + link);
+    navigator.clipboard.writeText('localhost:3000' + link);
 
     // Show a toast
     toast.info('Le lien a bien été copié dans votre press papier !', { theme: 'colored' });
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
-    const link = `${routes.QUIZZ}/${
-      displayName ? displayName.toLowerCase() : email.substring(0, email.indexOf('@'))
-    }/${generateSlug(quizz.title)}`;
     // // create new react-router-dom route
     // const newRoute = <Route path={link} element={<GeneratedQuizz quizz={quizz} />} />;
     // // // open in a new tab
     // window.open(newRoute, '_blank');
+    setPreviewQuizzOpen(true);
+    setQuizzToPreview(quizz);
   };
 
   const onSvgClickOnQuestionModal = () => {
@@ -269,6 +276,16 @@ const Dashboard = () => {
         setQuizz={setQuizz}
         handleCreateQuizzClick={handleCreateQuizzClick}
       />
+      {previewQuizzOpen ? (
+        <GeneratedQuizz
+          quizz={quizzToPreview}
+          previewQuizzOpen={previewQuizzOpen}
+          onSvgClick={() => {
+            setPreviewQuizzOpen(false);
+            setQuizzToPreview(null);
+          }}
+        />
+      ) : null}
       {questionModalIsOpen && quizzToEdit !== null ? (
         <QuestionsModal
           quizzTitle={quizzToEdit.title}
