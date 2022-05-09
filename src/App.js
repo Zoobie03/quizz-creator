@@ -62,7 +62,6 @@ const App = () => {
             <Route path={routes.CONTACT} exact component={Contact} />
             <Route path={routes.MY_PROFIL} exact component={ProfilManager} />
             <Route path={routes.CREATE_ACCOUNT} exact component={CreateAccount} />
-            <Route path={'/test'} exact component={GeneratedQuizz} />
             <Route render={() => <h1>La page que vous rechercher n'existe pas (404)</h1>} />
           </Switch>
         </Layout>
