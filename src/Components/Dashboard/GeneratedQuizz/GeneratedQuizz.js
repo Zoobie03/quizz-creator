@@ -43,16 +43,17 @@ const GeneratedQuizz = (props) => {
     <div className={`${styles.ContainerModal} ${props.previewQuizzOpen ? styles.animateIn : null}`}>
       {closedCross}
       <div className={styles.ModalContent}>
-        <h1>{props.quizz.title}</h1>
+        <h1>{props?.quizz?.title || 'Titre du quizz généré'}</h1>
         <div className={styles.forAuthor}>
           <span>
-            Le quizz contient acutellement <b>{props.quizz.questions.length} questions</b>{' '}
+            Le quizz contient acutellement{' '}
+            <b>{props?.quizz?.questions?.length || '10000'} questions</b>{' '}
           </span>
           <span>(visible uniquement par l'autheur)</span>
         </div>
         <div className={styles.QuestionsContainer}>
           <ul>
-            {props.quizz.questions.map((question, index) => {
+            {props?.quizz?.questions?.map((question, index) => {
               return (
                 <Question
                   key={index}
@@ -62,7 +63,7 @@ const GeneratedQuizz = (props) => {
                   questionBorderRadius={isEven(index) ? '30px 0 30px 0' : '0 30px 0 30px'}
                 />
               );
-            })}
+            }) || 'GENERATED QUIZZ IS EMPTY'}
           </ul>
         </div>
         <button type='button'>Confirmer mes réponses</button>
