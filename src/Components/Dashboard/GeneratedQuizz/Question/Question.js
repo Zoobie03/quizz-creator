@@ -9,7 +9,9 @@ const Question = (props) => {
     <li
       key={props.index}
       style={{
-        border: `2px solid ${props.questionBorderColor}`,
+        border: `5px solid ${props.questionBorderColor}`,
+        backgroundColor: props.questionBorderColor,
+        borderRadius: props.questionBorderRadius,
       }}
       className={styles.QuestionCard}
     >
