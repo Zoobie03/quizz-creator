@@ -1,6 +1,5 @@
 // Library
 import React from 'react';
-import { useState } from 'react';
 // Own Files
 import styles from './ThematicsAndTags.module.css';
 
