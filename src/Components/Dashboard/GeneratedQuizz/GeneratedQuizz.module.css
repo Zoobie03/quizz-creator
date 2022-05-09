@@ -25,6 +25,21 @@
   overflow: scroll;
 }
 
+.forAuthor {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  font-size: 20px;
+  margin-top: 20px;
+  width: 90%;
+  min-height: 100px;
+  background-color: #dddddd;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-style: italic;
+}
+
 .ModalContent h1 {
   margin: 0;
   padding: 0;

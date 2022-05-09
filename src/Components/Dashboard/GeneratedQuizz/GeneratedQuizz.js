@@ -44,6 +44,12 @@ const GeneratedQuizz = (props) => {
       {closedCross}
       <div className={styles.ModalContent}>
         <h1>{props.quizz.title}</h1>
+        <div className={styles.forAuthor}>
+          <span>
+            Le quizz contient acutellement <b>{props.quizz.questions.length} questions</b>{' '}
+          </span>
+          <span>(visible uniquement par l'autheur)</span>
+        </div>
         <div className={styles.QuestionsContainer}>
           <ul>
             {props.quizz.questions.map((question, index) => {
