@@ -1,22 +1,24 @@
 .QuestionCard {
-  width: 25%;
+  width: 40%;
   margin-bottom: 20px;
   margin-top: 20px;
   padding: 10px;
-  background-color: #727272;
-  border-radius: 4px;
   transition: 0.3s;
 }
 
 .questionTitle {
   display: block;
-  color: #cc9020;
-  text-decoration: underline overline;
+  color: white;
+  background-color: #eca625;
   text-underline-offset: 5px;
+  padding: 5px;
+  width: fit-content;
+  border-radius: 30px;
 }
 
 .question {
   text-align: center;
+  font-size: 26px;
   color: white;
 }
 
@@ -25,6 +27,7 @@
   padding: 10px 5px;
   border-radius: 5px;
   border: 1px solid;
+  font-size: 18px;
 }
 
 .QuestionCard:hover {
