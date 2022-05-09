@@ -1,9 +1,8 @@
 // Library
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
-import { Route, Switch } from 'react-router-dom';
 // Own Files
 import styles from './Dashboard.module.css';
 import { db } from '../../config/firebase';
@@ -50,7 +49,7 @@ const Dashboard = () => {
 
   // Variables
   const userDoc = doc(db, 'users', uid);
-  const history = useHistory();
+  const history = useNavigate();
 
   const quizzsMapped = userQuizzs.map((quizz, index) => {
     return (
