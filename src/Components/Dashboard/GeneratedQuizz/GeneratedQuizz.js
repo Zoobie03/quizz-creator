@@ -6,8 +6,7 @@ import styles from './GeneratedQuizz.module.css';
 import Question from './Question/Question';
 
 const GeneratedQuizz = (props) => {
-  // quizz.title quizz.questions
-  // function to know if question is even
+  // Methods
   const isEven = (index) => {
     if (index % 2 === 0) {
       return true;
@@ -54,6 +53,7 @@ const GeneratedQuizz = (props) => {
                   index={index}
                   question={question}
                   questionBorderColor={isEven(index) ? '#3867edcc' : '#9603fe99'}
+                  questionBorderRadius={isEven(index) ? '30px 0 30px 0' : '0 30px 0 30px'}
                 />
               );
             })}
