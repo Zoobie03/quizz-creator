@@ -49,7 +49,7 @@ const GeneratedQuizz = (props) => {
             Le quizz contient acutellement{' '}
             <b>{props?.quizz?.questions?.length || '10000'} questions</b>{' '}
           </span>
-          <span>(visible uniquement par l'autheur)</span>
+          <span>(visible uniquement par l'auteur)</span>
         </div>
         <div className={styles.QuestionsContainer}>
           <ul>
