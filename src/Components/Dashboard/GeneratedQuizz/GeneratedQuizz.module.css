@@ -68,6 +68,7 @@
 .ModalContent button {
   width: 250px;
   margin: auto;
+  cursor: pointer;
 }
 
 /* SVG */
