@@ -1,6 +1,6 @@
 .LeftColumnDashboard {
   width: 315px;
-  height: auto;
+  height: 750px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
