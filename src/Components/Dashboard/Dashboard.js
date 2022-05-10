@@ -1,6 +1,6 @@
 // Library
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useRoutes } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 // Own Files
@@ -157,22 +157,22 @@ const Dashboard = () => {
 
   const onShareSvgClickHandler = (quizz) => {
     // generate a link to share
-    const link = `${routes.QUIZZ}/${
-      displayName ? displayName.toLowerCase() : email.substring(0, email.indexOf('@'))
-    }/${generateSlug(quizz.title)}`;
+    // const link = `${routes.QUIZZ}/${
+    //   displayName ? displayName.toLowerCase() : email.substring(0, email.indexOf('@'))
+    // }/${generateSlug(quizz.title)}`;
+
+    // let returnUrl = window.location.protocol + '//' + window.location.host + link;
+    // console.log('returnUrl', returnUrl);
+    // window.open(returnUrl, '_blank');
 
     // Copy the link to clipboard
-    navigator.clipboard.writeText('localhost:3000' + link);
+    navigator.clipboard.writeText('En cours de développement');
 
     // Show a toast
-    toast.info('Le lien a bien été copié dans votre press papier !', { theme: 'colored' });
+    toast.error('Cette fonctionnalité est en cours de développement', { theme: 'colored' });
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
-    // // create new react-router-dom route
-    // const newRoute = <Route path={link} element={<GeneratedQuizz quizz={quizz} />} />;
-    // // // open in a new tab
-    // window.open(newRoute, '_blank');
     setPreviewQuizzOpen(true);
     setQuizzToPreview(quizz);
   };
@@ -244,8 +244,8 @@ const Dashboard = () => {
         setQuizzToEdit(null);
         // Refresh component
         setTimeout(() => {
-          history.push(routes.HOME);
-          history.push(routes.DASHBOARD);
+          history(routes.HOME, { replace: true });
+          history(routes.DASHBOARD, { replace: true });
         }, 100);
         toast.success('Votre quizz a bien été modifié !', { theme: 'colored' });
       })
