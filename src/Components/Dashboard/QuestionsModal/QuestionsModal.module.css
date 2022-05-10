@@ -21,7 +21,7 @@
   border: 3px solid #3867ed;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   text-align: start;
 }
 
@@ -202,7 +202,7 @@
   text-transform: uppercase;
   font-weight: bold;
   width: 30%;
-  height: 40px;
+  height: 50px;
   padding: 0;
   cursor: pointer;
   background-color: #3867ed;
@@ -210,7 +210,9 @@
   border-radius: 5px;
   border: 1px solid #3867ed;
   transition: 0.3s;
+  font-size: 16px;
   align-self: center;
+  margin-top: 30px;
 }
 
 button:hover {
