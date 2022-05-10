@@ -36,7 +36,7 @@ const QuizzCard = (props) => {
           </svg>
         </div>
         {/* Share Svg */}
-        <div title='Partager le quizz'>
+        <div title='Partager le quizz (En cours de développement)' aria-disabled>
           <svg
             width='1.3em'
             height='1.3em'
