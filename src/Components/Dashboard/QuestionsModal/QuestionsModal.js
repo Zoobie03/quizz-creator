@@ -78,38 +78,41 @@ const QuestionsModal = (props) => {
       <div className={styles.ModalContent}>
         <h1>{props.quizzTitle}</h1>
         <div className={styles.wrapperContent}>
-          <form>
-            <label htmlFor='question'>
-              Votre question
-              <input
-                type='text'
-                id='question'
-                value={question}
-                onChange={onQuestionChange}
-                placeholder='Votre question...'
-              />
-            </label>
-            <label htmlFor='answer'>
-              Votre/vos réponse(s) (Si plusieurs, séparez les avec des virgules)
-              <input
-                type='text'
-                id='answer'
-                value={answer}
-                onChange={onAnswerChange}
-                placeholder='Votre/vos réponse(s)'
-              />
-            </label>
-            <div className={styles.warningAndCreateQuestionButton}>
-              <span>🚨 N'oubliez pas de confirmer l'édition avant de fermer la fenêtre 🚨</span>
-              <button
-                type='button'
-                className={styles.createQuestion}
-                onClick={() => props.onClickButtonCreateQuestion(question, answer)}
-              >
-                Créer ma question
-              </button>
-            </div>
-          </form>
+          <div className={styles.formQuestion}>
+            <h2>Création de question/réponses</h2>
+            <form>
+              <label htmlFor='question'>
+                Votre question
+                <input
+                  type='text'
+                  id='question'
+                  value={question}
+                  onChange={onQuestionChange}
+                  placeholder='Votre question...'
+                />
+              </label>
+              <label htmlFor='answer'>
+                Votre/vos réponse(s) (Si plusieurs, séparez les avec des virgules)
+                <input
+                  type='text'
+                  id='answer'
+                  value={answer}
+                  onChange={onAnswerChange}
+                  placeholder='Votre/vos réponse(s)'
+                />
+              </label>
+              <div className={styles.warningAndCreateQuestionButton}>
+                <span>🚨 N'oubliez pas de confirmer l'édition avant de fermer la fenêtre 🚨</span>
+                <button
+                  type='button'
+                  className={styles.createQuestion}
+                  onClick={() => props.onClickButtonCreateQuestion(question, answer)}
+                >
+                  Créer ma question
+                </button>
+              </div>
+            </form>
+          </div>
           <div className={styles.wrapperQuestionsList}>
             <h2>Liste de vos questions</h2>
             <ul className={styles.questionsList}>
