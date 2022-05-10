@@ -7,7 +7,7 @@ import QuizzModal from '../QuizzModal/QuizzModal';
 
 const QuizzCreator = (props) => {
   return (
-    <div className={styles.QuizzCreator}>
+    <div className={styles.QuizzCreator} onClick={(event) => props.onMainContainerClick(event)}>
       <h1>{props.user.displayName ? 'Dashboard de ' + props.user.displayName : 'Dashboard'}</h1>
       <ul className={styles.wrapperQuizzs}>
         {props.quizzsMapped.length > 0 ? props.quizzsMapped : <h2>Vous n'avez aucun Quizz</h2>}
