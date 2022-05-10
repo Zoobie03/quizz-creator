@@ -6,6 +6,7 @@ import routes from '../../config/routes';
 import { auth } from '../../config/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 // Hoc
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 // Components
@@ -15,6 +16,9 @@ import { Link } from 'react-router-dom';
 const Authentification = (props) => {
   // Context
   const { user } = useContext(LoginContext);
+
+  // History
+  const history = useNavigate();
 
   // State
   const [inputs, setInputs] = useState({
@@ -90,7 +94,7 @@ const Authentification = (props) => {
 
     signInWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
-        props.history.push(routes.HOME);
+        history(routes.HOME);
         toast.info('Vous êtes connecté.');
       })
       .catch((error) => {
