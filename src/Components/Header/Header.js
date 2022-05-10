@@ -1,6 +1,6 @@
 // Librairies
 import React from 'react';
-import styles from './Header.module.css';
+import './Header.css';
 // Logo
 import LOGO from '../../pictures/logo.png';
 // Components
@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header>
       {/* LOGO */}
-      <img src={LOGO} alt="Quizz-creator" />
+      <img src={LOGO} alt='Quizz-creator' />
       {/* Navigation */}
       <nav>
         <Navigation />
