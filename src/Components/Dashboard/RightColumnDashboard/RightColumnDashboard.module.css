@@ -2,6 +2,7 @@
   border: 1px solid black;
   width: 315px;
   height: 800px;
+  overflow: scroll;
 }
 
 .RightColumnDashboard h2 {
@@ -15,4 +16,12 @@
   color: white;
   height: 70px;
   border: none;
+}
+
+.RightColumnDashboard__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
 }
