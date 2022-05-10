@@ -12,12 +12,12 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 16px;
-  background: rgb(56, 103, 237);
-  background: linear-gradient(
-    81deg,
-    rgba(56, 103, 237, 0.81) 16%,
-    rgba(150, 3, 254, 0.6306897759103641) 86%
-  );
+  background: #3867ed;
+  background: linear-gradient(81deg, #3867edcf 16%, #9603fea1 86%);
+}
+
+.actived {
+  border: 10px solid black;
 }
 
 @media screen and (max-width: 880px) {

@@ -22,7 +22,9 @@ const Navigation = () => {
 
   return (
     <ul className={styles.Navigation}>
-      <NavigationItem to={routes.HOME}>Accueil</NavigationItem>
+      <NavigationItem end to={routes.HOME}>
+        Accueil
+      </NavigationItem>
       {user ? (
         <NavigationItem end to={routes.DASHBOARD}>
           Dashboard
@@ -33,7 +35,9 @@ const Navigation = () => {
           Mon profil
         </NavigationItem>
       ) : null}
-      <NavigationItem to={routes.CONTACT}>Contact</NavigationItem>
+      <NavigationItem end to={routes.CONTACT}>
+        Contact
+      </NavigationItem>
       {!user ? (
         <NavigationItem end to={routes.AUTHENTIFICATION}>
           Se connecter
