@@ -1,6 +1,6 @@
 // Library
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 // Own Files
@@ -45,6 +45,7 @@ const Dashboard = () => {
       const newState = [...response.quizzs];
       setUserQuizzs(newState);
     });
+    // eslint-disable-next-line
   }, []);
 
   // Variables
@@ -79,7 +80,7 @@ const Dashboard = () => {
 
   // Methods
   const handleOnQuizzClick = (quizz) => {
-    console.log('quizzClicked', quizz);
+    setQuizzIsClicked(true);
   };
 
   const handleCreateQuizzClick = async () => {
