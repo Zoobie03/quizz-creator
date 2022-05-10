@@ -10,14 +10,14 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 const Navigation = () => {
   // Variable
-  const history = useNavigate;
+  const history = useNavigate();
   // Context
   const { user } = useContext(LoginContext);
 
   // Méthode
   const logoutClickedHandler = () => {
     auth.signOut();
-    history.push(routes.HOME);
+    history(routes.HOME);
   };
 
   return (
