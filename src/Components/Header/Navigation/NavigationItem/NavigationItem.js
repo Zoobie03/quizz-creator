@@ -6,11 +6,7 @@ import { NavLink } from 'react-router-dom';
 const NavigationItem = (props) => {
   return (
     <li className={styles.NavigationItem}>
-      <NavLink 
-        exact={props.exact} 
-        to={props.to} 
-        activeClassName={styles.active}
-      >
+      <NavLink end={props.end} to={props.to}>
         {props.children}
       </NavLink>
     </li>

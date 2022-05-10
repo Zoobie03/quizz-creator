@@ -24,18 +24,18 @@ const Navigation = () => {
     <ul className={styles.Navigation}>
       <NavigationItem to={routes.HOME}>Accueil</NavigationItem>
       {user ? (
-        <NavigationItem exact to={routes.DASHBOARD}>
+        <NavigationItem end to={routes.DASHBOARD}>
           Dashboard
         </NavigationItem>
       ) : null}
       {user ? (
-        <NavigationItem exact to={routes.MY_PROFIL}>
+        <NavigationItem end to={routes.MY_PROFIL}>
           Mon profil
         </NavigationItem>
       ) : null}
       <NavigationItem to={routes.CONTACT}>Contact</NavigationItem>
       {!user ? (
-        <NavigationItem exact to={routes.AUTHENTIFICATION}>
+        <NavigationItem end to={routes.AUTHENTIFICATION}>
           Se connecter
         </NavigationItem>
       ) : null}
