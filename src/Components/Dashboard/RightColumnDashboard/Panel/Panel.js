@@ -7,7 +7,7 @@ const Panel = (props) => {
   return (
     <div className={styles.Panel}>
       <h3>{props.panelTitle || 'Titre générique'}</h3>
-      <p>{props.information || 'Aucune donnée reçu en props'}</p>
+      <p>{props.information || 'Aucune question'}</p>
     </div>
   );
 };
