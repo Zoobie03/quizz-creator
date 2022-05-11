@@ -41,7 +41,7 @@ const ProfilManager = (props) => {
     })
       .then(() => {
         // Profile updated!
-        console.log('Profile updated!');
+        // console.log('Profile updated!');
         toast.info('Profil mis à jour.');
         auth.currentUser.reload();
         // props.history.push('/dashboard');
@@ -49,7 +49,7 @@ const ProfilManager = (props) => {
       .catch((error) => {
         // An error occurred
         toast.warning('Une erreur est survenue. Réessayer plus tard.');
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -61,7 +61,7 @@ const ProfilManager = (props) => {
     const storageRef = ref(storage, `users/${user.uid}/profil-picture.jpg`);
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
-      console.log('Uploaded file!');
+      // console.log('Uploaded file!');
       toast.success('Votre image a bien été uploadée.');
       setFileUploaded(true);
       setLoading(false);

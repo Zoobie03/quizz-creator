@@ -111,7 +111,7 @@ const QuizzModal = (props) => {
     );
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
-      console.log('Uploaded file!');
+      // console.log('Uploaded file!');
       // setFileUploaded(true);
       dispatch({ type: 'SET_FILE_UPLOADED', payload: true });
       toast.success("L'image de votre quizz a bien été uploadée !");

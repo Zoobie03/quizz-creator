@@ -29,7 +29,7 @@ const Contact = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('Formulaire soumis');
+    // console.log('Formulaire soumis');
   };
 
   return (

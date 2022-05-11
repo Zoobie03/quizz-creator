@@ -11,7 +11,7 @@ const QuestionsModal = (props) => {
 
   // ComponentDidMount
   useEffect(() => {
-    console.log('QUESTIONS', props.questions);
+    // console.log('QUESTIONS', props.questions);
   }, [props.questions]);
 
   // Variables

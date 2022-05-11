@@ -164,7 +164,7 @@ const Dashboard = () => {
     // }/${generateSlug(quizz.title)}`;
 
     // let returnUrl = window.location.protocol + '//' + window.location.host + link;
-    // console.log('returnUrl', returnUrl);
+    // // console.log('returnUrl', returnUrl);
     // window.open(returnUrl, '_blank');
 
     // Copy the link to clipboard
@@ -252,7 +252,7 @@ const Dashboard = () => {
         toast.success('Votre quizz a bien été modifié !', { theme: 'colored' });
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         toast.warning('Une erreur est survenue !', { theme: 'colored' });
       });
   };

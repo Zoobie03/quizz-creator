@@ -6,7 +6,7 @@ import styles from './ThematicsAndTags.module.css';
 const ThematicsAndTags = ({ title, noneMessage, data }) => {
   // Methods
   const handleClick = () => {
-    console.log(title + ' clicked');
+    // console.log(title + ' clicked');
   };
 
   const themOrTagsMapped = data.map((thematicOrTag, index) => {
