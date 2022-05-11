@@ -13,10 +13,11 @@ const RightColumnDashboard = (props) => {
     >
       <h2>Détails du quizz</h2>
       <div className={styles.RightColumnDashboard__content}>
-        <Panel />
-        <Panel />
-        <Panel />
-        <Panel />
+        <Panel panelTitle='Titre du quizz' information={props?.quizz?.title || 'Aucun titre'} />
+        <Panel
+          panelTitle='Nombre de questions'
+          information={props?.quizz?.questions.length || '0'}
+        />
       </div>
     </div>
   );
