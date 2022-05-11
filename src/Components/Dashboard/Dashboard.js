@@ -25,6 +25,7 @@ const Dashboard = () => {
   const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false);
   const [previewQuizzOpen, setPreviewQuizzOpen] = useState(false);
   const [quizzIsClicked, setQuizzIsClicked] = useState(false);
+  const [quizzClicked, setQuizzClicked] = useState(null);
   const [quizzToEdit, setQuizzToEdit] = useState(null);
   const [quizzToPreview, setQuizzToPreview] = useState(null);
   const [quizz, setQuizz] = useState({
@@ -80,6 +81,7 @@ const Dashboard = () => {
 
   // Methods
   const handleOnQuizzClick = (quizz) => {
+    setQuizzClicked(quizz);
     setQuizzIsClicked(true);
   };
 
@@ -256,6 +258,15 @@ const Dashboard = () => {
       });
   };
 
+  const handleMainContainerClick = (event) => {
+    const target = event.target;
+    if (target.nodeName === 'IMG') {
+      return;
+    } else {
+      setQuizzIsClicked(false);
+    }
+  };
+
   return (
     <div className={styles.Dashboard}>
       <LeftColumnDashboard
@@ -275,6 +286,7 @@ const Dashboard = () => {
         quizz={quizz}
         setQuizz={setQuizz}
         handleCreateQuizzClick={handleCreateQuizzClick}
+        onMainContainerClick={handleMainContainerClick}
       />
       {previewQuizzOpen ? (
         <GeneratedQuizz
@@ -299,7 +311,7 @@ const Dashboard = () => {
           onClickConfirmEdit={onClickConfirmEdit}
         />
       ) : null}
-      <RightColumnDashboard quizzIsClicked={quizzIsClicked} />
+      <RightColumnDashboard quizzIsClicked={quizzIsClicked} quizz={quizzClicked} />
     </div>
   );
 };
