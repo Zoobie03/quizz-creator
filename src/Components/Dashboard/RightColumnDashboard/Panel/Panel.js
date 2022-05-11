@@ -4,11 +4,10 @@ import React from 'react';
 import styles from './Panel.module.css';
 
 const Panel = (props) => {
-  // PanelTitle, quizz.questions
   return (
     <div className={styles.Panel}>
-      <h3>{props.PanelTitle || 'Titre générique'}</h3>
-      <p>{props?.quizz?.questions.length || 'Aucune donnée reçu en props'}</p>
+      <h3>{props.panelTitle || 'Titre générique'}</h3>
+      <p>{props.information || 'Aucune donnée reçu en props'}</p>
     </div>
   );
 };
