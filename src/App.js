@@ -16,6 +16,7 @@ import Home from './Components/Home/Home';
 import ProfilManager from './Components/ProfilManager/ProfilManager';
 import CreateAccount from './CreateAccount/CreateAccount';
 import Dashboard from './Components/Dashboard/Dashboard';
+import NoMatch from './Components/NoMatch/NoMatch';
 
 const App = () => {
   // State
@@ -52,13 +53,13 @@ const App = () => {
       <LoginProvider value={{ user }}>
         <Layout>
           <Routes>
-            <Route path={routes.HOME} element={<Home />} />
+            <Route path={routes.HOME} exact element={<Home />} />
             <Route path={routes.DASHBOARD} element={<Dashboard />} />
             <Route path={routes.AUTHENTIFICATION} element={<Authentification />} />
             <Route path={routes.CONTACT} element={<Contact />} />
             <Route path={routes.MY_PROFIL} element={<ProfilManager />} />
             <Route path={routes.CREATE_ACCOUNT} element={<CreateAccount />} />
-            <Route render={() => <h1>La page que vous rechercher n'existe pas (404)</h1>} />
+            <Route path='*' element={<NoMatch />} />
           </Routes>
         </Layout>
       </LoginProvider>
