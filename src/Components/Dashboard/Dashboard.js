@@ -153,7 +153,6 @@ const Dashboard = () => {
 
   /* Quizz Card SVG methods */
   const onEditSvgClickHandler = (quizz) => {
-    // Open edit modal & get the data
     setQuizzToEdit(quizz);
     setQuestionModalIsOpen(true);
   };
