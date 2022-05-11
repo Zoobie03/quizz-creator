@@ -1,0 +1,22 @@
+.NoMatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  height: 50%;
+  width: 50%;
+  background-color: #c6c6c6;
+  color: #333;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  padding: 100px;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.NoMatch h1 {
+  margin: 0;
+  padding: 0;
+}

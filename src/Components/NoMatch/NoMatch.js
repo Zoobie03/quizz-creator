@@ -7,7 +7,7 @@ const NoMatch = () => {
   return (
     <div className={styles.NoMatch}>
       <h1>404</h1>
-      <span>Page introuvable</span>
+      <span>Page introuvable 😢</span>
     </div>
   );
 };
