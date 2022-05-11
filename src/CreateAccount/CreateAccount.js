@@ -1,6 +1,6 @@
 // Librairies
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 // Own files
 import { auth, db } from '../config/firebase';
@@ -71,6 +71,9 @@ const CreateAccount = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [valid, setValid] = useState(false);
 
+  // Variables
+  const history = useNavigate();
+
   // Functions
   const registerClickHandler = () => {
     const user = {
@@ -86,7 +89,7 @@ const CreateAccount = (props) => {
 
         setDoc(usersCollection, { quizzs: [] });
 
-        props.history.push(routes.DASHBOARD);
+        history(routes.DASHBOARD);
 
         toast.success('Votre compte a bien été créé.');
       })
