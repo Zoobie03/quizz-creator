@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       {user ? (
-        <div>
+        <div className={styles.Home}>
           <h1>Bienvenue sur Quizz-creator</h1>
 
           <h2>
