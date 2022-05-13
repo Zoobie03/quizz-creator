@@ -86,6 +86,16 @@
   background: linear-gradient(120deg, rgba(149, 3, 254, 0.81) 50%, rgba(56, 104, 237, 0.799) 50%);
 }
 
+.noQuestionMessage {
+  align-self: center;
+  color: white;
+  background-color: tomato;
+  width: fit-content;
+  padding: 5px 10px;
+  border: 2px solid red;
+  border-radius: 4px;
+}
+
 /* SVG */
 .CloseModal {
   cursor: pointer;
