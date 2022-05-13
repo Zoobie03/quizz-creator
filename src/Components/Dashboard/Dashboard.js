@@ -248,7 +248,7 @@ const Dashboard = () => {
         setTimeout(() => {
           history(routes.HOME, { replace: true });
           history(routes.DASHBOARD, { replace: true });
-        }, 100);
+        }, 500);
         toast.success('Votre quizz a bien été modifié !', { theme: 'colored' });
       })
       .catch((error) => {
