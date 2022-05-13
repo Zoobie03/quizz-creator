@@ -63,6 +63,7 @@ const Dashboard = () => {
         onEditSvgClick={() => onEditSvgClickHandler(quizz)}
         onShareSvgClick={() => onShareSvgClickHandler(quizz)}
         onPreviewSvgClick={() => onPreviewSvgClickHandler(quizz)}
+        onRefreshStatsSvgClick={() => onRefreshStatsSvgClick(quizz)}
         quizzPicture={quizz.quizzPicture}
         onQuizzClick={() => {
           handleOnQuizzClick(quizz);
@@ -172,6 +173,10 @@ const Dashboard = () => {
 
     // Show a toast
     toast.error('Cette fonctionnalité est en cours de développement', { theme: 'colored' });
+  };
+
+  const onRefreshStatsSvgClick = (quizz) => {
+    console.log('reload');
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
