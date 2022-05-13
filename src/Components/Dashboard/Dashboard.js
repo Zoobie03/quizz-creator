@@ -80,6 +80,16 @@ const Dashboard = () => {
   });
 
   // Methods
+  const fetchUserQuizzs = async () => {
+    const docSnap = await getDoc(userDoc);
+    if (docSnap.exists()) {
+      console.log('FETCH USER QUIZZ');
+      return docSnap.data();
+    } else {
+      console.error('Aucun documents utilisateur trouvé');
+    }
+  };
+
   const handleOnQuizzClick = (quizz) => {
     setQuizzClicked(quizz);
     setQuizzIsClicked(true);
@@ -101,16 +111,6 @@ const Dashboard = () => {
       setUserQuizzs(newState);
       toast.success('Votre quizz a bien été créé !', { theme: 'colored' });
     });
-  };
-
-  const fetchUserQuizzs = async () => {
-    const docSnap = await getDoc(userDoc);
-    if (docSnap.exists()) {
-      console.log('FETCH USER QUIZZ');
-      return docSnap.data();
-    } else {
-      console.error('Aucun documents utilisateur trouvé');
-    }
   };
 
   const delHandleClick = (quizzId) => {
