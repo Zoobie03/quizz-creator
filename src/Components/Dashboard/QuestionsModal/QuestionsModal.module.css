@@ -15,7 +15,7 @@
 .ModalContent {
   width: 70%;
   height: 90%;
-  background-color: #fafafa;
+  background-color: #e0dfdf;
   border-radius: 10px;
   padding: 10px;
   border: 3px solid #3867ed;
@@ -83,6 +83,7 @@
   border-radius: 5px;
   padding: 3px 10px;
   border: 1px solid #707070;
+  background-color: #f5f5f5;
 }
 
 .ModalContent input[type='file'] {
@@ -101,6 +102,7 @@
   padding: 6px 12px;
   cursor: pointer;
   font-size: 1.3rem;
+  background-color: #f5f5f5;
 }
 
 .ModalContent h2 {
@@ -109,6 +111,10 @@
   font-size: 22px;
   margin: 0;
   margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  border: 1px solid silver;
+  padding: 3px 0;
 }
 
 .questionsList {
@@ -135,6 +141,7 @@
 }
 
 .questionText {
+  /* background-color: #f5f5f5; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -144,6 +151,9 @@
 
 .questionText p {
   margin: 5px 0;
+  background-color: #f5f5f5;
+  padding: 3px 20px;
+  border-radius: 15px;
 }
 
 .answersList {
@@ -163,6 +173,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: fit-content;
   border-bottom: 1px solid silver;
   border-left: 1px solid silver;
 }
@@ -171,6 +182,7 @@
   margin: 0;
   margin-left: 10px;
   text-transform: capitalize;
+  background-color: #f5f5f5;
 }
 
 .trashSvg {
@@ -192,9 +204,10 @@
 .warningAndCreateQuestionButton span {
   cursor: help;
   color: red;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 5px;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .noQuestion {

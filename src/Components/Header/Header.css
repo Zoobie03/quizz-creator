@@ -16,7 +16,7 @@ header nav {
   max-width: 1300px;
   border: 1px solid silver;
   border-radius: 20px;
-  background-color: #f3ecec;
+  background-color: #eee;
 }
 
 @media screen and (max-width: 880px) {
