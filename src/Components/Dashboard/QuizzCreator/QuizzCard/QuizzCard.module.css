@@ -57,6 +57,11 @@
   left: 90px;
 }
 
+.refreshSvg {
+  bottom: 10px;
+  left: 130px;
+}
+
 .quizzPicture svg:hover {
   fill: white;
   background-color: rgb(0, 0, 0);

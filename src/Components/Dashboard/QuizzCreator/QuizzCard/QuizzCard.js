@@ -68,17 +68,16 @@ const QuizzCard = (props) => {
         {/* Rafraichir les statistiques */}
         <div title='Rafraichir les statistiques'>
           <svg
-            width='1em'
-            height='1em'
-            viewBox='0 0 15 15'
+            width='1.3em'
+            height='1.3em'
+            viewBox='0 0 24 24'
             className={`${styles.svg} ${styles.refreshSvg}`}
+            onClick={props.onRefreshStatsSvgClick}
           >
-            <path
-              fill='#888888'
-              fillRule='evenodd'
-              d='M14 7.5A6.5 6.5 0 0 0 7.5 1V0a7.5 7.5 0 0 1 5.099 13H15v1h-4v-4h1v2.19a6.48 6.48 0 0 0 2-4.69ZM2.4 2H0V1h4v4H3V2.81A6.5 6.5 0 0 0 7.5 14v1A7.5 7.5 0 0 1 2.4 2Z'
-              clipRule='evenodd'
-            ></path>
+            <g fill='#1bca1b'>
+              <path d='M21.707 13.707a1 1 0 0 0 0-1.414l-3-3a1 1 0 0 0-1.414 0l-3 3a1 1 0 0 0 1.414 1.414L17 12.414V14a1 1 0 1 0 2 0v-1.586l1.293 1.293a1 1 0 0 0 1.414 0zm-12-3.414a1 1 0 0 1 0 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 1 1 1.414-1.414L5 11.586V10a1 1 0 0 1 2 0v1.586l1.293-1.293a1 1 0 0 1 1.414 0z'></path>
+              <path d='M18 13a1 1 0 0 1 1 1a7 7 0 0 1-12.217 4.667a1 1 0 1 1 1.49-1.334A5 5 0 0 0 17 14a1 1 0 0 1 1-1zm-.86-6.255a1 1 0 0 0 .077-1.412A7 7 0 0 0 5 10a1 1 0 1 0 2 0a5 5 0 0 1 8.727-3.333a1 1 0 0 0 1.412.078z'></path>
+            </g>
           </svg>
         </div>
       </div>
