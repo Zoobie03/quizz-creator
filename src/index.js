@@ -11,7 +11,7 @@ ReactDOM.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    <ToastContainer />
+    <ToastContainer autoClose={2000} />
   </React.StrictMode>,
   document.getElementById('root')
 );
