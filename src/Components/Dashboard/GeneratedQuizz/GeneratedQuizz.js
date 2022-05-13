@@ -47,26 +47,40 @@ const GeneratedQuizz = (props) => {
         <div className={styles.forAuthor}>
           <span>
             Le quizz contient acutellement{' '}
-            <b>{props?.quizz?.questions?.length || '10000'} questions</b>{' '}
+            <b>
+              {props?.quizz?.questions?.length || 'aucunes'}
+              {props.quizz.questions.length > 1 ? ' questions' : ' question'}
+            </b>{' '}
           </span>
           <span>(visible uniquement par l'auteur)</span>
         </div>
         <div className={styles.QuestionsContainer}>
           <ul>
-            {props?.quizz?.questions?.map((question, index) => {
-              return (
-                <Question
-                  key={index}
-                  index={index}
-                  question={question}
-                  questionBorderColor={isEven(index) ? '#3867edcc' : '#9603fe99'}
-                  questionBorderRadius={isEven(index) ? '30px 0 30px 0' : '0 30px 0 30px'}
-                />
-              );
-            }) || 'GENERATED QUIZZ IS EMPTY'}
+            {props?.quizz?.questions.length > 0
+              ? props?.quizz?.questions?.map((question, index) => {
+                  return (
+                    <Question
+                      key={index}
+                      index={index}
+                      question={question}
+                      questionBorderColor={isEven(index) ? '#3867edcc' : '#9603fe99'}
+                      questionBorderRadius={isEven(index) ? '30px 0 30px 0' : '0 30px 0 30px'}
+                    />
+                  );
+                })
+              : ''}
           </ul>
         </div>
-        <button type='button'>Confirmer mes réponses</button>
+        {props?.quizz?.questions.length > 0 ? (
+          <button type='button'>
+            {props.quizz.questions.length > 1 ? 'Confirmer ma réponse' : 'Confirmer mes réponses'}
+          </button>
+        ) : (
+          <span className={styles.noQuestionMessage}>
+            Vous n'avez aucune question dans ce quizz. Si vous voulez un aperçu de votre quizz, il
+            vous faut au minimum 1 question.
+          </span>
+        )}
       </div>
     </div>
   );
