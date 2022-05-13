@@ -14,8 +14,9 @@ header nav {
   flex-grow: 1;
   margin: auto;
   max-width: 1300px;
-  border-bottom: 1px solid silver;
-  border-top: 1px solid silver;
+  border: 1px solid silver;
+  border-radius: 20px;
+  background-color: #f3ecec;
 }
 
 @media screen and (max-width: 880px) {

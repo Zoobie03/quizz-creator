@@ -1,4 +1,5 @@
 .NumberOfQuizz {
+  background-color: #f3ecec;
   display: flex;
   flex-direction: column;
   height: auto;
