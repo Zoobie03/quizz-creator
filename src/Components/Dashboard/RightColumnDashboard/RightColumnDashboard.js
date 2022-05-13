@@ -18,6 +18,10 @@ const RightColumnDashboard = (props) => {
           panelTitle='Nombre de questions'
           information={props?.quizz?.questions.length || '0'}
         />
+        <Panel
+          panelTitle='Date de création'
+          information={props?.quizz?.createdAt || 'Aucune date'}
+        />
       </div>
     </div>
   );

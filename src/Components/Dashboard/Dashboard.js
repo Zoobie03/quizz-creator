@@ -34,6 +34,7 @@ const Dashboard = () => {
     tags: [],
     thematics: [],
     quizzPicture: null,
+    // createdAt: new Date.now()
   });
 
   // Context
@@ -177,6 +178,7 @@ const Dashboard = () => {
 
   const onRefreshStatsSvgClick = (quizz) => {
     console.log('reload');
+    console.log(new Date(Date.now()));
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
