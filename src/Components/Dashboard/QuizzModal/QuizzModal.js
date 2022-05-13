@@ -147,7 +147,7 @@ const QuizzModal = (props) => {
             <label htmlFor='tags'>Tags (optionnel)</label>
             <input type='text' id='tags' value={props.quizz.tags} onChange={handleChange} />
             {/* Quizz picture */}
-            <label htmlFor='quizzPicture'>Image du quizz {props.userQuizzs.length}</label>
+            <label htmlFor='quizzPicture'>Image du quizz {props.userQuizzs.length + 1}</label>
             <div className={styles.fileUploader}>
               <input type='file' id='quizzPicture' onChange={uploadForPreview} />
               {state.loading ? (
