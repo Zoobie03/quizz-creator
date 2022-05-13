@@ -81,6 +81,7 @@ const QuestionsModal = (props) => {
           <div className={styles.formQuestion}>
             <h2>Création de question/réponses</h2>
             <form>
+              {/* QUESTIION */}
               <label htmlFor='question'>
                 Votre question
                 <input
@@ -91,6 +92,20 @@ const QuestionsModal = (props) => {
                   placeholder='Votre question...'
                 />
               </label>
+
+              {/* QUESTION PICTURE */}
+              <label htmlFor='questionPicture' className={styles.customFileUpload}>
+                <svg width='2em' height='2em' viewBox='0 0 24 24'>
+                  <path
+                    fill='#888888'
+                    d='M14 13v4h-4v-4H7l5-5l5 5m2.35-2.97A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.03A6.004 6.004 0 0 0 0 14a6 6 0 0 0 6 6h13a5 5 0 0 0 5-5c0-2.64-2.05-4.78-4.65-4.97Z'
+                  ></path>
+                </svg>
+                Image de votre question
+              </label>
+              <input type='file' id='questionPicture' />
+
+              {/* ANSWERS */}
               <label htmlFor='answer'>
                 Votre/vos réponse(s) (Si plusieurs, séparez les avec des virgules)
                 <input
@@ -101,6 +116,7 @@ const QuestionsModal = (props) => {
                   placeholder='Votre/vos réponse(s)'
                 />
               </label>
+
               <div className={styles.warningAndCreateQuestionButton}>
                 <span>🚨 N'oubliez pas de confirmer l'édition avant de fermer la fenêtre 🚨</span>
                 <button
