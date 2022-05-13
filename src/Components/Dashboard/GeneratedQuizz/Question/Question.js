@@ -16,8 +16,17 @@ const Question = (props) => {
       className={styles.QuestionCard}
     >
       <span className={styles.questionTitle}>Question {props.index + 1}</span>
-      {/* <label htmlFor={`question${props.index + 1}`}> </label> */}
+
       <p className={styles.question}>{props.question.question}</p>
+
+      {props?.picture ? (
+        <img
+          src={props.picture}
+          className={styles.questionPicture}
+          alt={`question ${props.index}`}
+        />
+      ) : null}
+
       <input
         type='text'
         id={`question${props.index + 1}`}
