@@ -170,7 +170,7 @@ const Dashboard = () => {
     // window.open(returnUrl, '_blank');
 
     // Copy the link to clipboard
-    navigator.clipboard.writeText('En cours de développement');
+    // navigator.clipboard.writeText('En cours de développement');
 
     // Show a toast
     toast.error('Cette fonctionnalité est en cours de développement', { theme: 'colored' });
@@ -179,6 +179,8 @@ const Dashboard = () => {
   const onRefreshStatsSvgClick = (quizz) => {
     console.log('reload');
     console.log(new Date(Date.now()));
+    // Show a toast
+    toast.error('Cette fonctionnalité est en cours de développement', { theme: 'colored' });
   };
 
   const onPreviewSvgClickHandler = (quizz) => {
