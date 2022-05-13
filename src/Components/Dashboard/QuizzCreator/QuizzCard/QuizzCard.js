@@ -59,10 +59,26 @@ const QuizzCard = (props) => {
             className={`${styles.svg} ${styles.previewSvg}`}
             onClick={props.onPreviewSvgClick}
           >
-            <g fill='#ffffff00' stroke='#9603fea1' strokeLinejoin='round' strokeWidth='3'>
+            <g fill='#ffffff00' stroke='tomato' strokeLinejoin='round' strokeWidth='3'>
               <path d='M24 36c11.046 0 20-12 20-12s-8.954-12-20-12S4 24 4 24s8.954 12 20 12Z'></path>
               <path d='M24 29a5 5 0 1 0 0-10a5 5 0 0 0 0 10Z'></path>
             </g>
+          </svg>
+        </div>
+        {/* Rafraichir les statistiques */}
+        <div title='Rafraichir les statistiques'>
+          <svg
+            width='1em'
+            height='1em'
+            viewBox='0 0 15 15'
+            className={`${styles.svg} ${styles.refreshSvg}`}
+          >
+            <path
+              fill='#888888'
+              fillRule='evenodd'
+              d='M14 7.5A6.5 6.5 0 0 0 7.5 1V0a7.5 7.5 0 0 1 5.099 13H15v1h-4v-4h1v2.19a6.48 6.48 0 0 0 2-4.69ZM2.4 2H0V1h4v4H3V2.81A6.5 6.5 0 0 0 7.5 14v1A7.5 7.5 0 0 1 2.4 2Z'
+              clipRule='evenodd'
+            ></path>
           </svg>
         </div>
       </div>
