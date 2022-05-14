@@ -1,12 +1,11 @@
 .NumberOfQuizz {
-  background-color: #eee;
+  background-color: #e7e7e7;
   display: flex;
   flex-direction: column;
   height: auto;
-  border-bottom: 1px solid #707070;
-  border-right: 1px solid #707070;
-  border-left: 1px solid #707070;
+  border: 1px solid silver;
   width: 285px;
+  max-height: 100px;
 }
 
 .NumberOfQuizz h2 {
@@ -17,17 +16,16 @@
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  padding: 10px;
   text-transform: uppercase;
 }
 
 .NumberOfQuizz p {
   background-color: #3868edcc;
   color: white;
-  margin: 20px auto;
+  margin: 10px auto;
   font-weight: bold;
   font-size: 2rem;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
 }
