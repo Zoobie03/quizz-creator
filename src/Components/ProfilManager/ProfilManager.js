@@ -103,12 +103,13 @@ const ProfilManager = (props) => {
             <input type='email' id='email' defaultValue={userInformations.email} disabled />
           </label>
 
-          <p className={styles.emailVerif}>
-            Email vérifié: {userInformations.emailVerified ? '✅' : '❌'}
-          </p>
-          {userInformations.emailVerified ? null : (
-            <button onClick={handleSendEmailVerif}>M'envoyer un email de vérification</button>
-          )}
+          <div className={styles.emailVerif}>
+            <p>Email vérifié: {userInformations.emailVerified ? '✅' : '❌'}</p>
+            {userInformations.emailVerified ? null : (
+              <button onClick={handleSendEmailVerif}>M'envoyer un email de vérification</button>
+            )}{' '}
+          </div>
+
           <label htmlFor='URLpicture'>Photo de profil</label>
           <div className={styles.fileUploader}>
             <input type='file' id='URLpicture' onChange={uploadForPreview} />
