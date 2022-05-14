@@ -19,7 +19,6 @@ const LeftColumnDashboard = (props) => {
         noneMessage="Vous n'avez aucunes thématiques"
       />
       <ThematicsAndTags data={props.userTags} title='Tags' noneMessage="Vous n'avez aucun tag" />
-      <SearchBar />
     </div>
   );
 };
