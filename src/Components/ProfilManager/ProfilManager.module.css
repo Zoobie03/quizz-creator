@@ -93,6 +93,7 @@ input:disabled {
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
   color: #333;
+  border: 1px solid silver;
 }
 .picturePreview img {
   width: 285px;
@@ -103,9 +104,12 @@ input:disabled {
 
 .emailVerif {
   display: flex;
+  align-items: center;
+  margin: 0;
 }
 
 .emailVerif p {
+  margin: 0;
   font-size: 20px;
   text-align: start;
   color: #333;
