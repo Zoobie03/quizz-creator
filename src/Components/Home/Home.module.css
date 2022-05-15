@@ -1,6 +1,6 @@
 .Home {
   color: #112a46;
-  background-color: #faebd7;
+  background-color: rgb(236, 236, 236);
   width: 80%;
   margin: auto;
   border-radius: 20px;
@@ -30,10 +30,20 @@
 }
 
 .welcomeRightPicture {
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
-  float: right;
-  padding: 20px;
   border-right: 1px solid silver;
-  text-align: justify;
   width: 50%;
+  align-items: center;
+  justify-content: center;
 }
+
+/* 
+.welcomeRightPicture img:nth-child(1) {
+  width: 600px;
+}
+
+.welcomeRightPicture img:nth-child(2) {
+  width: 300px;
+} */
