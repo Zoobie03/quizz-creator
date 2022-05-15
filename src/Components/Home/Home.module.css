@@ -39,6 +39,10 @@
   justify-content: center;
 }
 
+.welcomeRightPicture img {
+  margin-top: 20px;
+}
+
 /* 
 .welcomeRightPicture img:nth-child(1) {
   width: 600px;
