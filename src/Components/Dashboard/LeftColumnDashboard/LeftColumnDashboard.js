@@ -4,7 +4,6 @@ import React from 'react';
 import styles from './LeftColumnDashboard.module.css';
 // Components
 import NumberOfQuizz from './NumberOfQuizz/NumberOfQuizz';
-import SearchBar from './SearchBar/SearchBar';
 import ThematicsAndTags from './ThematicsAndTags/ThematicsAndTags';
 import UserPicture from './UserPicture/UserPicture';
 
