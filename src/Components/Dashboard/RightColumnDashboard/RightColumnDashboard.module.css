@@ -2,7 +2,7 @@
   border: 1px solid black;
   width: 315px;
   height: 750px;
-  /* overflow: scroll; */
+  background-color: #c7c0c0;
 }
 
 .RightColumnDashboard h2 {
