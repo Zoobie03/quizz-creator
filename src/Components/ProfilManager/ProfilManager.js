@@ -23,9 +23,7 @@ const ProfilManager = (props) => {
   const [loading, setLoading] = useState(false);
 
   // Methods
-  const settingsProfilClickHandler = (event) => {
-    event.preventDefault();
-
+  const settingsProfilClickHandler = () => {
     const inputs = [...document.querySelectorAll('input')].filter(
       (input) => input.id !== 'email' && input.id !== 'uid' && input.id !== 'URLpicture'
     );
@@ -41,10 +39,9 @@ const ProfilManager = (props) => {
     })
       .then(() => {
         // Profile updated!
-        // console.log('Profile updated!');
         toast.info('Profil mis à jour.');
-        auth.currentUser.reload();
-        // props.history.push('/dashboard');
+        user.displayName = data.displayName;
+        setUserInformations({ ...user });
       })
       .catch((error) => {
         // An error occurred
@@ -92,7 +89,7 @@ const ProfilManager = (props) => {
     <div className={styles.ProfilManager}>
       <h1>Bienvenue {userInformations.displayName}</h1>
       <div className={styles.wrapperProfil}>
-        <form onSubmit={settingsProfilClickHandler}>
+        <form>
           <label htmlFor='displayName'>
             Pseudonyme
             <input type='text' id='displayName' defaultValue={userInformations.displayName} />
@@ -142,7 +139,9 @@ const ProfilManager = (props) => {
               onChange={(e) => setUserInformations(e.target.value)}
             />
           </label>
-          <button type='submit'>Valider les changements</button>
+          <button type='button' onClick={settingsProfilClickHandler}>
+            Valider les changements
+          </button>
         </form>
         <div className={styles.picturePreview}>
           {URLpicture ? (
