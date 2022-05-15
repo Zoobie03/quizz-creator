@@ -8,7 +8,7 @@ import styles from './Dashboard.module.css';
 import { db } from '../../config/firebase';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 import routes from '../../config/routes';
-import { generateSlug } from '../../Shared/functions/generateSlug';
+import getFormatedDate from '../../Shared/functions/getFormatedDate';
 // Components
 import LeftColumnDashboard from './LeftColumnDashboard/LeftColumnDashboard';
 import QuizzCreator from './QuizzCreator/QuizzCreator';
@@ -34,7 +34,7 @@ const Dashboard = () => {
     tags: [],
     thematics: [],
     quizzPicture: null,
-    // createdAt: new Date.now()
+    createdAt: getFormatedDate(),
   });
 
   // Context
@@ -146,6 +146,7 @@ const Dashboard = () => {
       tags: [],
       thematics: [],
       quizzPicture: null,
+      createdAt: getFormatedDate(),
     });
   };
 
