@@ -1,11 +1,6 @@
 .Home {
-  color: #112a46;
-  background-color: #dfe6e9;
-  width: 80%;
+  max-width: 1100px;
   margin: auto;
-  border-radius: 20px;
-  border: 1px solid silver;
-  overflow: hidden;
 }
 
 .Home h1 {
@@ -15,6 +10,7 @@
   height: 70px;
   font-size: 50px;
   font-weight: bold;
+  border-radius: 40px;
   color: white;
   background: rgb(56, 103, 237);
   background: linear-gradient(81deg, rgba(56, 103, 237, 0.8) 30%, rgba(150, 3, 254, 0.6) 60%);
