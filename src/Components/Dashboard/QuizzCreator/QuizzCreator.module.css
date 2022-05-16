@@ -12,8 +12,7 @@
   font-size: 50px;
   font-weight: bold;
   color: white;
-  border: 1px solid silver;
-  border-bottom: none;
+
   background: rgb(56, 103, 237);
   background: linear-gradient(81deg, rgba(56, 103, 237, 0.8) 30%, rgba(150, 3, 254, 0.6) 60%);
   border-radius: 10px 10px 0 0;
@@ -26,6 +25,7 @@
 }
 
 .wrapperQuizzs {
+  box-shadow: 3px 3px 5px 0px #636e72;
   margin: 0;
   padding: 0;
   display: flex;
@@ -33,8 +33,9 @@
   width: 100%;
   max-width: 1110px;
   justify-content: space-between;
-  border: 1px solid silver;
-  background-color: antiquewhite;
+  border: 1px solid #636e72;
+  border-top: none;
+  background-color: #dfe6e9;
   border-radius: 0 0 10px 10px;
 }
 

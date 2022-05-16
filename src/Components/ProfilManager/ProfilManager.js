@@ -87,7 +87,7 @@ const ProfilManager = (props) => {
 
   return (
     <div className={styles.ProfilManager}>
-      <h1>Bienvenue {userInformations.displayName}</h1>
+      <h1>Informations utilisateur</h1>
       <div className={styles.wrapperProfil}>
         <form>
           <label htmlFor='displayName'>

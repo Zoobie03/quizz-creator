@@ -8,11 +8,20 @@
 }
 
 .ProfilManager h1 {
+  box-sizing: border-box;
   font-style: italic;
+  background-color: #dfe6e9;
+  max-width: 1050px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 5px 5px 0px 0px #636e72;
+  border: 2px solid #636e72;
+  padding: 5px;
 }
 
 .wrapperProfil {
-  border: 1px solid silver;
+  box-sizing: border-box;
+  border: 2px solid #636e72;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -21,9 +30,10 @@
   max-width: 1050px;
   border-radius: 10px;
   color: saddlebrown;
-  background-color: antiquewhite;
+  background-color: #dfe6e9;
   margin: 0;
   padding: 0;
+  box-shadow: 5px 5px 0px 0px #636e72;
 }
 
 .wrapperProfil form {
