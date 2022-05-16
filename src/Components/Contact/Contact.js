@@ -1,13 +1,20 @@
 // Library
 import React from 'react';
+import emailjs from '@emailjs/browser';
 // Own files
 import styles from './Contact.module.css';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
   // State
   const [nameInputValue, setNameInputValue] = React.useState('');
   const [emailInputValue, setEmailInputValue] = React.useState('');
   const [messageInputValue, setMessageInputValue] = React.useState('');
+
+  // ComponentDidMount
+  React.useEffect(() => {
+    resetForm();
+  }, []);
 
   // Methods
   const handleChange = (event) => {
@@ -16,7 +23,7 @@ const Contact = () => {
       case 'name':
         setNameInputValue(value);
         break;
-      case 'email':
+      case 'user_email':
         setEmailInputValue(value);
         break;
       case 'message':
@@ -27,25 +34,46 @@ const Contact = () => {
     }
   };
 
-  const handleFormSubmit = (event) => {
+  const sendEmail = (event) => {
     event.preventDefault();
-    // console.log('Formulaire soumis');
+
+    emailjs
+      .sendForm('service_knqt37p', 'template_xq5plr6', event.target, 'FTBR6qMHkQMXUF6fM')
+      .then((response) => {
+        // console.log(response);
+        if (response.status === 200) {
+          toast.success(
+            'Message envoyé ! Le développeur vous répondra dans les plus brefs délais.'
+          );
+        }
+        resetForm();
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error('Une erreur est survenue, veuillez réessayer plus tard.', { theme: 'colored' });
+      });
+  };
+
+  const resetForm = () => {
+    setNameInputValue('');
+    setEmailInputValue('');
+    setMessageInputValue('');
   };
 
   return (
     <div className={styles.Contact}>
       <h1>Pour contacter le développeur</h1>
-      <form>
+      <form onSubmit={(event) => sendEmail(event)}>
         <label htmlFor='name'>
           Nom
           <input id='name' name='name' type='text' value={nameInputValue} onChange={handleChange} />
         </label>
-        <label htmlFor='email'>
+        <label htmlFor='user_email'>
           E-mail
           <input
-            id='email'
-            name='email'
-            type='mail'
+            id='user_email'
+            name='user_email'
+            type='email'
             value={emailInputValue}
             onChange={handleChange}
           />
@@ -60,9 +88,7 @@ const Contact = () => {
             onChange={handleChange}
           ></textarea>
         </label>
-        <button type='submit' onSubmit={(event) => handleFormSubmit(event)}>
-          Envoyer
-        </button>
+        <button type='submit'>Envoyer</button>
       </form>
     </div>
   );
