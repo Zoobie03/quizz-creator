@@ -20,7 +20,7 @@ const RightColumnDashboard = (props) => {
         />
         <Panel
           panelTitle='Date de création'
-          information={props?.quizz?.createdAt || 'Aucune date'}
+          information={`Créé le ${props?.quizz?.createdAt}` || 'Aucune date'}
         />
       </div>
     </div>
