@@ -18,6 +18,7 @@ const QuizzModal = (props) => {
     loading: false,
   };
 
+  // reducer
   const reducer = (state, action) => {
     switch (action.type) {
       case 'SET_LOADING':
@@ -30,12 +31,7 @@ const QuizzModal = (props) => {
         return state;
     }
   };
-
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  // const [URLpicture, setURLpicture] = useState(null);
-  // const [fileUploaded, setFileUploaded] = useState(false);
-  // const [loading, setLoading] = useState(false);
 
   // Variables
   const closedCross = (
@@ -87,19 +83,18 @@ const QuizzModal = (props) => {
     }
   };
 
-  // Upload picture
+  // Upload picture to preview on modal
   const uploadForPreview = () => {
-    // setFileUploaded(false);
     dispatch({ type: 'SET_FILE_UPLOADED', payload: false });
 
     const file = document.getElementById('quizzPicture').files[0];
 
     const ObjectURLFile = window.URL.createObjectURL(file);
-    // setURLpicture(ObjectURLFile);
+
     dispatch({ type: 'SET_URL_PICTURE', payload: ObjectURLFile });
   };
 
-  // Firebase storage
+  // upload picture to Firebase storage
   const uploadOnFirebaseStorage = async () => {
     // setLoading(true);
     dispatch({ type: 'SET_LOADING', payload: true });
@@ -107,15 +102,12 @@ const QuizzModal = (props) => {
     const file = document.getElementById('quizzPicture').files[0];
     const storageRef = ref(
       storage,
-      `users/${user.uid}/quizz-pictures/quizz-${props.userQuizzs.length}.jpg`
+      `users/${user.uid}/quizz-pictures/quizz-${props.userQuizzs.length}/quizz-${props.userQuizzs.length}-picture.jpg`
     );
 
     await uploadBytes(storageRef, file, file.name).then((snapshot) => {
-      // console.log('Uploaded file!');
-      // setFileUploaded(true);
       dispatch({ type: 'SET_FILE_UPLOADED', payload: true });
       toast.success("L'image de votre quizz a bien été uploadée !");
-      // setLoading(false);
       dispatch({ type: 'SET_LOADING', payload: false });
     });
 
@@ -158,17 +150,10 @@ const QuizzModal = (props) => {
                 <button onClick={uploadOnFirebaseStorage}>Envoyer</button>
               ) : (
                 <button className={styles.errorButton} disabled>
-                  Aucun fichier sélectionné
+                  Aucun fichier
                 </button>
               )}
             </div>
-            <button
-              type='button'
-              onClick={props.handleCreateQuizzClick}
-              className={styles.submitButton}
-            >
-              Créer le quizz
-            </button>
           </form>
           <div className={styles.picturePreview}>
             {state.URLpicture ? (
@@ -178,6 +163,13 @@ const QuizzModal = (props) => {
             )}
           </div>
         </div>
+        <button
+          type='button'
+          onClick={props.handleCreateQuizzClick}
+          className={styles.submitButton}
+        >
+          Créer le quizz
+        </button>
       </div>
     </div>
   );
