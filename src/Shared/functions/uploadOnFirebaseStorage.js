@@ -1,17 +1,25 @@
-import { updateProfile } from 'firebase/auth';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+// Library
+import { getDownloadURL, uploadBytes } from 'firebase/storage';
+import { ref } from 'firebase/storage';
+import { toast } from 'react-toastify';
+// Own files
 import { storage } from '../../config/firebase';
 
-export async function uploadOnFirebaseStorage(file, currentUser, setLoading) {
-  const fileRef = ref(storage, `users/${currentUser.uid}/avatar`);
-
+const uploadFileHandler = async (setLoading, inputFileId, pathRef, setFileUploaded, userUid) => {
+  // Firebase storage (for upload)
   setLoading(true);
 
-  const snapshot = await uploadBytes(fileRef, file);
+  const file = document.getElementById('inputFileId').files[0];
 
-  const photoURL = await getDownloadURL(fileRef);
+  const storageRef = ref(storage, `users/${userUid}/pathRef`);
 
-  updateProfile(currentUser, { photoURL });
+  await uploadBytes(storageRef, file, file.name).then((snapshot) => {
+    toast.success('Votre image a bien été uploadée.');
+    setFileUploaded(true);
+    setLoading(false);
+  });
+
+  const photoURL = await getDownloadURL(storageRef);
 
   setLoading(false);
-}
+};
