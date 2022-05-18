@@ -160,6 +160,7 @@ const QuestionsModal = (props) => {
                                   onClick={() =>
                                     props.onDeleteAnswerClick(index, question.answers, question.id)
                                   }
+                                  className={styles.deleteAnswerButton}
                                 >
                                   {trashSvg}
                                 </button>
