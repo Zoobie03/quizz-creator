@@ -222,7 +222,7 @@
 
 .warningAndCreateQuestionButton span {
   cursor: help;
-  color: red;
+  color: tomato;
   font-size: 16px;
   border-radius: 5px;
   margin-bottom: 20px;
