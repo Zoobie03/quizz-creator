@@ -39,7 +39,7 @@ const Dashboard = () => {
 
   // Context
   const { user } = useContext(LoginContext);
-  const { uid, displayName, email } = { ...user };
+  const { uid } = { ...user };
 
   // componentDidMount
   useEffect(() => {
@@ -59,7 +59,7 @@ const Dashboard = () => {
       <QuizzCard
         key={index}
         index={index}
-        quizzTitle={quizz.title !== '' ? quizz.title : 'Titre du quizz'}
+        quizzTitle={quizz.title !== '' ? quizz.title : 'Quizz n°' + (index + 1)}
         onSvgClick={() => delHandleClick(quizz.id)}
         onEditSvgClick={() => onEditSvgClickHandler(quizz)}
         onShareSvgClick={() => onShareSvgClickHandler(quizz)}
@@ -85,7 +85,7 @@ const Dashboard = () => {
   const fetchUserQuizzs = async () => {
     const docSnap = await getDoc(userDoc);
     if (docSnap.exists()) {
-      console.log('FETCH USER QUIZZ');
+      console.log('Fetch user quizz ==> Firebase');
       return docSnap.data();
     } else {
       console.error('Aucun documents utilisateur trouvé');
@@ -113,6 +113,8 @@ const Dashboard = () => {
       setUserQuizzs(newState);
       toast.success('Votre quizz a bien été créé !', { theme: 'colored' });
     });
+
+    console.log(quizz);
   };
 
   const delHandleClick = (quizzId) => {
@@ -141,7 +143,7 @@ const Dashboard = () => {
 
     setQuizz({
       id: Math.random(),
-      title: '',
+      title: `Quizz n°${userQuizzs.length + 1}`,
       questions: [],
       tags: [],
       thematics: [],
@@ -193,7 +195,7 @@ const Dashboard = () => {
     setQuestionModalIsOpen(false);
   };
 
-  const onClickButtonCreateQuestion = (question, answer) => {
+  const onClickButtonCreateQuestion = (question, answer, questionPicture) => {
     if (question !== '' && answer !== '') {
       // Trim space and replace comma
       answer = answer.replace(/\s+/g, '').split(',');
@@ -268,8 +270,9 @@ const Dashboard = () => {
   };
 
   const handleMainContainerClick = (event) => {
-    const target = event.target;
-    if (target.nodeName === 'IMG') {
+    if (event.target.nodeName === 'IMG' && event.target.classList.item(0) === 'card') {
+      return;
+    } else if (event.target.nodeName === 'DIV' && event.target.classList.item(0) === 'card') {
       return;
     } else {
       setQuizzIsClicked(false);
