@@ -6,8 +6,10 @@ import styles from './QuizzCard.module.css';
 const QuizzCard = (props) => {
   return (
     <li className={styles.QuizzCard}>
-      <div className={styles.quizzPicture} onClick={props.onQuizzClick}>
-        {props.quizzPicture ? <img src={props.quizzPicture} alt={props.quizzTitle} /> : null}
+      <div className={`card ${styles.quizzPicture}`} onClick={props.onQuizzClick}>
+        {props.quizzPicture ? (
+          <img src={props.quizzPicture} className='card' alt={props.quizzTitle} />
+        ) : null}
         <span>{props.index + 1}</span>
         {/* Trash Icon */}
         <div title='Supprimer le quizz'>
