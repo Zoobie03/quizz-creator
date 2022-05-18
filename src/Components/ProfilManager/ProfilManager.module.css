@@ -8,14 +8,15 @@
 }
 
 .ProfilManager h1 {
+  color: white;
   box-sizing: border-box;
   font-style: italic;
-  background-color: #dfe6e9;
+  background: rgb(56, 103, 237);
+  background: linear-gradient(81deg, rgba(56, 103, 237, 0.8) 30%, rgba(150, 3, 254, 0.6) 60%);
   max-width: 1050px;
   width: 100%;
   border-radius: 8px;
-  box-shadow: 5px 5px 0px 0px #636e72;
-  border: 2px solid #636e72;
+  box-shadow: 5px 5px 10px 0px white;
   padding: 5px;
 }
 
