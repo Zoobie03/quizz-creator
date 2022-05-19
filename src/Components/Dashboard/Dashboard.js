@@ -3,9 +3,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
+import { uploadBytes, getDownloadURL, ref } from 'firebase/storage';
 // Own Files
 import styles from './Dashboard.module.css';
-import { db } from '../../config/firebase';
+import { db, storage } from '../../config/firebase';
 import { LoginContext } from '../../hoc/Contexts/LoginContext';
 import routes from '../../config/routes';
 import getFormatedDate from '../../Shared/functions/getFormatedDate';
@@ -89,6 +90,30 @@ const Dashboard = () => {
       return docSnap.data();
     } else {
       console.error('Aucun documents utilisateur trouvé');
+    }
+  };
+
+  // upload picture to Firebase storage
+  const uploadOnFirebaseStorage = async (questionPicture) => {
+    const file = questionPicture;
+
+    if (file) {
+      const quizzIndex = userQuizzs.findIndex((quizz) => {
+        return quizz.id === quizzToEdit.id;
+      });
+
+      const storageRef = ref(
+        storage,
+        `users/${user.uid}/question-picture/quizz-${quizzIndex}/questionPicture.jpg`
+      );
+
+      await uploadBytes(storageRef, file, file.name).then((snapshot) => {
+        toast.success("L'image de votre quizz a bien été uploadée !");
+      });
+
+      const photoURL = await getDownloadURL(storageRef);
+
+      return photoURL;
     }
   };
 
@@ -181,7 +206,6 @@ const Dashboard = () => {
 
   const onRefreshStatsSvgClick = (quizz) => {
     console.log('reload');
-    console.log(new Date(Date.now()));
     // Show a toast
     toast.error('Cette fonctionnalité est en cours de développement', { theme: 'colored' });
   };
@@ -196,17 +220,31 @@ const Dashboard = () => {
   };
 
   const onClickButtonCreateQuestion = (question, answer, questionPicture) => {
-    if (question !== '' && answer !== '') {
-      // Trim space and replace comma
-      answer = answer.replace(/\s+/g, '').split(',');
+    // Trim space and replace comma
+    answer = answer.replace(/\s+/g, '').split(',');
 
+    if (!questionPicture && question !== '' && answer !== '') {
       const newQuestion = {
         id: Math.random(),
         question: question,
         answers: answer,
+        questionPicture: null,
       };
 
       setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
+    }
+
+    if (question !== '' && answer !== '') {
+      uploadOnFirebaseStorage(questionPicture).then((picturePath) => {
+        const newQuestion = {
+          id: Math.random(),
+          question: question,
+          answers: answer,
+          questionPicture: picturePath,
+        };
+
+        setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
+      });
     } else {
       alert('Veuillez remplir tous les champs');
     }
