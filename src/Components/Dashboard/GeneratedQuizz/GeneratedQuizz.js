@@ -65,7 +65,7 @@ const GeneratedQuizz = (props) => {
                       question={question}
                       questionBorderColor={isEven(index) ? '#3867edcc' : '#9603fe99'}
                       questionBorderRadius={isEven(index) ? '30px 0 30px 0' : '0 30px 0 30px'}
-                      picture={props.picture}
+                      picture={question.questionPicture}
                     />
                   );
                 })
