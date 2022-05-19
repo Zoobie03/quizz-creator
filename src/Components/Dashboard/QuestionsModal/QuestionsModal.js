@@ -1,5 +1,5 @@
 // Library
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LoadingSvg from '../../../pictures/loading/LoadingSvg';
 // Own files
 import styles from './QuestionsModal.module.css';
@@ -8,11 +8,7 @@ const QuestionsModal = (props) => {
   // States
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
-
-  // ComponentDidMount
-  useEffect(() => {
-    // console.log('QUESTIONS', props.questions);
-  }, [props.questions]);
+  const [questionPicture, setQuestionPicture] = useState(null);
 
   // Variables
   const closedCross = (
@@ -102,8 +98,14 @@ const QuestionsModal = (props) => {
                   ></path>
                 </svg>
                 Image de votre question
+                <input
+                  type='file'
+                  id='questionPicture'
+                  onChange={(event) => {
+                    setQuestionPicture(event.target?.files[0]);
+                  }}
+                />
               </label>
-              <input type='file' id='questionPicture' />
 
               {/* ANSWERS */}
               <label htmlFor='answer'>
@@ -122,7 +124,9 @@ const QuestionsModal = (props) => {
                 <button
                   type='button'
                   className={styles.createQuestion}
-                  onClick={() => props.onClickButtonCreateQuestion(question, answer)}
+                  onClick={() =>
+                    props.onClickButtonCreateQuestion(question, answer, questionPicture)
+                  }
                 >
                   Créer ma question
                 </button>
