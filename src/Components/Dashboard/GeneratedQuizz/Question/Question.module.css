@@ -23,6 +23,15 @@
 }
 
 .questionPicture {
+  display: block;
+  margin: auto;
+  max-width: 600px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.questionPicture img {
+  object-fit: cover;
 }
 
 .answerInput {
