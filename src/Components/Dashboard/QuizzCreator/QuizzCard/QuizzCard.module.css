@@ -17,8 +17,8 @@
   width: 250px;
   height: 250px;
   border-radius: 10px;
-  background: rgb(56, 103, 237);
-  background: linear-gradient(81deg, rgba(56, 103, 237, 0.8) 30%, rgba(150, 3, 254, 0.6) 60%);
+  background: rgb(150, 3, 254);
+  background: radial-gradient(circle, rgba(150, 3, 254, 0.6) 20%, rgba(56, 103, 237, 0.8) 80%);
   overflow: hidden;
   transition: 0.3s;
 }
