@@ -220,31 +220,30 @@ const Dashboard = () => {
   };
 
   const onClickButtonCreateQuestion = (question, answer, questionPicture) => {
-    // Trim space and replace comma
-    answer = answer.replace(/\s+/g, '').split(',');
-
-    if (!questionPicture && question !== '' && answer !== '') {
-      const newQuestion = {
-        id: Math.random(),
-        question: question,
-        answers: answer,
-        questionPicture: null,
-      };
-
-      setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
-    }
-
     if (question !== '' && answer !== '') {
-      uploadOnFirebaseStorage(questionPicture).then((picturePath) => {
+      // Trim space and replace comma
+      answer = answer.replace(/\s+/g, '').split(',');
+      if (questionPicture !== null) {
+        uploadOnFirebaseStorage(questionPicture).then((picturePath) => {
+          const newQuestion = {
+            id: Math.random(),
+            question: question,
+            answers: answer,
+            questionPicture: picturePath,
+          };
+
+          setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
+        });
+      } else {
         const newQuestion = {
           id: Math.random(),
           question: question,
           answers: answer,
-          questionPicture: picturePath,
+          questionPicture: null,
         };
 
         setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
-      });
+      }
     } else {
       alert('Veuillez remplir tous les champs');
     }
