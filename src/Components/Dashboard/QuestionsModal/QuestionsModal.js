@@ -52,7 +52,7 @@ const QuestionsModal = (props) => {
 
   const downArrow = (
     <svg width='1em' height='1em' viewBox='0 0 24 24'>
-      <path fill='#888888' d='M8 5v14l11-7L8 5z'></path>
+      <path fill='#000' d='M8 5v14l11-7L8 5z'></path>
     </svg>
   );
 
@@ -73,10 +73,21 @@ const QuestionsModal = (props) => {
 
   const onQuestionClick = (index) => {
     const questionClicked = document.getElementById(`question${index}`);
+    const isSvgChild = questionClicked.childNodes.item(0).childNodes.item(2).nodeName === 'svg';
 
     if (questionClicked.childNodes.item(1).style.display === 'block') {
+      if (isSvgChild) {
+        questionClicked.childNodes.item(0).childNodes.item(2).style.transform = 'rotate(0deg)';
+      } else {
+        questionClicked.childNodes.item(0).childNodes.item(3).style.transform = 'rotate(0deg)';
+      }
       questionClicked.childNodes.item(1).style.display = 'none';
     } else {
+      if (isSvgChild) {
+        questionClicked.childNodes.item(0).childNodes.item(2).style.transform = 'rotate(90deg)';
+      } else {
+        questionClicked.childNodes.item(0).childNodes.item(3).style.transform = 'rotate(90deg)';
+      }
       questionClicked.childNodes.item(1).style.display = 'block';
     }
   };
@@ -165,7 +176,7 @@ const QuestionsModal = (props) => {
                           Supprimer
                         </button>
                         {question.questionPicture !== null ? (
-                          <div title=''>
+                          <div title='Cette question contient une image'>
                             <svg width='1.2em' height='1.2em' viewBox='0 0 1024 1024'>
                               <path
                                 fill='white'
@@ -174,7 +185,7 @@ const QuestionsModal = (props) => {
                             </svg>
                           </div>
                         ) : null}
-                        <p onClick={() => onQuestionClick(index)}>
+                        <p onClick={() => onQuestionClick(index, question)}>
                           {question.question.toUpperCase()}
                         </p>
                         {downArrow}
