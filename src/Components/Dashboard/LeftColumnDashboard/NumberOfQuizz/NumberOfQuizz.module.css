@@ -4,9 +4,10 @@
   flex-direction: column;
   height: auto;
   border: 1px solid #636e72;
-  box-shadow: 2px 2px 0px 0px #636e72;
   width: 285px;
   max-height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .NumberOfQuizz h2 {
