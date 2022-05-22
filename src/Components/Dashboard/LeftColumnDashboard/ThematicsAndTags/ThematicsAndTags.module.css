@@ -4,7 +4,8 @@
   width: 285px;
   background-color: #eee;
   border: 1px solid #636e72;
-  box-shadow: 2px 2px 0px 0px #636e72;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .ThematicsAndTags h2 {
