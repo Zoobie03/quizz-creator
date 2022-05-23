@@ -12,6 +12,7 @@
 
 .NumberOfQuizz h2 {
   margin: 0;
+  padding: 5px 0;
   vertical-align: middle;
   color: white;
   background-color: #3868edcc;
@@ -19,7 +20,6 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  border-bottom: 1px solid #636e72;
 }
 
 .NumberOfQuizz p {
