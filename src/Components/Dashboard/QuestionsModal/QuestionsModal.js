@@ -71,6 +71,7 @@ const QuestionsModal = (props) => {
     setAnswer(event.target.value);
   };
 
+  // Imperative Code
   const onQuestionClick = (index) => {
     const questionClicked = document.getElementById(`question${index}`);
     const isSvgChild = questionClicked.childNodes.item(0).childNodes.item(2).nodeName === 'svg';

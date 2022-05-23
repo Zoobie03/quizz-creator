@@ -104,11 +104,13 @@ const Dashboard = () => {
 
       const storageRef = ref(
         storage,
-        `users/${user.uid}/question-picture/quizz-${quizzIndex}/questionPicture.jpg`
+        `users/${
+          user.uid
+        }/question-picture/quizz-${quizzIndex}/questionPicture-${Math.random()}.jpg`
       );
 
       await uploadBytes(storageRef, file, file.name).then((snapshot) => {
-        toast.success("L'image de votre quizz a bien été uploadée !");
+        toast.success("L'image de votre question a bien été uploadée !");
       });
 
       const photoURL = await getDownloadURL(storageRef);
