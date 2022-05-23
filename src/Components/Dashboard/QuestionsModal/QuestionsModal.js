@@ -172,7 +172,7 @@ const QuestionsModal = (props) => {
                         <button
                           type='button'
                           className={styles.deleteQuestion}
-                          onClick={() => props.onClickButtonDeleteQuestion(question.id)}
+                          onClick={() => props.onClickButtonDeleteQuestion(question, index)}
                         >
                           Supprimer
                         </button>
