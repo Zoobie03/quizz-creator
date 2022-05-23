@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
-import { uploadBytes, getDownloadURL, ref } from 'firebase/storage';
+import { uploadBytes, getDownloadURL, ref, deleteObject } from 'firebase/storage';
 // Own Files
 import styles from './Dashboard.module.css';
 import { db, storage } from '../../config/firebase';
@@ -104,9 +104,7 @@ const Dashboard = () => {
 
       const storageRef = ref(
         storage,
-        `users/${
-          user.uid
-        }/question-picture/quizz-${quizzIndex}/questionPicture-${Math.random()}.jpg`
+        `users/${user.uid}/quizz-pictures/quizz-${quizzIndex}/questionPicture-${quizzToEdit.questions.length}.jpg`
       );
 
       await uploadBytes(storageRef, file, file.name).then((snapshot) => {
@@ -231,7 +229,10 @@ const Dashboard = () => {
             id: Math.random(),
             question: question,
             answers: answer,
-            questionPicture: picturePath,
+            questionPicture: {
+              id: Math.random(),
+              picturePath,
+            },
           };
 
           setQuizzToEdit({ ...quizzToEdit, questions: [...quizzToEdit.questions, newQuestion] });
@@ -251,11 +252,34 @@ const Dashboard = () => {
     }
   };
 
-  const onClickButtonDeleteQuestion = (questionClickedId) => {
+  const onClickButtonDeleteQuestion = (questionDeleted, questionIndex) => {
     const newQuestions = quizzToEdit.questions.filter((question) => {
-      return question.id !== questionClickedId;
+      return question.id !== questionDeleted.id;
     });
+
+    if (questionDeleted.questionPicture !== null) {
+      const quizzIndex = userQuizzs.findIndex((quizz) => {
+        return quizz.id === quizzToEdit.id;
+      });
+      // Create a reference to the file to delete
+      const storageRef = ref(
+        storage,
+        `users/${user.uid}/quizz-pictures/quizz-${quizzIndex}/questionPicture-${questionIndex}.jpg`
+      );
+      // Delete the file
+      deleteObject(storageRef)
+        .then(() => {
+          // File deleted successfully
+          toast.success("L'image de la question a bien été supprimée !");
+        })
+        .catch((error) => {
+          // Uh-oh, an error occurred!
+          toast.error("Une erreur est survenue lors de la suppression de l'image de la question !");
+        });
+    }
+
     setQuizzToEdit({ ...quizzToEdit, questions: newQuestions });
+
     toast.info('La question a bien été supprimée', { theme: 'colored' });
   };
 
