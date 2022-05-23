@@ -69,21 +69,21 @@
   width: 300px;
   margin: auto;
   cursor: pointer;
-  background: rgb(56, 103, 237);
-  background: linear-gradient(120deg, rgba(56, 104, 237, 0.799) 50%, rgba(149, 3, 254, 0.81) 50%);
+  background-color: #002eb8;
   border: none;
   color: white;
-  text-transform: uppercase;
-  border-radius: 20px;
+  border-radius: 5px;
+  border: 1px solid #002eb8;
   font-weight: bold;
   font-size: 1.05rem;
   min-height: 40px;
+  transition: 0.3s;
 }
 
 .ModalContent button:hover {
-  opacity: 1;
-  background: rgb(56, 103, 237);
-  background: linear-gradient(120deg, rgba(149, 3, 254, 0.81) 50%, rgba(56, 104, 237, 0.799) 50%);
+  border: 1px solid #002eb8;
+  background-color: white;
+  color: #002eb8;
 }
 
 .noQuestionMessage {
