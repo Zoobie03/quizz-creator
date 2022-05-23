@@ -3,6 +3,8 @@
   width: 315px;
   height: 750px;
   background-color: #dfe6e9;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .RightColumnDashboard h2 {
