@@ -1,7 +1,7 @@
 // Library
 import React from 'react';
 // Own files
-import styles from './Question.module.css';
+import styles from './QuestionCard.module.css';
 
 const Question = (props) => {
   // question, index

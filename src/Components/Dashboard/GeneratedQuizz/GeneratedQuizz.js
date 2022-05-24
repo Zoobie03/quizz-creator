@@ -3,7 +3,7 @@ import React from 'react';
 // Own files
 import styles from './GeneratedQuizz.module.css';
 // Component
-import Question from './Question/Question';
+import Question from './QuestionCard/QuestionCard';
 
 const GeneratedQuizz = (props) => {
   // Methods
