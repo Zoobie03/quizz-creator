@@ -9,13 +9,13 @@ const Question = (props) => {
     <li
       key={props.index}
       style={{
-        border: `5px solid ${props.questionBorderColor}`,
+        border: `3px solid ${props.questionBorderColor}`,
         backgroundColor: props.questionBorderColor,
         borderRadius: props.questionBorderRadius,
       }}
       className={styles.QuestionCard}
     >
-      <span className={styles.questionTitle}>Question {props.index + 1}</span>
+      <span className={styles.questionIndex}>Question {props.index + 1}</span>
 
       <p className={styles.question}>{props.question.question}</p>
 

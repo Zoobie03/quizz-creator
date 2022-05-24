@@ -1,19 +1,27 @@
 .QuestionCard {
-  width: 40%;
+  max-width: 400px;
+  max-height: 600px;
+  min-height: 500px;
+  width: 100%;
   margin-bottom: 20px;
   margin-top: 20px;
   padding: 10px;
   transition: 0.3s;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.questionTitle {
+.questionIndex {
   display: block;
   color: white;
   background-color: #eca625;
   text-underline-offset: 5px;
-  padding: 5px;
+  padding: 10px;
   width: fit-content;
   border-radius: 30px;
+  height: 20px;
 }
 
 .question {
@@ -24,22 +32,22 @@
 
 .questionPicture {
   display: block;
-  margin: auto;
-  max-width: 600px;
+  max-width: 400px;
+  width: 100%;
+  max-height: 300px;
   border-radius: 4px;
   margin-bottom: 15px;
-}
-
-.questionPicture img {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .answerInput {
-  width: 95%;
-  padding: 10px 5px;
+  box-sizing: border-box;
+  max-width: 400px;
+  width: 100%;
+  padding: 5px 5px;
   border-radius: 5px;
   border: 1px solid;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .QuestionCard:hover {
