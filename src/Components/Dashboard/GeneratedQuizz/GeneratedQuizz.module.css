@@ -69,11 +69,11 @@
   width: 300px;
   margin: auto;
   cursor: pointer;
-  background-color: #002eb8;
+  background-color: #1236a1;
   border: none;
   color: white;
   border-radius: 5px;
-  border: 1px solid #002eb8;
+  border: 1px solid #1236a1;
   font-weight: bold;
   font-size: 1.05rem;
   min-height: 40px;
@@ -81,9 +81,9 @@
 }
 
 .ModalContent button:hover {
-  border: 1px solid #002eb8;
+  border: 1px solid #1236a1;
   background-color: white;
-  color: #002eb8;
+  color: #1236a1;
 }
 
 .noQuestionMessage {
