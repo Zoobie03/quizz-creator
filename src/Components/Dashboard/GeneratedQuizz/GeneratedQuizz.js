@@ -46,7 +46,7 @@ const GeneratedQuizz = (props) => {
         <h1>{props?.quizz?.title || 'Titre du quizz généré'}</h1>
         <div className={styles.forAuthor}>
           <span>
-            Le quizz contient acutellement{' '}
+            Le quizz contient acuellement{' '}
             <b>
               {props?.quizz?.questions?.length || 'aucunes'}
               {props?.quizz?.questions.length > 1 ? ' questions' : ' question'}
