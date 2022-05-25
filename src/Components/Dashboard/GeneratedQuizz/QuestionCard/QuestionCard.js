@@ -17,7 +17,14 @@ const Question = (props) => {
     >
       <span className={styles.questionIndex}>Question {props.index + 1}</span>
 
-      <p className={styles.question}>{props.question.question}</p>
+      <p
+        className={styles.question}
+        style={{
+          backgroundColor: props.questionBackgroundColor,
+        }}
+      >
+        {props.question.question}
+      </p>
 
       {props?.picture ? (
         <img
