@@ -22,6 +22,7 @@
 
 .Home_Content {
   display: flex;
+  justify-content: space-between;
 }
 
 .leftColumn {
@@ -30,7 +31,8 @@
   text-align: start;
   padding: 10px;
   background-color: #dee6e9;
-  border-right: #505050 solid 1px;
+  border-radius: 10px;
+  border-right: 1px solid #c2c2c2;
 }
 
 .leftColumn h2 {
@@ -47,4 +49,5 @@
   text-align: start;
   padding: 10px;
   background-color: #dee6e9;
+  border-radius: 10px;
 }
