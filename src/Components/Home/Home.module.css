@@ -19,3 +19,32 @@
     0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
     0 20px 20px rgba(0, 0, 0, 0.15);
 }
+
+.Home_Content {
+  display: flex;
+}
+
+.leftColumn {
+  width: 45%;
+  margin-top: 20px;
+  text-align: start;
+  padding: 10px;
+  background-color: #dee6e9;
+  border-right: #505050 solid 1px;
+}
+
+.leftColumn h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: #505050;
+}
+
+.rightColumn {
+  width: 45%;
+  margin-top: 20px;
+  text-align: start;
+  padding: 10px;
+  background-color: #dee6e9;
+}
