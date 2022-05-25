@@ -26,8 +26,10 @@
 
 .question {
   text-align: center;
-  font-size: 26px;
+  font-size: 22px;
   color: white;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .questionPicture {
