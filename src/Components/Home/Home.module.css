@@ -22,13 +22,13 @@
 
 .Home_Content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .leftColumn {
   width: 45%;
   margin-top: 20px;
-  text-align: start;
+  text-align: justify;
   padding: 10px;
   background-color: #dee6e9;
   border-radius: 10px;
@@ -41,6 +41,11 @@
   font-size: 30px;
   font-weight: bold;
   color: #505050;
+}
+
+.leftColumn ul li {
+  display: flex;
+  align-items: center;
 }
 
 .rightColumn {
