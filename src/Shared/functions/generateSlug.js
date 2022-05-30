@@ -1,4 +1,4 @@
-export const generateSlug = (str) => {
+export default function generateSlug(str) {
   str = str.replace(/^\s+|\s+$/g, ''); // trim
   str = str.toLowerCase();
 
@@ -16,4 +16,4 @@ export const generateSlug = (str) => {
     .replace(/-+/g, '-'); // collapse dashes
 
   return str;
-};
+}
