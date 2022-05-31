@@ -1,9 +1,9 @@
 .RightColumnDashboard {
-  border: 1px solid black;
   width: 315px;
   height: 750px;
-  background-color: #dfe6e9;
+  background-color: #d3d3d3;
   border-radius: 10px;
+  border: 1px solid #d8d8d8;
   overflow: hidden;
 }
 
@@ -17,7 +17,7 @@
   background-color: #aa34ff;
   color: white;
   height: 70px;
-  border: none;
+  border-bottom: 1px solid #d8d8d8;
 }
 
 .RightColumnDashboard__content {
@@ -25,4 +25,15 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+}
+
+.numberOfQuestions p {
+  background-color: #aa34ff;
+  color: white;
+  margin: 10px auto;
+  font-weight: bold;
+  font-size: 2rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
