@@ -5,7 +5,7 @@ import styles from './Panel.module.css';
 
 const Panel = (props) => {
   return (
-    <div className={styles.Panel}>
+    <div className={`${styles.Panel} ${props.className ? props.className : null}`}>
       <h3>{props?.panelTitle || 'Titre générique'}</h3>
       <p>{props?.information || 'Aucune question'}</p>
     </div>
