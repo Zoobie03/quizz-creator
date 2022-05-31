@@ -19,15 +19,6 @@ const Home = () => {
                 Avant de commencer, pense a vérifier ton e-mail et a entrer un pseudonyme dans
                 l'onglet <i>Mon profil</i>. Tu peux aussi t'attribué une image de profil.
               </p>
-              <hr />
-              <h2>Par où commencer ?</h2>
-              <p>
-                Rendez-vous dans l'onglet <i>Dashboard</i> pour créer ton premier quizz. Tu pourras
-                ajouter un titre à ton quizz, des <b>thématiques</b> ainsi que des <b>tags</b> pour
-                mieux les organiser.
-              </p>
-              <p>Tu peux aussi attribuer une image à ton quizz.</p>
-              <hr />
               <h2>Et après ?</h2>
               <p>
                 Une fois ton quizz créer, tu le verra apparaître dans ton <b>dashboard</b> avec
@@ -37,7 +28,27 @@ const Home = () => {
                 Chaque icônes représente une action que tu peux effectuer sur ton quizz. N'hésite
                 pas a laisser ton curseur de souris dessus pour voir ce que chaque icône fait.
               </p>
-              <hr />
+              <h2>Dernier petit conseil:</h2>
+              <p>
+                Tu peut cliquer sur chaque quizz pour voir certaines informations utiles à propos de
+                celui ci comme :
+              </p>
+              <ul>
+                <li>Le titre du quizz</li>
+                <li>Le nombre de questions</li>
+                <li>La date de création</li>
+                <li>
+                  Les statistiques de réussites &nbsp; <i>(En cours de développement)</i>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.rightColumn}>
+              <h2>Par où commencer ?</h2>
+              <p>
+                Rendez-vous dans l'onglet <i>Dashboard</i> pour créer ton premier quizz. Tu pourras
+                ajouter un titre à ton quizz, des <b>thématiques</b> ainsi que des <b>tags</b> pour
+                mieux les organiser. Tu peux aussi attribuer une image à ton quizz.
+              </p>
               <h2>Liste des icônes :</h2>
               <ul>
                 <li>
@@ -112,13 +123,20 @@ const Home = () => {
                   </span>
                 </li>
               </ul>
+              <h2 className={styles.haveFun}>Amusez-vous bien !</h2>
             </div>
-            <div className={styles.rightColumn}></div>
           </div>
         </div>
       ) : (
         <div className={styles.Home}>
           <h1>Quizz Creator</h1>
+          <div className={styles.userIsNotConnected}>
+            <p>
+              Vous n'êtes actuellement pas connecté. Si vous voulez créer un compte, rendez-vous
+              dans la section connexion et créer un compte.
+            </p>
+            <p>A tout de suite !</p>
+          </div>
         </div>
       )}
     </>

@@ -26,6 +26,9 @@
 }
 
 .leftColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 45%;
   margin-top: 20px;
   text-align: justify;
@@ -49,10 +52,42 @@
 }
 
 .rightColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 45%;
   margin-top: 20px;
   text-align: start;
   padding: 10px;
   background-color: #dee6e9;
   border-radius: 10px;
+}
+
+.rightColumn h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: #505050;
+}
+
+.rightColumn ul li {
+  display: flex;
+  align-items: center;
+}
+
+.haveFun {
+  text-align: center;
+  align-self: center;
+  margin: auto;
+  text-decoration: underline wavy;
+  text-underline-offset: 5px;
+}
+
+.userIsNotConnected {
+  background-color: #dee6e9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid rgb(150, 150, 150);
 }
