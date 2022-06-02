@@ -1,5 +1,6 @@
 .ThematicsAndTags {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: auto;
   width: 285px;
   background-color: #eee;
@@ -29,12 +30,6 @@
   /* overflow: scroll; */
 }
 
-.ThematicsAndTags ul li {
-  color: #a1a1a1;
-  cursor: pointer;
-  padding: 5px;
-}
-
 .ThematicsAndTags p {
-  margin: 0;
+  margin: auto;
 }
