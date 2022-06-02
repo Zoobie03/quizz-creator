@@ -31,5 +31,7 @@
 }
 
 .ThematicsAndTags p {
-  margin: auto;
+  text-align: center;
+  min-height: 100px;
+  max-height: 70px;
 }

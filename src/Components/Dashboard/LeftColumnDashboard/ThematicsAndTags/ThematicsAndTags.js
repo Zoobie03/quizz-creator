@@ -20,7 +20,7 @@ const ThematicsAndTags = ({ title, noneMessage, data }) => {
   return (
     <div className={styles.ThematicsAndTags}>
       <h2>{title}</h2>
-      <ul>{themOrTagsMapped.length > 0 ? themOrTagsMapped : <p>{noneMessage}</p>}</ul>
+      {themOrTagsMapped.length > 0 ? <ul>{themOrTagsMapped}</ul> : <p>{noneMessage}</p>}
     </div>
   );
 };
