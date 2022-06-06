@@ -13,7 +13,7 @@ const Question = (props) => {
         backgroundColor: props.questionBorderColor,
         borderRadius: props.questionBorderRadius,
       }}
-      className={styles.QuestionCard}
+      className={`${styles.QuestionCard} ${props.className}`}
     >
       <span className={styles.questionIndex}>Question {props.index + 1}</span>
 
