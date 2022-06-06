@@ -1,11 +1,20 @@
 // Library
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // Own files
 import styles from './GeneratedQuizz.module.css';
 // Component
 import Question from './QuestionCard/QuestionCard';
 
 const GeneratedQuizz = (props) => {
+  // State
+  const [questionsCard, setQuestionsCard] = useState([null]);
+
+  // ComponentDidMount
+  useEffect(() => {
+    setQuestionsCard(document.getElementsByClassName('questionCard'));
+    console.log(questionsCard);
+  }, [questionsCard]);
+
   // Methods
   const isEven = (index) => {
     if (index % 2 === 0) {
@@ -13,6 +22,10 @@ const GeneratedQuizz = (props) => {
     } else {
       return false;
     }
+  };
+
+  const handleClick = (quizz) => {
+    const questionsQuizz = quizz.questions;
   };
 
   // Variables
@@ -62,6 +75,7 @@ const GeneratedQuizz = (props) => {
                     <Question
                       key={index}
                       index={index}
+                      className='questionCard'
                       question={question}
                       questionBorderColor={isEven(index) ? '#3867edcc' : '#9603fe99'}
                       questionBorderRadius={isEven(index) ? '15px 0 15px 0' : '0 15px 0 15px'}
@@ -74,7 +88,7 @@ const GeneratedQuizz = (props) => {
           </ul>
         </div>
         {props?.quizz?.questions.length > 0 ? (
-          <button type='button'>
+          <button type='button' onClick={handleClick(props.quizz)}>
             {props.quizz.questions.length > 1 ? 'Confirmer ma réponse' : 'Confirmer mes réponses'}
           </button>
         ) : (
