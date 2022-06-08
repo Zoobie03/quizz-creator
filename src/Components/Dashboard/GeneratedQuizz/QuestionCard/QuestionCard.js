@@ -36,7 +36,7 @@ const Question = (props) => {
 
       <input
         type='text'
-        id={`question${props.index + 1}`}
+        id={`answerQuestion--${props.index + 1}`}
         className={styles.answerInput}
         placeholder='Votre réponse...'
       />
