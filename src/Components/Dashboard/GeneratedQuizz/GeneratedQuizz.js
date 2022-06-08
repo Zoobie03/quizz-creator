@@ -7,13 +7,21 @@ import Question from './QuestionCard/QuestionCard';
 
 const GeneratedQuizz = (props) => {
   // State
-  const [questionsCard, setQuestionsCard] = useState([null]);
-
+  const [answerInputs, setAnswerInputs] = useState([]);
+  const [questionsCards, setQuestionsCards] = useState([]);
   // ComponentDidMount
   useEffect(() => {
-    setQuestionsCard(document.getElementsByClassName('questionCard'));
-    console.log(questionsCard);
-  }, [questionsCard]);
+    const newQuestionsCards = document.getElementsByClassName('questionCard');
+    setQuestionsCards(newQuestionsCards);
+
+    let newAnswerInputs = [];
+
+    for (let i = 0; i < newQuestionsCards.length; i++) {
+      newAnswerInputs = [...newAnswerInputs, document.querySelector(`#answerQuestion--${i + 1}`)];
+    }
+
+    setAnswerInputs(newAnswerInputs);
+  }, []);
 
   // Methods
   const isEven = (index) => {
@@ -25,7 +33,7 @@ const GeneratedQuizz = (props) => {
   };
 
   const handleClick = (quizz) => {
-    const questionsQuizz = quizz.questions;
+    console.log(answerInputs);
   };
 
   // Variables
@@ -88,7 +96,7 @@ const GeneratedQuizz = (props) => {
           </ul>
         </div>
         {props?.quizz?.questions.length > 0 ? (
-          <button type='button' onClick={handleClick(props.quizz)}>
+          <button type='button' onClick={() => handleClick(props.quizz)}>
             {props.quizz.questions.length > 1 ? 'Confirmer ma réponse' : 'Confirmer mes réponses'}
           </button>
         ) : (
