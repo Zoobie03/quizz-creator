@@ -62,7 +62,7 @@ const Contact = () => {
 
   return (
     <div className={styles.Contact}>
-      <h1>Pour contacter le développeur</h1>
+      <h1>Formulaire de contact</h1>
       <form onSubmit={(event) => sendEmail(event)}>
         <label htmlFor='name'>
           Nom
