@@ -102,3 +102,20 @@
   background: rgb(56, 103, 237);
   background: linear-gradient(81deg, rgba(56, 103, 237, 0.81) 16%, rgba(150, 3, 254, 0.631) 86%);
 }
+
+@media screen and (max-width: 880px) {
+  .QuizzCard {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .quizzPicture {
+    width: 200px;
+    height: 200px;
+  }
+
+  .quizzPicture img {
+    width: 200px;
+    height: 200px;
+  }
+}

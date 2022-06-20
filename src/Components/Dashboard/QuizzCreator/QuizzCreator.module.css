@@ -67,21 +67,17 @@
 }
 
 @media screen and (max-width: 880px) {
-  .Dashboard h1 {
-    font-size: 30px;
+  .QuizzCreator h1 {
+    font-size: 25px;
+    height: fit-content;
     width: 90%;
   }
+
   .wrapperQuizzs {
     display: flex;
-    flex-direction: column;
     max-width: none;
     width: 90%;
     justify-content: space-between;
-    align-items: center;
-  }
-  .QuizzCard {
-    width: 150px;
-    height: 150px;
   }
 
   .svgContainer svg {
