@@ -143,7 +143,6 @@ const Dashboard = () => {
   };
 
   const delHandleClick = (quizzId) => {
-    // confirm
     const confirm = window.confirm('Voulez-vous vraiment supprimer ce quizz ?');
     if (confirm) {
       fetchUserQuizzs() // Promise
