@@ -28,11 +28,14 @@
 }
 
 .numberOfQuestions p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #aa34ff;
   color: white;
   margin: 10px auto;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   width: 45px;
   height: 45px;
   border-radius: 50%;

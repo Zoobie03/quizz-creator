@@ -8,6 +8,7 @@
   background-color: #e7e7e6;
   border-radius: 10px;
   overflow: hidden;
+  font-size: 1.25rem;
 }
 
 .Panel h3 {
@@ -25,6 +26,5 @@
 }
 
 .Panel p {
-  font-size: 1.25rem;
   font-family: 'Roboto', sans-serif;
 }
