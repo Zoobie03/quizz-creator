@@ -59,6 +59,7 @@ const QuizzModal = (props) => {
   );
 
   // Methods
+  // handle state mutation of all inputs
   const handleChange = (event) => {
     const targetId = event.target.id;
     let value = event.target.value;
