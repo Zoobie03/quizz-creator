@@ -14,12 +14,12 @@ const Home = () => {
           <h1>Quizz Creator</h1>
           <div className={styles.Home_Content}>
             <div className={styles.leftColumn}>
-              <h2>Bienvenue à toi !</h2>
+              <h2>1. Bienvenue à toi !</h2>
               <p>
                 Avant de commencer, pense a vérifier ton e-mail et a entrer un pseudonyme dans
                 l'onglet <i>Mon profil</i>. Tu peux aussi t'attribué une image de profil.
               </p>
-              <h2>Et après ?</h2>
+              <h2>3. Et après ?</h2>
               <p>
                 Une fois ton quizz créer, tu le verra apparaître dans ton <b>dashboard</b> avec
                 plusieurs icônes.
@@ -28,7 +28,7 @@ const Home = () => {
                 Chaque icônes représente une action que tu peux effectuer sur ton quizz. N'hésite
                 pas a laisser ton curseur de souris dessus pour voir ce que chaque icône fait.
               </p>
-              <h2>Dernier petit conseil:</h2>
+              <h2>5. Dernier petit conseil:</h2>
               <p>
                 Tu peut cliquer sur chaque quizz pour voir certaines informations utiles à propos de
                 celui ci comme :
@@ -43,13 +43,13 @@ const Home = () => {
               </ul>
             </div>
             <div className={styles.rightColumn}>
-              <h2>Par où commencer ?</h2>
+              <h2>2. Par où commencer ?</h2>
               <p>
                 Rendez-vous dans l'onglet <i>Dashboard</i> pour créer ton premier quizz. Tu pourras
                 ajouter un titre à ton quizz, des <b>thématiques</b> ainsi que des <b>tags</b> pour
                 mieux les organiser. Tu peux aussi attribuer une image à ton quizz.
               </p>
-              <h2>Liste des icônes :</h2>
+              <h2>4. Liste des icônes :</h2>
               <ul>
                 <li>
                   <svg width='1.5em' height='1.5em' viewBox='0 0 16 16' fill='#888888'>
