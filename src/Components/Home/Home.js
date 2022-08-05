@@ -19,6 +19,12 @@ const Home = () => {
                 Avant de commencer, pense a vérifier ton e-mail et a entrer un pseudonyme dans
                 l'onglet <i>Mon profil</i>. Tu peux aussi t'attribué une image de profil.
               </p>
+              <h2>2. Par où commencer ?</h2>
+              <p>
+                Rendez-vous dans l'onglet <i>Dashboard</i> pour créer ton premier quizz. Tu pourras
+                ajouter un titre à ton quizz, des <b>thématiques</b> ainsi que des <b>tags</b> pour
+                mieux les organiser. Tu peux aussi attribuer une image à ton quizz.
+              </p>
               <h2>3. Et après ?</h2>
               <p>
                 Une fois ton quizz créer, tu le verra apparaître dans ton <b>dashboard</b> avec
@@ -27,27 +33,6 @@ const Home = () => {
               <p>
                 Chaque icônes représente une action que tu peux effectuer sur ton quizz. N'hésite
                 pas a laisser ton curseur de souris dessus pour voir ce que chaque icône fait.
-              </p>
-              <h2>5. Dernier petit conseil:</h2>
-              <p>
-                Tu peut cliquer sur chaque quizz pour voir certaines informations utiles à propos de
-                celui ci comme :
-              </p>
-              <ul>
-                <li>Le titre du quizz</li>
-                <li>Le nombre de questions</li>
-                <li>La date de création</li>
-                <li>
-                  Les statistiques de réussites &nbsp; <i>(En cours de développement)</i>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.rightColumn}>
-              <h2>2. Par où commencer ?</h2>
-              <p>
-                Rendez-vous dans l'onglet <i>Dashboard</i> pour créer ton premier quizz. Tu pourras
-                ajouter un titre à ton quizz, des <b>thématiques</b> ainsi que des <b>tags</b> pour
-                mieux les organiser. Tu peux aussi attribuer une image à ton quizz.
               </p>
               <h2>4. Liste des icônes :</h2>
               <ul>
@@ -121,6 +106,19 @@ const Home = () => {
                   >
                     &nbsp; Supprimer le quizz.
                   </span>
+                </li>
+              </ul>
+              <h2>5. Dernier petit conseil:</h2>
+              <p>
+                Tu peut cliquer sur chaque quizz pour voir certaines informations utiles à propos de
+                celui ci comme :
+              </p>
+              <ul>
+                <li>Le titre du quizz</li>
+                <li>Le nombre de questions</li>
+                <li>La date de création</li>
+                <li>
+                  Les statistiques de réussites &nbsp; <i>(En cours de développement)</i>
                 </li>
               </ul>
               <h2 className={styles.haveFun}>Amusez-vous bien !</h2>
