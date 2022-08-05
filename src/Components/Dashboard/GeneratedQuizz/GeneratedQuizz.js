@@ -25,15 +25,12 @@ const GeneratedQuizz = (props) => {
 
   // Methods
   const isEven = (index) => {
-    if (index % 2 === 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return index % 2 === 0 ? true : false;
   };
 
   const handleClick = (quizz) => {
     console.log(answerInputs);
+    console.log(quizz);
   };
 
   // Variables
